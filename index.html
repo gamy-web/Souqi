@@ -9,11 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-/* =========================
-   أساسيات
-========================= */
-
 *{
   box-sizing:border-box;
 }
@@ -24,18 +19,12 @@ html{
 
 body{
   margin:0;
-  font-family:
-    "Segoe UI",
-    Tahoma,
-    Arial,
-    sans-serif;
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
   background:#f6f8fc;
   color:#172033;
 }
 
-button,
-input,
-select{
+button,input,select{
   font-family:inherit;
 }
 
@@ -43,20 +32,16 @@ button{
   cursor:pointer;
 }
 
-
-/* =========================
-   الهيدر
-========================= */
+/* HEADER */
 
 .header{
-  background:
-    linear-gradient(135deg,#1261e8,#1749b7);
+  background:linear-gradient(135deg,#1261e8,#1749b7);
   color:white;
   position:relative;
   overflow:hidden;
 }
 
-.header::before{
+.header:before{
   content:"";
   position:absolute;
   width:280px;
@@ -67,7 +52,7 @@ button{
   left:-80px;
 }
 
-.header::after{
+.header:after{
   content:"";
   position:absolute;
   width:220px;
@@ -128,19 +113,12 @@ button{
   border:1px solid rgba(255,255,255,.2);
 }
 
-.nav-button:hover{
-  background:rgba(255,255,255,.25);
-}
-
 .nav-add{
   background:white;
   color:#1261e8;
 }
 
-
-/* =========================
-   الهيرو
-========================= */
+/* HERO */
 
 .hero{
   max-width:1150px;
@@ -170,7 +148,6 @@ button{
   margin:0;
   font-size:48px;
   line-height:1.2;
-  letter-spacing:-1px;
 }
 
 .hero h1 span{
@@ -198,11 +175,6 @@ button{
   padding:14px 24px;
   font-size:17px;
   font-weight:800;
-  box-shadow:0 10px 25px rgba(0,0,0,.12);
-}
-
-.hero-main-button:hover{
-  transform:translateY(-2px);
 }
 
 .hero-second-button{
@@ -215,10 +187,7 @@ button{
   font-weight:700;
 }
 
-
-/* =========================
-   المستخدم
-========================= */
+/* USER */
 
 .user-box{
   display:none;
@@ -268,10 +237,7 @@ button{
   font-weight:700;
 }
 
-
-/* =========================
-   المحتوى
-========================= */
+/* CONTENT */
 
 .container{
   max-width:1150px;
@@ -279,10 +245,7 @@ button{
   padding:0 20px 50px;
 }
 
-
-/* =========================
-   البحث
-========================= */
+/* SEARCH */
 
 .search-area{
   margin-bottom:28px;
@@ -309,17 +272,9 @@ button{
   padding:15px 8px;
   font-size:17px;
   background:transparent;
-  color:#172033;
 }
 
-.search-input::placeholder{
-  color:#9aa4b2;
-}
-
-
-/* =========================
-   الأقسام
-========================= */
+/* CATEGORIES */
 
 .section-title{
   display:flex;
@@ -359,25 +314,15 @@ button{
   border-radius:30px;
   font-size:15px;
   font-weight:700;
-  transition:.2s;
-}
-
-.category:hover{
-  border-color:#1261e8;
-  color:#1261e8;
 }
 
 .category.active{
   background:#1261e8;
   color:white;
   border-color:#1261e8;
-  box-shadow:0 7px 18px rgba(18,97,232,.22);
 }
 
-
-/* =========================
-   الرسائل
-========================= */
+/* MESSAGE */
 
 .message{
   display:none;
@@ -391,20 +336,15 @@ button{
   display:block;
   background:#e4f7ed;
   color:#137344;
-  border:1px solid #c8ecd9;
 }
 
 .message.error{
   display:block;
   background:#fff0f1;
   color:#a51f2c;
-  border:1px solid #ffd2d6;
 }
 
-
-/* =========================
-   المنتجات
-========================= */
+/* PRODUCTS */
 
 .products-head{
   margin-top:30px;
@@ -426,8 +366,7 @@ button{
 
 .products{
   display:grid;
-  grid-template-columns:
-    repeat(auto-fill,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
   gap:20px;
 }
 
@@ -436,21 +375,17 @@ button{
   border:1px solid #e9edf3;
   border-radius:22px;
   overflow:hidden;
-  box-shadow:
-    0 8px 30px rgba(30,50,90,.07);
+  box-shadow:0 8px 30px rgba(30,50,90,.07);
   transition:.25s;
 }
 
 .card:hover{
   transform:translateY(-5px);
-  box-shadow:
-    0 16px 40px rgba(30,50,90,.12);
 }
 
 .card-top{
   min-height:175px;
-  background:
-    linear-gradient(145deg,#eef5ff,#f8fbff);
+  background:linear-gradient(145deg,#eef5ff,#f8fbff);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -459,7 +394,6 @@ button{
 
 .card-icon{
   font-size:78px;
-  filter:drop-shadow(0 8px 8px rgba(0,0,0,.08));
 }
 
 .category-label{
@@ -472,7 +406,6 @@ button{
   border-radius:20px;
   font-size:12px;
   font-weight:700;
-  box-shadow:0 3px 10px rgba(0,0,0,.07);
 }
 
 .card-body{
@@ -493,7 +426,6 @@ button{
 
 .price small{
   font-size:14px;
-  font-weight:700;
   color:#6b7788;
 }
 
@@ -515,11 +447,6 @@ button{
   border-radius:12px;
   margin-top:16px;
   font-weight:800;
-  transition:.2s;
-}
-
-.whatsapp:hover{
-  background:#16ae59;
 }
 
 .delete{
@@ -532,15 +459,6 @@ button{
   margin-top:8px;
   font-weight:700;
 }
-
-.delete:hover{
-  background:#ffe0e3;
-}
-
-
-/* =========================
-   لا توجد منتجات
-========================= */
 
 .empty{
   grid-column:1/-1;
@@ -557,10 +475,7 @@ button{
   margin-bottom:10px;
 }
 
-
-/* =========================
-   المودال
-========================= */
+/* MODAL */
 
 .modal{
   display:none;
@@ -619,7 +534,6 @@ button{
 .input:focus{
   border-color:#1261e8;
   background:white;
-  box-shadow:0 0 0 3px rgba(18,97,232,.08);
 }
 
 .modal-buttons{
@@ -672,7 +586,6 @@ button{
 .tab.active{
   background:white;
   color:#1261e8;
-  box-shadow:0 2px 8px rgba(0,0,0,.06);
 }
 
 .auth-message{
@@ -696,10 +609,7 @@ button{
   color:#137344;
 }
 
-
-/* =========================
-   الفوتر
-========================= */
+/* FOOTER */
 
 .footer{
   margin-top:35px;
@@ -721,10 +631,7 @@ button{
   font-size:14px;
 }
 
-
-/* =========================
-   موبايل
-========================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -740,7 +647,6 @@ button{
     width:40px;
     height:40px;
     font-size:22px;
-    border-radius:12px;
   }
 
   .nav-button{
@@ -763,7 +669,6 @@ button{
   .hero-main-button,
   .hero-second-button{
     width:100%;
-    text-align:center;
   }
 
   .container{
@@ -795,575 +700,384 @@ button{
   .modal-box{
     padding:20px;
   }
-
 }
-
-
-/* =========================
-   حركة تحميل
-========================= */
-
-@keyframes fadeUp{
-
-  from{
-    opacity:0;
-    transform:translateY(12px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-.card{
-  animation:fadeUp .35s ease both;
-}
-
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header class="header">
 
-  <nav class="nav">
+<nav class="nav">
 
-    <div class="logo">
+<div class="logo">
+<div class="logo-icon">🛒</div>
+سوقي
+</div>
 
-      <div class="logo-icon">
-        🛒
-      </div>
+<div class="nav-actions">
 
-      سوقي
+<button class="nav-button nav-add" id="addButton">
+＋ أضف منتج
+</button>
 
-    </div>
+<button class="nav-button" id="loginButton">
+👤 دخول
+</button>
 
+</div>
 
-    <div class="nav-actions">
+</nav>
 
-      <button
-        class="nav-button nav-add"
-        id="addButton">
+<div class="hero">
 
-        ＋ أضف منتج
+<div class="hero-content">
 
-      </button>
+<div class="hero-badge">
+✨ سوقك الإلكتروني
+</div>
 
+<h1>
+بيع واشتري
+<span>بسهولة</span>
+</h1>
 
-      <button
-        class="nav-button"
-        id="loginButton">
+<p>
+اكتشف المنتجات المعروضة حولك،
+وانشر منتجاتك ليشوفها الجميع
+ويتواصلوا معك مباشرة.
+</p>
 
-        👤 دخول
+<div class="hero-buttons">
 
-      </button>
+<button class="hero-main-button" id="heroAddButton">
+🛍️ أضف منتجك الآن
+</button>
 
-    </div>
+<button class="hero-second-button" id="heroBrowseButton">
+🔎 تصفح المنتجات
+</button>
 
-  </nav>
+</div>
 
+</div>
 
-  <div class="hero">
-
-    <div class="hero-content">
-
-      <div class="hero-badge">
-
-        ✨ سوقك الإلكتروني
-
-      </div>
-
-
-      <h1>
-
-        بيع واشتري
-        <span>بسهولة</span>
-
-      </h1>
-
-
-      <p>
-
-        اكتشف المنتجات المعروضة حولك،
-        وانشر منتجاتك ليشوفها الجميع
-        ويتواصلوا معك مباشرة.
-
-      </p>
-
-
-      <div class="hero-buttons">
-
-        <button
-          class="hero-main-button"
-          id="heroAddButton">
-
-          🛍️ أضف منتجك الآن
-
-        </button>
-
-
-        <button
-          class="hero-second-button"
-          id="heroBrowseButton">
-
-          🔎 تصفح المنتجات
-
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </header>
 
 
+<div class="user-box" id="userBox">
 
-<!-- =========================
-     USER
-========================= -->
+<div class="user-inner">
 
-<div
-  class="user-box"
-  id="userBox">
+<div class="user-info">
 
-  <div class="user-inner">
+<div class="user-avatar">
+👤
+</div>
 
-    <div class="user-info">
+<span id="userEmail"></span>
 
-      <div class="user-avatar">
-        👤
-      </div>
+</div>
 
-      <span id="userEmail"></span>
+<button class="logout" id="logoutButton">
+تسجيل الخروج
+</button>
 
-    </div>
-
-
-    <button
-      class="logout"
-      id="logoutButton">
-
-      تسجيل الخروج
-
-    </button>
-
-  </div>
+</div>
 
 </div>
 
 
+<main class="container" id="productsSection">
 
-<!-- =========================
-     MAIN
-========================= -->
+<section class="search-area">
 
-<main
-  class="container"
-  id="productsSection">
+<div class="search-box">
 
+<span class="search-icon">
+🔍
+</span>
 
-  <!-- البحث -->
+<input
+class="search-input"
+id="search"
+type="search"
+placeholder="ابحث عن منتج، قسم، أو مكان...">
 
-  <section class="search-area">
+</div>
 
-    <div class="search-box">
+</section>
 
-      <span class="search-icon">
-        🔍
-      </span>
 
-      <input
-        class="search-input"
-        id="search"
-        type="search"
-        placeholder="ابحث عن منتج، قسم، أو مكان...">
+<section>
 
-    </div>
+<div class="section-title">
 
-  </section>
+<h2>
+تصفح الأقسام
+</h2>
 
+<span>
+اختر القسم
+</span>
 
+</div>
 
-  <!-- الأقسام -->
 
-  <section>
+<div class="categories">
 
-    <div class="section-title">
+<button class="category active" data-category="الكل">
+الكل
+</button>
 
-      <h2>
-        تصفح الأقسام
-      </h2>
+<button class="category" data-category="إلكترونيات">
+📱 إلكترونيات
+</button>
 
-      <span>
-        اختر القسم
-      </span>
+<button class="category" data-category="ملابس">
+👕 ملابس
+</button>
 
-    </div>
+<button class="category" data-category="أثاث">
+🪑 أثاث
+</button>
 
+<button class="category" data-category="سيارات">
+🚗 سيارات
+</button>
 
-    <div class="categories">
+<button class="category" data-category="أخرى">
+📦 أخرى
+</button>
 
-      <button
-        class="category active"
-        data-category="الكل">
+</div>
 
-        الكل
+</section>
 
-      </button>
 
+<div id="message" class="message"></div>
 
-      <button
-        class="category"
-        data-category="إلكترونيات">
 
-        📱 إلكترونيات
+<div class="products-head">
 
-      </button>
+<h2>
+أحدث المنتجات
+</h2>
 
+<span class="products-count" id="productsCount"></span>
 
-      <button
-        class="category"
-        data-category="ملابس">
+</div>
 
-        👕 ملابس
 
-      </button>
+<div class="products" id="products">
 
+<div class="empty">
 
-      <button
-        class="category"
-        data-category="أثاث">
+<div class="empty-icon">
+⏳
+</div>
 
-        🪑 أثاث
+جاري تحميل المنتجات...
 
-      </button>
+</div>
 
-
-      <button
-        class="category"
-        data-category="سيارات">
-
-        🚗 سيارات
-
-      </button>
-
-
-      <button
-        class="category"
-        data-category="أخرى">
-
-        📦 أخرى
-
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- رسالة -->
-
-  <div
-    id="message"
-    class="message">
-  </div>
-
-
-
-  <!-- المنتجات -->
-
-  <div class="products-head">
-
-    <h2>
-      أحدث المنتجات
-    </h2>
-
-    <span
-      class="products-count"
-      id="productsCount">
-    </span>
-
-  </div>
-
-
-  <div
-    class="products"
-    id="products">
-
-    <div class="empty">
-
-      <div class="empty-icon">
-        ⏳
-      </div>
-
-      جاري تحميل المنتجات...
-
-    </div>
-
-  </div>
-
+</div>
 
 </main>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer class="footer">
 
-  <div class="footer-logo">
-    🛒 سوقي
-  </div>
+<div class="footer-logo">
+🛒 سوقي
+</div>
 
-  <p>
-    سوقك الإلكتروني البسيط
-  </p>
+<p>
+سوقك الإلكتروني البسيط
+</p>
 
-  <p>
-    © 2026 سوقي - جميع الحقوق محفوظة
-  </p>
+<p>
+© 2026 سوقي - جميع الحقوق محفوظة
+</p>
 
 </footer>
 
 
+<!-- AUTH MODAL -->
 
-<!-- =========================
-     AUTH MODAL
-========================= -->
+<div class="modal" id="authModal">
 
-<div
-  class="modal"
-  id="authModal">
+<div class="modal-box">
 
-  <div class="modal-box">
+<div class="modal-header">
 
+<h2>
+👤 حسابك في سوقي
+</h2>
 
-    <div class="modal-header">
-
-      <h2>
-        👤 حسابك في سوقي
-      </h2>
-
-      <button
-        class="close"
-        id="authClose">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <div class="tabs">
-
-      <button
-        class="tab active"
-        id="loginTab">
-
-        تسجيل الدخول
-
-      </button>
-
-
-      <button
-        class="tab"
-        id="signupTab">
-
-        إنشاء حساب
-
-      </button>
-
-    </div>
-
-
-    <input
-      class="input"
-      id="email"
-      type="email"
-      placeholder="البريد الإلكتروني">
-
-
-    <input
-      class="input"
-      id="password"
-      type="password"
-      placeholder="كلمة المرور">
-
-
-    <input
-      class="input"
-      id="password2"
-      type="password"
-      placeholder="تأكيد كلمة المرور"
-      style="display:none;">
-
-
-    <div
-      class="auth-message"
-      id="authMessage">
-    </div>
-
-
-    <div class="modal-buttons">
-
-      <button
-        class="save"
-        id="authAction">
-
-        دخول
-
-      </button>
-
-
-      <button
-        class="cancel"
-        id="authCancel">
-
-        إلغاء
-
-      </button>
-
-    </div>
-
-  </div>
+<button class="close" id="authClose">
+×
+</button>
 
 </div>
 
 
+<div class="tabs">
 
-<!-- =========================
-     PRODUCT MODAL
-========================= -->
+<button class="tab active" id="loginTab">
+تسجيل الدخول
+</button>
 
-<div
-  class="modal"
-  id="productModal">
-
-  <div class="modal-box">
-
-
-    <div class="modal-header">
-
-      <h2>
-        🛍️ أضف منتجًا
-      </h2>
-
-      <button
-        class="close"
-        id="productClose">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <input
-      class="input"
-      id="productName"
-      placeholder="اسم المنتج">
-
-
-    <input
-      class="input"
-      id="productPrice"
-      type="number"
-      placeholder="السعر بالجنيه">
-
-
-    <input
-      class="input"
-      id="productLocation"
-      placeholder="المكان">
-
-
-    <select
-      class="input"
-      id="productCategory">
-
-      <option value="">
-        اختر القسم
-      </option>
-
-      <option value="إلكترونيات">
-        إلكترونيات
-      </option>
-
-      <option value="ملابس">
-        ملابس
-      </option>
-
-      <option value="أثاث">
-        أثاث
-      </option>
-
-      <option value="سيارات">
-        سيارات
-      </option>
-
-      <option value="أخرى">
-        أخرى
-      </option>
-
-    </select>
-
-
-    <input
-      class="input"
-      id="productIcon"
-      placeholder="رمز المنتج مثل 📱 أو 🪑">
-
-
-    <input
-      class="input"
-      id="productPhone"
-      placeholder="رقم واتساب">
-
-
-    <div class="modal-buttons">
-
-      <button
-        class="save"
-        id="publishButton">
-
-        🚀 نشر المنتج
-
-      </button>
-
-
-      <button
-        class="cancel"
-        id="productCancel">
-
-        إلغاء
-
-      </button>
-
-    </div>
-
-  </div>
+<button class="tab" id="signupTab">
+إنشاء حساب
+</button>
 
 </div>
 
+
+<input
+class="input"
+id="email"
+type="email"
+placeholder="البريد الإلكتروني">
+
+
+<input
+class="input"
+id="password"
+type="password"
+placeholder="كلمة المرور">
+
+
+<input
+class="input"
+id="password2"
+type="password"
+placeholder="تأكيد كلمة المرور"
+style="display:none;">
+
+
+<div class="auth-message" id="authMessage"></div>
+
+
+<div class="modal-buttons">
+
+<button class="save" id="authAction">
+دخول
+</button>
+
+<button class="cancel" id="authCancel">
+إلغاء
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT MODAL -->
+
+<div class="modal" id="productModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+🛍️ أضف منتجًا
+</h2>
+
+<button class="close" id="productClose">
+×
+</button>
+
+</div>
+
+
+<input
+class="input"
+id="productName"
+placeholder="اسم المنتج">
+
+
+<input
+class="input"
+id="productPrice"
+type="number"
+placeholder="السعر بالجنيه">
+
+
+<input
+class="input"
+id="productLocation"
+placeholder="المكان">
+
+
+<select
+class="input"
+id="productCategory">
+
+<option value="">
+اختر القسم
+</option>
+
+<option value="إلكترونيات">
+إلكترونيات
+</option>
+
+<option value="ملابس">
+ملابس
+</option>
+
+<option value="أثاث">
+أثاث
+</option>
+
+<option value="سيارات">
+سيارات
+</option>
+
+<option value="أخرى">
+أخرى
+</option>
+
+</select>
+
+
+<input
+class="input"
+id="productIcon"
+placeholder="رمز المنتج مثل 📱 أو 🪑">
+
+
+<input
+class="input"
+id="productPhone"
+placeholder="رقم واتساب">
+
+
+<div class="modal-buttons">
+
+<button class="save" id="publishButton">
+🚀 نشر المنتج
+</button>
+
+<button class="cancel" id="productCancel">
+إلغاء
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 
 <script>
-
 
 /* =========================
    SUPABASE
@@ -1375,7 +1089,6 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_ffb08aL-n96nfgZZwjj3fw_KolUjymN";
 
-
 const supabaseClient =
 window.supabase.createClient(
   SUPABASE_URL,
@@ -1383,19 +1096,14 @@ window.supabase.createClient(
 );
 
 
-
 /* =========================
    VARIABLES
 ========================= */
 
 let products = [];
-
 let currentUser = null;
-
 let selectedCategory = "الكل";
-
 let authMode = "login";
-
 
 
 /* =========================
@@ -1420,6 +1128,14 @@ document.getElementById("authModal");
 const productModal =
 document.getElementById("productModal");
 
+const userBox =
+document.getElementById("userBox");
+
+const userEmail =
+document.getElementById("userEmail");
+
+const loginButton =
+document.getElementById("loginButton");
 
 
 /* =========================
@@ -1435,16 +1151,13 @@ function showMessage(text,type){
 
 }
 
-
 function hideMessage(){
 
-  messageBox.className =
-    "message";
+  messageBox.className = "message";
 
   messageBox.textContent = "";
 
 }
-
 
 
 /* =========================
@@ -1463,7 +1176,6 @@ function showAuthMessage(text,type){
 
 }
 
-
 function clearAuthMessage(){
 
   const box =
@@ -1476,6 +1188,61 @@ function clearAuthMessage(){
 
 }
 
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(value){
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+function whatsappNumber(phone){
+
+  let number =
+    String(phone || "")
+    .replace(/\D/g,"");
+
+  if(number.startsWith("01")){
+    number = "20" + number.substring(1);
+  }
+
+  if(number.startsWith("0020")){
+    number = number.substring(2);
+  }
+
+  return number;
+
+}
+
+
+/* =========================
+   OPEN AUTH
+========================= */
+
+function openAuth(){
+
+  authModal.style.display = "flex";
+
+  setLoginMode();
+
+}
 
 
 /* =========================
@@ -1496,28 +1263,240 @@ function openProduct(){
 
   }
 
-  productModal.style.display =
-    "flex";
+  productModal.style.display = "flex";
 
 }
-
-
-
-/* =========================
-   OPEN AUTH
-========================= */
-
-function openAuth(){
-
-  authModal.style.display =
-    "flex";
-
-  setLoginMode();
-
-}
-
 
 
 /* =========================
    CLOSE MODALS
-==========
+========================= */
+
+function closeAuth(){
+
+  authModal.style.display = "none";
+
+  clearAuthMessage();
+
+}
+
+function closeProduct(){
+
+  productModal.style.display = "none";
+
+}
+
+
+/* =========================
+   LOGIN MODE
+========================= */
+
+function setLoginMode(){
+
+  authMode = "login";
+
+  document.getElementById("loginTab")
+    .classList.add("active");
+
+  document.getElementById("signupTab")
+    .classList.remove("active");
+
+  document.getElementById("password2")
+    .style.display = "none";
+
+  document.getElementById("authAction")
+    .textContent = "دخول";
+
+  clearAuthMessage();
+
+}
+
+
+/* =========================
+   SIGNUP MODE
+========================= */
+
+function setSignupMode(){
+
+  authMode = "signup";
+
+  document.getElementById("loginTab")
+    .classList.remove("active");
+
+  document.getElementById("signupTab")
+    .classList.add("active");
+
+  document.getElementById("password2")
+    .style.display = "block";
+
+  document.getElementById("authAction")
+    .textContent = "إنشاء حساب";
+
+  clearAuthMessage();
+
+}
+
+
+/* =========================
+   AUTH ACTION
+========================= */
+
+async function handleAuth(){
+
+  const email =
+    document.getElementById("email")
+      .value.trim();
+
+  const password =
+    document.getElementById("password")
+      .value;
+
+  const password2 =
+    document.getElementById("password2")
+      .value;
+
+  if(!email || !password){
+
+    showAuthMessage(
+      "اكتب البريد الإلكتروني وكلمة المرور.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  if(authMode === "signup"){
+
+    if(password !== password2){
+
+      showAuthMessage(
+        "كلمتا المرور غير متطابقتين.",
+        "error"
+      );
+
+      return;
+
+    }
+
+    if(password.length < 6){
+
+      showAuthMessage(
+        "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const {data,error} =
+      await supabaseClient.auth.signUp({
+        email:email,
+        password:password
+      });
+
+
+    if(error){
+
+      showAuthMessage(
+        error.message,
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if(data.session){
+
+      showAuthMessage(
+        "تم إنشاء الحساب وتسجيل الدخول بنجاح ✅",
+        "success"
+      );
+
+      setTimeout(closeAuth,1000);
+
+    }else{
+
+      showAuthMessage(
+        "تم إنشاء الحساب. راجع بريدك الإلكتروني لتأكيد الحساب ✅",
+        "success"
+      );
+
+    }
+
+    return;
+
+  }
+
+
+  const {data,error} =
+    await supabaseClient.auth.signInWithPassword({
+      email:email,
+      password:password
+    });
+
+
+  if(error){
+
+    showAuthMessage(
+      "بيانات الدخول غير صحيحة أو الحساب غير مؤكد.",
+      "error"
+    );
+
+    return;
+
+  }
+
+
+  currentUser = data.user;
+
+  updateUserUI();
+
+  showAuthMessage(
+    "تم تسجيل الدخول بنجاح ✅",
+    "success"
+  );
+
+  setTimeout(closeAuth,700);
+
+}
+
+
+/* =========================
+   USER UI
+========================= */
+
+function updateUserUI(){
+
+  if(currentUser){
+
+    userBox.style.display = "block";
+
+    userEmail.textContent =
+      currentUser.email || "مستخدم";
+
+    loginButton.textContent =
+      "👤 حسابي";
+
+  }else{
+
+    userBox.style.display = "none";
+
+    userEmail.textContent = "";
+
+    loginButton.textContent =
+      "👤 دخول";
+
+  }
+
+}
+
+
+/* =========================
+   LOAD USER
+=====
