@@ -190,4 +190,746 @@ padding:5px 10px
 .form-group{margin-bottom:14px}
 .form-group label{
 display:block;
-margin-bottom:6
+margin-bottom:6px;
+font-weight:bold
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px
+}
+.form-group textarea{
+resize:vertical;
+min-height:90px
+}
+.submit{
+width:100%;
+background:#198754;
+color:white;
+font-weight:bold
+}
+.info{
+background:#e9f2ff;
+padding:10px;
+border-radius:8px;
+margin-bottom:15px;
+font-size:14px
+}
+
+@media(max-width:600px){
+.hero h1{font-size:28px}
+.search-box{flex-direction:column}
+.search-button{width:100%}
+header{justify-content:center}
+.section-title{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🛒 سوقي</div>
+
+<div class="header-buttons">
+<button class="login-btn" id="loginButton">تسجيل الدخول</button>
+<button class="sell-btn" id="sellButton">+ بيع منتج</button>
+</div>
+</header>
+
+<section class="hero">
+<h1>أهلاً بك في سوقي</h1>
+<p>بيع واشتري كل اللي تحتاجه بسهولة</p>
+
+<div class="search-box">
+<input id="searchInput" type="text" placeholder="ابحث عن منتج...">
+<button class="search-button" id="searchButton">بحث 🔍</button>
+</div>
+</section>
+
+<section class="categories">
+<h2>الأقسام</h2>
+
+<div class="category-buttons">
+<button class="category-btn active" data-category="الكل">الكل</button>
+<button class="category-btn" data-category="إلكترونيات">📱 إلكترونيات</button>
+<button class="category-btn" data-category="سيارات">🚗 سيارات</button>
+<button class="category-btn" data-category="ملابس">👕 ملابس</button>
+<button class="category-btn" data-category="منزل">🏠 منزل</button>
+</div>
+</section>
+
+<section class="products-section">
+
+<div class="section-title">
+<h2>المنتجات</h2>
+<span id="count">عدد المنتجات: 0</span>
+</div>
+
+<div class="products" id="products"></div>
+
+<div id="empty">
+لا توجد منتجات مطابقة للبحث 🔍
+</div>
+
+</section>
+
+<footer>
+<p>© 2026 سوقي - جميع الحقوق محفوظة</p>
+</footer>
+
+
+<!-- نافذة تسجيل الدخول -->
+<div class="modal" id="loginModal">
+<div class="modal-box">
+
+<button class="close" data-close="loginModal">×</button>
+
+<h2>🔐 تسجيل الدخول</h2>
+
+<div class="form-group">
+<label>الاسم</label>
+<input id="loginName" type="text" placeholder="اكتب اسمك">
+</div>
+
+<div class="form-group">
+<label>رقم الهاتف</label>
+<input id="loginPhone" type="tel" placeholder="01xxxxxxxxx">
+</div>
+
+<button class="submit" id="loginSubmit">دخول</button>
+
+</div>
+</div>
+
+
+<!-- نافذة إضافة منتج -->
+<div class="modal" id="productModal">
+<div class="modal-box">
+
+<button class="close" data-close="productModal">×</button>
+
+<h2>➕ إضافة منتج</h2>
+
+<div class="info">
+املأ بيانات المنتج ثم اضغط إضافة المنتج.
+</div>
+
+<div class="form-group">
+<label>اسم المنتج</label>
+<input id="productName" type="text" placeholder="مثال: هاتف سامسونج">
+</div>
+
+<div class="form-group">
+<label>السعر بالجنيه</label>
+<input id="productPrice" type="number" min="0" placeholder="مثال: 8500">
+</div>
+
+<div class="form-group">
+<label>المحافظة</label>
+<input id="productLocation" type="text" placeholder="مثال: الشرقية">
+</div>
+
+<div class="form-group">
+<label>القسم</label>
+<select id="productCategory">
+<option value="إلكترونيات">📱 إلكترونيات</option>
+<option value="سيارات">🚗 سيارات</option>
+<option value="ملابس">👕 ملابس</option>
+<option value="منزل">🏠 منزل</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>رمز المنتج</label>
+<select id="productIcon">
+<option value="📱">📱 هاتف / إلكترونيات</option>
+<option value="💻">💻 لابتوب</option>
+<option value="🚗">🚗 سيارة</option>
+<option value="👕">👕 ملابس</option>
+<option value="🪑">🪑 أثاث</option>
+<option value="🎧">🎧 سماعات</option>
+<option value="📦">📦 منتج آخر</option>
+</select>
+</div>
+
+<button class="submit" id="addProductSubmit">
+إضافة المنتج
+</button>
+
+</div>
+</div>
+
+
+<script>
+(function(){
+
+"use strict";
+
+/* رقم واتساب */
+var WHATSAPP_PHONE = "201201966196";
+
+/* المنتجات الأساسية */
+var defaultProducts = [
+{
+id:"1",
+name:"هاتف سامسونج",
+price:"8500",
+location:"القاهرة",
+category:"إلكترونيات",
+icon:"📱",
+phone:WHATSAPP_PHONE
+},
+{
+id:"2",
+name:"لابتوب",
+price:"18000",
+location:"الشرقية",
+category:"إلكترونيات",
+icon:"💻",
+phone:WHATSAPP_PHONE
+},
+{
+id:"3",
+name:"سيارة مستعملة",
+price:"350000",
+location:"الجيزة",
+category:"سيارات",
+icon:"🚗",
+phone:WHATSAPP_PHONE
+},
+{
+id:"4",
+name:"جاكيت رجالي",
+price:"750",
+location:"الإسكندرية",
+category:"ملابس",
+icon:"👕",
+phone:WHATSAPP_PHONE
+},
+{
+id:"5",
+name:"طقم كراسي",
+price:"2500",
+location:"الشرقية",
+category:"منزل",
+icon:"🪑",
+phone:WHATSAPP_PHONE
+},
+{
+id:"6",
+name:"سماعات بلوتوث",
+price:"600",
+location:"القاهرة",
+category:"إلكترونيات",
+icon:"🎧",
+phone:WHATSAPP_PHONE
+}
+];
+
+
+/* قراءة المنتجات */
+function getProducts(){
+
+try{
+
+var saved = localStorage.getItem("souqi_products");
+
+if(saved){
+
+var data = JSON.parse(saved);
+
+if(Array.isArray(data)){
+return data;
+}
+
+}
+
+}catch(error){}
+
+return defaultProducts.slice();
+}
+
+
+/* حفظ المنتجات */
+function saveProducts(products){
+
+try{
+localStorage.setItem(
+"souqi_products",
+JSON.stringify(products)
+);
+}catch(error){}
+
+}
+
+
+/* المنتجات الحالية */
+var products = getProducts();
+
+
+/* عرض المنتجات */
+function renderProducts(){
+
+var container =
+document.getElementById("products");
+
+var search =
+document.getElementById("searchInput").value
+.trim()
+.toLowerCase();
+
+var activeButton =
+document.querySelector(".category-btn.active");
+
+var category =
+activeButton ?
+activeButton.getAttribute("data-category") :
+"الكل";
+
+container.innerHTML="";
+
+var visibleCount=0;
+
+products.forEach(function(product){
+
+var name =
+String(product.name || "");
+
+var productCategory =
+String(product.category || "");
+
+var location =
+String(product.location || "");
+
+var matchesSearch =
+search === "" ||
+name.toLowerCase().includes(search) ||
+productCategory.toLowerCase().includes(search) ||
+location.toLowerCase().includes(search);
+
+var matchesCategory =
+category === "الكل" ||
+productCategory === category;
+
+if(matchesSearch && matchesCategory){
+
+visibleCount++;
+
+var card =
+document.createElement("div");
+
+card.className="product";
+
+card.setAttribute("data-id",product.id);
+
+card.innerHTML =
+'<div class="product-image">' +
+(product.icon || "📦") +
+'</div>' +
+
+'<h3>' +
+escapeHTML(name) +
+'</h3>' +
+
+'<div class="price">' +
+Number(product.price || 0).toLocaleString("ar-EG") +
+' جنيه</div>' +
+
+'<div class="location">📍 ' +
+escapeHTML(location) +
+'</div>' +
+
+'<button class="contact" data-id="' +
+escapeHTML(product.id) +
+'">' +
+'تواصل مع البائع عبر واتساب' +
+'</button>' +
+
+(product.custom ?
+'<button class="delete" data-delete="' +
+escapeHTML(product.id) +
+'">حذف المنتج</button>'
+:
+'');
+
+container.appendChild(card);
+
+}
+
+});
+
+
+document.getElementById("count").textContent =
+"عدد المنتجات: " + visibleCount;
+
+document.getElementById("empty").style.display =
+visibleCount === 0 ? "block" : "none";
+
+}
+
+
+/* حماية النص */
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* البحث */
+document
+.getElementById("searchButton")
+.addEventListener("click",function(){
+
+renderProducts();
+
+});
+
+
+document
+.getElementById("searchInput")
+.addEventListener("input",function(){
+
+renderProducts();
+
+});
+
+
+document
+.getElementById("searchInput")
+.addEventListener("keydown",function(event){
+
+if(event.key === "Enter"){
+
+event.preventDefault();
+
+renderProducts();
+
+}
+
+});
+
+
+/* الأقسام */
+document
+.querySelectorAll(".category-btn")
+.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+document
+.querySelectorAll(".category-btn")
+.forEach(function(btn){
+btn.classList.remove("active");
+});
+
+this.classList.add("active");
+
+renderProducts();
+
+});
+
+});
+
+
+/* التواصل عبر واتساب */
+document
+.getElementById("products")
+.addEventListener("click",function(event){
+
+var button =
+event.target.closest(".contact");
+
+if(!button){
+return;
+}
+
+var id =
+button.getAttribute("data-id");
+
+var product =
+products.find(function(item){
+return String(item.id) === String(id);
+});
+
+if(!product){
+return;
+}
+
+var phone =
+String(product.phone || WHATSAPP_PHONE)
+.replace(/\D/g,"");
+
+if(phone.indexOf("01") === 0){
+phone = "20" + phone.substring(1);
+}
+
+if(phone.length < 11){
+phone = WHATSAPP_PHONE;
+}
+
+var message =
+"مرحباً، أنا مهتم بمنتج: " +
+product.name +
+" الموجود على سوقي.";
+
+var url =
+"https://wa.me/" +
+phone +
+"?text=" +
+encodeURIComponent(message);
+
+window.open(url,"_blank");
+
+});
+
+
+/* حذف منتج */
+document
+.getElementById("products")
+.addEventListener("click",function(event){
+
+var button =
+event.target.closest("[data-delete]");
+
+if(!button){
+return;
+}
+
+var id =
+button.getAttribute("data-delete");
+
+var ok =
+confirm("هل تريد حذف هذا المنتج؟");
+
+if(!ok){
+return;
+}
+
+products =
+products.filter(function(item){
+return String(item.id) !== String(id);
+});
+
+saveProducts(products);
+
+renderProducts();
+
+});
+
+
+/* فتح نافذة تسجيل الدخول */
+document
+.getElementById("loginButton")
+.addEventListener("click",function(){
+
+document.getElementById("loginModal").style.display="block";
+
+});
+
+
+/* فتح إضافة منتج */
+document
+.getElementById("sellButton")
+.addEventListener("click",function(){
+
+document.getElementById("productModal").style.display="block";
+
+});
+
+
+/* إغلاق النوافذ */
+document
+.querySelectorAll("[data-close]")
+.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+var id =
+this.getAttribute("data-close");
+
+document.getElementById(id).style.display="none";
+
+});
+
+});
+
+
+/* إغلاق عند الضغط خارج النافذة */
+document
+.querySelectorAll(".modal")
+.forEach(function(modal){
+
+modal.addEventListener("click",function(event){
+
+if(event.target === modal){
+
+modal.style.display="none";
+
+}
+
+});
+
+});
+
+
+/* تسجيل الدخول */
+document
+.getElementById("loginSubmit")
+.addEventListener("click",function(){
+
+var name =
+document.getElementById("loginName").value.trim();
+
+var phone =
+document.getElementById("loginPhone").value.trim();
+
+if(!name){
+
+alert("من فضلك اكتب الاسم.");
+
+return;
+
+}
+
+if(!phone){
+
+alert("من فضلك اكتب رقم الهاتف.");
+
+return;
+
+}
+
+try{
+
+localStorage.setItem(
+"souqi_user",
+JSON.stringify({
+name:name,
+phone:phone
+})
+);
+
+}catch(error){}
+
+alert("تم تسجيل الدخول بنجاح يا " + name);
+
+document.getElementById("loginModal").style.display="none";
+
+document.getElementById("loginName").value="";
+document.getElementById("loginPhone").value="";
+
+});
+
+
+/* إضافة منتج */
+document
+.getElementById("addProductSubmit")
+.addEventListener("click",function(){
+
+var name =
+document.getElementById("productName").value.trim();
+
+var price =
+document.getElementById("productPrice").value.trim();
+
+var location =
+document.getElementById("productLocation").value.trim();
+
+var category =
+document.getElementById("productCategory").value;
+
+var icon =
+document.getElementById("productIcon").value;
+
+
+if(!name){
+
+alert("من فضلك اكتب اسم المنتج.");
+
+return;
+
+}
+
+if(!price || Number(price) < 0){
+
+alert("من فضلك اكتب سعر صحيح.");
+
+return;
+
+}
+
+if(!location){
+
+alert("من فضلك اكتب المحافظة.");
+
+return;
+
+}
+
+
+/* إنشاء المنتج */
+var newProduct = {
+
+id:
+Date.now().toString(),
+
+name:name,
+
+price:price,
+
+location:location,
+
+category:category,
+
+icon:icon,
+
+phone:WHATSAPP_PHONE,
+
+custom:true
+
+};
+
+
+products.push(newProduct);
+
+saveProducts(products);
+
+renderProducts();
+
+
+/* إغلاق النافذة */
+document.getElementById("productModal").style.display="none";
+
+
+/* تنظيف النموذج */
+document.getElementById("productName").value="";
+document.getElementById("productPrice").value="";
+document.getElementById("productLocation").value="";
+document.getElementById("productCategory").value="إلكترونيات";
+document.getElementById("productIcon").value="📱";
+
+
+alert("تم إضافة المنتج بنجاح ✅");
+
+});
+
+
+/* عرض أولي */
+renderProducts();
+
+})();
+</script>
+
+</body>
+</html>
