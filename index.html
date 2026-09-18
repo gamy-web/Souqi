@@ -1,59 +1,637 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سوقي | بيع وشراء</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{box-sizing:border-box}
+  <title>سوقي | بيع وشراء</title>
 
-body{
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  background:#f5f7f8;
-  color:#17202a;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-.bar{
-  background:#fff;
-  padding:15px 6%;
-  display:flex;
-  gap:10px;
-  align-items:center;
-  border-bottom:1px solid #ddd;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f7f8;
+      color: #17202a;
+    }
 
-.logo{
-  color:#087f5b;
-  font-size:28px;
-  font-weight:900;
-  margin-left:auto;
-}
+    .bar {
+      background: #fff;
+      padding: 15px 6%;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-button{
-  padding:11px 16px;
-  border:0;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:14px;
-}
+    .logo {
+      color: #087f5b;
+      font-size: 28px;
+      font-weight: 900;
+      margin-left: auto;
+    }
 
-.primary{
-  background:#087f5b;
-  color:white;
-}
+    button {
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-.secondary{
-  background:#eee;
-  color:#222;
-}
+    .primary {
+      background: #087f5b;
+      color: white;
+    }
 
-.wrap{
-  max-width:1100px;
-  margin:25px auto;
-  padding:0
+    .secondary {
+      background: #eee;
+      color: #222;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 25px auto;
+      padding: 0 20px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #087f5b, #0ca678);
+      color: white;
+      border-radius: 18px;
+      padding: 35px 25px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+
+    .hero p {
+      margin: 0 0 20px;
+      font-size: 16px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 14px;
+      border: 0;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .search-box button {
+      background: white;
+      color: #087f5b;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 25px 0 15px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #e2e5e7;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .product-img {
+      height: 170px;
+      background: #e9ecef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .price {
+      color: #087f5b;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .location {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .product button {
+      width: 100%;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 12px 18px;
+      border-radius: 25px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .category:hover {
+      background: #087f5b;
+      color: white;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 35px;
+      color: #777;
+      display: none;
+      background: white;
+      border-radius: 15px;
+    }
+
+    footer {
+      margin-top: 45px;
+      padding: 25px;
+      text-align: center;
+      background: #17202a;
+      color: white;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: white;
+      width: 100%;
+      max-width: 450px;
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .modal-box h2 {
+      margin-top: 0;
+    }
+
+    .modal-box input,
+    .modal-box select {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+    }
+
+    @media (max-width: 600px) {
+      .bar {
+        padding: 12px;
+      }
+
+      .logo {
+        font-size: 23px;
+      }
+
+      .hero {
+        padding: 28px 15px;
+      }
+
+      .hero h1 {
+        font-size: 26px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .product-img {
+        height: 130px;
+      }
+
+      .product-info {
+        padding: 10px;
+      }
+
+      .product-info h3 {
+        font-size: 15px;
+      }
+
+      .price {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="bar">
+    <div class="logo">سوقي</div>
+
+    <button class="secondary" onclick="showLogin()">
+      دخول
+    </button>
+
+    <button class="primary" onclick="showAddProduct()">
+      + بيع منتج
+    </button>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <h1>أهلاً بك في سوقي 🛒</h1>
+
+      <p>
+        مكان بسيط وسهل لبيع وشراء المنتجات
+      </p>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="ابحث عن منتج..."
+          oninput="searchProducts()"
+        >
+
+        <button onclick="searchProducts()">
+          بحث 🔍
+        </button>
+      </div>
+    </section>
+
+    <div class="section-title">
+      <h2>التصنيفات</h2>
+    </div>
+
+    <div class="categories">
+      <div class="category" onclick="filterCategory('all')">
+        الكل
+      </div>
+
+      <div class="category" onclick="filterCategory('هواتف')">
+        📱 هواتف
+      </div>
+
+      <div class="category" onclick="filterCategory('إلكترونيات')">
+        💻 إلكترونيات
+      </div>
+
+      <div class="category" onclick="filterCategory('سيارات')">
+        🚗 سيارات
+      </div>
+
+      <div class="category" onclick="filterCategory('ملابس')">
+        👕 ملابس
+      </div>
+
+      <div class="category" onclick="filterCategory('منزل')">
+        🏠 منزل
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>أحدث المنتجات</h2>
+
+      <span id="productCount"></span>
+    </div>
+
+    <div class="products" id="products">
+
+      <div class="product" data-category="هواتف" data-name="هاتف سامسونج">
+        <div class="product-img">📱</div>
+
+        <div class="product-info">
+          <h3>هاتف سامسونج</h3>
+
+          <div class="price">
+            8,500 جنيه
+          </div>
+
+          <div class="location">
+            📍 القاهرة
+          </div>
+
+          <button class="primary" onclick="contactSeller('هاتف سامسونج')">
+            تواصل مع البائع
+          </button>
+        </div>
+      </div>
+
+      <div class="product" data-category="إلكترونيات" data-name="لابتوب">
+        <div class="product-img">💻</div>
+
+        <div class="product-info">
+          <h3>لابتوب</h3>
+
+          <div class="price">
+            18,000 جنيه
+          </div>
+
+          <div class="location">
+            📍 الشرقية
+          </div>
+
+          <button class="primary" onclick="contactSeller('لابتوب')">
+            تواصل مع البائع
+          </button>
+        </div>
+      </div>
+
+      <div class="product" data-category="سيارات" data-name="سيارة مستعملة">
+        <div class="product-img">🚗</div>
+
+        <div class="product-info">
+          <h3>سيارة مستعملة</h3>
+
+          <div class="price">
+            350,000 جنيه
+          </div>
+
+          <div class="location">
+            📍 الجيزة
+          </div>
+
+          <button class="primary" onclick="contactSeller('سيارة مستعملة')">
+            تواصل مع البائع
+          </button>
+        </div>
+      </div>
+
+      <div class="product" data-category="ملابس" data-name="جاكيت رجالي">
+        <div class="product-img">👕</div>
+
+        <div class="product-info">
+          <h3>جاكيت رجالي</h3>
+
+          <div class="price">
+            750 جنيه
+          </div>
+
+          <div class="location">
+            📍 الإسكندرية
+          </div>
+
+          <button class="primary" onclick="contactSeller('جاكيت رجالي')">
+            تواصل مع البائع
+          </button>
+        </div>
+      </div>
+
+      <div class="product" data-category="منزل" data-name="طقم كراسي">
+        <div class="product-img">🪑</div>
+
+        <div class="product-info">
+          <h3>طقم كراسي</h3>
+
+          <div class="price">
+            2,500 جنيه
+          </div>
+
+          <div class="location">
+            📍 الشرقية
+          </div>
+
+          <button class="primary" onclick="contactSeller('طقم كراسي')">
+            تواصل مع البائع
+          </button>
+        </div>
+      </div>
+
+      <div class="product" data-category="إلكترونيات" data-name="سماعات بلوتوث">
+        <div class="product-img">🎧</div>
+
+        <div class="product-info">
+          <h3>سماعات بلوتوث</h3>
+
+          <div class="price">
+            600 جنيه
+          </div>
+
+          <div class="location">
+            📍 القاهرة
+          </div>
+
+          <button class="primary" onclick="contactSeller('سماعات بلوتوث')">
+            تواصل مع البائع
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="empty" id="empty">
+      لا توجد منتجات مطابقة للبحث 🔎
+    </div>
+
+  </main>
+
+  <footer>
+    <strong>سوقي</strong>
+
+    <br>
+
+    <small>
+      منصة بسيطة للبيع والشراء
+    </small>
+  </footer>
+
+
+  <!-- تسجيل الدخول -->
+
+  <div class="modal" id="loginModal">
+
+    <div class="modal-box">
+
+      <h2>تسجيل الدخول</h2>
+
+      <input
+        type="text"
+        id="loginName"
+        placeholder="اسم المستخدم"
+      >
+
+      <input
+        type="password"
+        id="loginPassword"
+        placeholder="كلمة المرور"
+      >
+
+      <div class="modal-actions">
+
+        <button
+          class="primary"
+          onclick="login()"
+        >
+          دخول
+        </button>
+
+        <button
+          class="secondary"
+          onclick="closeModal('loginModal')"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- إضافة منتج -->
+
+  <div class="modal" id="addProductModal">
+
+    <div class="modal-box">
+
+      <h2>بيع منتج جديد</h2>
+
+      <input
+        type="text"
+        id="newName"
+        placeholder="اسم المنتج"
+      >
+
+      <input
+        type="number"
+        id="newPrice"
+        placeholder="السعر بالجنيه"
+      >
+
+      <input
+        type="text"
+        id="newLocation"
+        placeholder="المحافظة / المكان"
+      >
+
+      <select id="newCategory">
+
+        <option value="هواتف">
+          📱 هواتف
+        </option>
+
+        <option value="إلكترونيات">
+          💻 إلكترونيات
+        </option>
+
+        <option value="سيارات">
+          🚗 سيارات
+        </option>
+
+        <option value="ملابس">
+          👕 ملابس
+        </option>
+
+        <option value="منزل">
+          🏠 منزل
+        </option>
+
+      </select>
+
+      <div class="modal-actions">
+
+        <button
+          class="primary"
+          onclick="addProduct()"
+        >
+          نشر المنتج
+        </button>
+
+        <button
+          class="secondary"
+          onclick="closeModal('addProductModal')"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function showLogin() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
+
+    function showAddProduct() {
+      document.getElementById("addProductModal").style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById
