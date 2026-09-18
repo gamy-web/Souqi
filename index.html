@@ -175,6 +175,13 @@ button{
   margin-top:12px;
 }
 
+.delete-btn{
+  width:100%;
+  background:#dc3545;
+  color:white;
+  margin-top:8px;
+}
+
 .empty{
   text-align:center;
   background:white;
@@ -553,6 +560,8 @@ let selectedCategory = "الكل";
 
 let authMode = "login";
 
+let currentUser = null;
+
 
 /* =========================
    تحميل المنتجات
@@ -634,6 +643,24 @@ function displayProducts(products){
         ? phone
         : "20" + phone;
 
+      let deleteButton = "";
+
+      if(
+        currentUser &&
+        product.user_id &&
+        product.user_id === currentUser.id
+      ){
+
+        deleteButton = `
+          <button
+            class="delete-btn"
+            onclick="deleteProduct(${product.id})">
+            🗑️ حذف المنتج
+          </button>
+        `;
+
+      }
+
       return `
 
         <div class="card">
@@ -664,6 +691,8 @@ function displayProducts(products){
             target="_blank">
             💬 تواصل عبر واتساب
           </a>
+
+          ${deleteButton}
 
         </div>
 
@@ -764,8 +793,6 @@ function closeModal(){
 
 async function addProduct(){
 
-  /* التأكد أن المستخدم مسجل */
-
   const {
     data: userData,
     error: userError
@@ -829,8 +856,6 @@ async function addProduct(){
 
   try{
 
-    /* إضافة المنتج مع صاحب المنتج */
-
     const { error } =
       await supabaseClient
         .from("products")
@@ -886,6 +911,71 @@ async function addProduct(){
 
     showStatus(
       "خطأ أثناء نشر المنتج: " +
+      error.message,
+      "error"
+    );
+
+    console.error(error);
+
+  }
+
+}
+
+
+/* =========================
+   حذف المنتج
+========================= */
+
+async function deleteProduct(productId){
+
+  if(!currentUser){
+
+    alert(
+      "لازم تسجل الدخول أولاً."
+    );
+
+    return;
+  }
+
+
+  const confirmed =
+    confirm(
+      "هل أنت متأكد من حذف هذا المنتج؟"
+    );
+
+  if(!confirmed){
+    return;
+  }
+
+
+  try{
+
+    const { error } =
+      await supabaseClient
+        .from("products")
+        .delete()
+        .eq("id",productId)
+        .eq("user_id",currentUser.id);
+
+
+    if(error){
+      throw error;
+    }
+
+
+    showStatus(
+      "تم حذف المنتج بنجاح ✅",
+      "success"
+    );
+
+
+    await loadProducts();
+
+
+  }catch(error){
+
+    showStatus(
+      "خطأ أثناء حذف المنتج: " +
       error.message,
       "error"
     );
@@ -1199,8 +1289,8 @@ async function updateUserBox(){
   } =
     await supabaseClient.auth.getUser();
 
-  const user =
-    data.user;
+  currentUser =
+    data.user || null;
 
   const userBox =
     document.getElementById("userBox");
@@ -1212,13 +1302,13 @@ async function updateUserBox(){
     document.getElementById("userText");
 
 
-  if(user){
+  if(currentUser){
 
     userBox.style.display =
       "flex";
 
     userText.textContent =
-      "👤 " + user.email;
+      "👤 " + currentUser.email;
 
     loginButton.style.display =
       "none";
@@ -1232,6 +1322,8 @@ async function updateUserBox(){
       "block";
 
   }
+
+  filterProducts();
 
 }
 
@@ -1258,6 +1350,8 @@ async function logout(){
     return;
   }
 
+
+  currentUser = null;
 
   updateUserBox();
 
@@ -1319,56 +1413,4 @@ function escapeHtml(value){
    إغلاق النوافذ
 ========================= */
 
-window.addEventListener(
-  "click",
-  function(event){
-
-    const modal =
-      document.getElementById("modal");
-
-    const authModal =
-      document.getElementById("authModal");
-
-
-    if(event.target === modal){
-
-      closeModal();
-
-    }
-
-
-    if(event.target === authModal){
-
-      closeAuthModal();
-
-    }
-
-  }
-);
-
-
-/* =========================
-   مراقبة تسجيل الدخول
-========================= */
-
-supabaseClient.auth.onAuthStateChange(
-  function(){
-
-    updateUserBox();
-
-  }
-);
-
-
-/* =========================
-   تشغيل الموقع
-========================= */
-
-loadProducts();
-
-updateUserBox();
-
-</script>
-
-</body>
-      </html>
+window.ad
