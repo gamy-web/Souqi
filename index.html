@@ -9,19 +9,27 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
 margin:0;
 font-family:Arial,"Segoe UI",sans-serif;
 background:#f5f7fb;
 color:#172033
 }
-button,input,select{font-family:inherit}
-button{cursor:pointer}
+
+button,input,select{
+font-family:inherit
+}
+
+button{
+cursor:pointer
+}
 
 .header{
 background:linear-gradient(135deg,#1261e8,#1749b7);
 color:white
 }
+
 .nav{
 max-width:1150px;
 margin:auto;
@@ -30,6 +38,7 @@ display:flex;
 align-items:center;
 justify-content:space-between
 }
+
 .logo{
 font-size:27px;
 font-weight:900;
@@ -37,6 +46,7 @@ display:flex;
 align-items:center;
 gap:10px
 }
+
 .logo-icon{
 background:white;
 color:#1261e8;
@@ -47,10 +57,12 @@ display:flex;
 align-items:center;
 justify-content:center
 }
+
 .nav-actions{
 display:flex;
 gap:8px
 }
+
 .nav-button{
 border:0;
 border-radius:12px;
@@ -59,6 +71,7 @@ font-weight:bold;
 background:rgba(255,255,255,.15);
 color:white
 }
+
 .nav-add{
 background:white;
 color:#1261e8
@@ -69,34 +82,44 @@ max-width:1150px;
 margin:auto;
 padding:45px 20px 60px
 }
+
 .hero h1{
 font-size:48px;
 margin:10px 0
 }
-.hero h1 span{color:#bfe0ff}
+
+.hero h1 span{
+color:#bfe0ff
+}
+
 .hero p{
 font-size:18px;
 line-height:1.8;
 color:#e5edff;
 max-width:700px
 }
+
 .hero-buttons{
 display:flex;
 gap:10px;
 flex-wrap:wrap;
 margin-top:25px
 }
-.hero-main,.hero-second{
+
+.hero-main,
+.hero-second{
 padding:14px 22px;
 border-radius:14px;
 font-size:16px;
 font-weight:bold
 }
+
 .hero-main{
 border:0;
 background:white;
 color:#1261e8
 }
+
 .hero-second{
 border:1px solid rgba(255,255,255,.3);
 background:rgba(255,255,255,.1);
@@ -109,6 +132,7 @@ max-width:1150px;
 margin:-20px auto 20px;
 padding:0 20px
 }
+
 .user-inner{
 background:white;
 border-radius:18px;
@@ -118,6 +142,7 @@ display:flex;
 justify-content:space-between;
 align-items:center
 }
+
 .logout{
 border:0;
 background:#fff0f1;
@@ -132,6 +157,7 @@ max-width:1150px;
 margin:auto;
 padding:20px 20px 50px
 }
+
 .search-box{
 background:white;
 padding:8px 15px;
@@ -141,6 +167,7 @@ align-items:center;
 box-shadow:0 5px 25px #0000000b;
 margin-bottom:25px
 }
+
 .search-input{
 width:100%;
 border:0;
@@ -154,13 +181,18 @@ display:flex;
 justify-content:space-between;
 align-items:center
 }
-.section-title h2{font-size:22px}
+
+.section-title h2{
+font-size:22px
+}
+
 .categories{
 display:flex;
 gap:8px;
 overflow-x:auto;
 padding:5px 0 15px
 }
+
 .category{
 border:1px solid #ddd;
 background:white;
@@ -169,6 +201,7 @@ border-radius:25px;
 white-space:nowrap;
 font-weight:bold
 }
+
 .category.active{
 background:#1261e8;
 color:white;
@@ -181,13 +214,17 @@ justify-content:space-between;
 align-items:center;
 margin-top:20px
 }
-.products-head h2{font-size:23px}
+
+.products-head h2{
+font-size:23px
+}
 
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
 gap:20px
 }
+
 .card{
 background:white;
 border-radius:20px;
@@ -195,6 +232,7 @@ overflow:hidden;
 box-shadow:0 7px 25px #0000000c;
 border:1px solid #e8ebf0
 }
+
 .card-top{
 height:175px;
 background:linear-gradient(145deg,#edf4ff,#f9fbff);
@@ -203,7 +241,11 @@ align-items:center;
 justify-content:center;
 position:relative
 }
-.card-icon{font-size:75px}
+
+.card-icon{
+font-size:75px
+}
+
 .category-label{
 position:absolute;
 top:12px;
@@ -213,26 +255,34 @@ padding:6px 10px;
 border-radius:20px;
 font-size:12px
 }
-.card-body{padding:18px}
+
+.card-body{
+padding:18px
+}
+
 .card h3{
 margin:0 0 10px;
 font-size:21px
 }
+
 .price{
 font-size:25px;
 font-weight:900;
 color:#16805a;
 margin-bottom:12px
 }
+
 .price small{
 font-size:13px;
 color:#777
 }
+
 .info{
 color:#697586;
 font-size:14px;
 margin:8px 0
 }
+
 .whatsapp{
 display:block;
 text-align:center;
@@ -244,6 +294,7 @@ border-radius:12px;
 margin-top:15px;
 font-weight:bold
 }
+
 .delete{
 width:100%;
 border:0;
@@ -263,7 +314,10 @@ border-radius:20px;
 text-align:center;
 color:#777
 }
-.empty-icon{font-size:50px}
+
+.empty-icon{
+font-size:50px
+}
 
 .message{
 display:none;
@@ -272,11 +326,13 @@ border-radius:12px;
 margin:15px 0;
 font-weight:bold
 }
+
 .message.success{
 display:block;
 background:#e4f7ed;
 color:#137344
 }
+
 .message.error{
 display:block;
 background:#fff0f1;
@@ -293,6 +349,7 @@ align-items:center;
 justify-content:center;
 padding:15px
 }
+
 .modal-box{
 background:white;
 width:100%;
@@ -302,11 +359,13 @@ padding:23px;
 max-height:90vh;
 overflow:auto
 }
+
 .modal-header{
 display:flex;
 justify-content:space-between;
 align-items:center
 }
+
 .close{
 border:0;
 background:#eee;
@@ -315,6 +374,7 @@ height:38px;
 border-radius:50%;
 font-size:22px
 }
+
 .input{
 width:100%;
 padding:13px;
@@ -324,23 +384,40 @@ margin:6px 0;
 font-size:16px;
 outline:0
 }
+
+.input:focus{
+border-color:#1261e8;
+box-shadow:0 0 0 3px #1261e81a
+}
+
 .modal-buttons{
 display:flex;
 gap:8px;
 margin-top:12px
 }
-.save,.cancel{
+
+.save,
+.cancel{
 flex:1;
 padding:13px;
 border:0;
 border-radius:11px;
 font-weight:bold
 }
+
 .save{
 background:#1261e8;
 color:white
 }
-.cancel{background:#eee}
+
+.save:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+.cancel{
+background:#eee
+}
 
 .tabs{
 display:flex;
@@ -350,6 +427,7 @@ padding:5px;
 border-radius:11px;
 margin-bottom:12px
 }
+
 .tab{
 flex:1;
 border:0;
@@ -358,21 +436,25 @@ padding:10px;
 border-radius:8px;
 font-weight:bold
 }
+
 .tab.active{
 background:white;
 color:#1261e8
 }
+
 .auth-message{
 display:none;
 padding:10px;
 border-radius:10px;
 margin-top:8px
 }
+
 .auth-message.error{
 display:block;
 background:#fff0f1;
 color:#a51f2c
 }
+
 .auth-message.success{
 display:block;
 background:#e4f7ed;
@@ -385,6 +467,7 @@ color:#aaa;
 text-align:center;
 padding:30px 15px
 }
+
 .footer strong{
 display:block;
 color:white;
@@ -393,23 +476,64 @@ margin-bottom:8px
 }
 
 @media(max-width:600px){
-.nav{padding:12px}
-.logo{font-size:21px}
-.logo-icon{width:40px;height:40px}
-.nav-button{padding:9px;font-size:12px}
-.hero{padding:30px 15px 45px}
-.hero h1{font-size:35px}
-.hero p{font-size:16px}
-.hero-main,.hero-second{width:100%}
-.container{padding:15px}
-.user-box{padding:0 15px}
+
+.nav{
+padding:12px
+}
+
+.logo{
+font-size:21px
+}
+
+.logo-icon{
+width:40px;
+height:40px
+}
+
+.nav-button{
+padding:9px;
+font-size:12px
+}
+
+.hero{
+padding:30px 15px 45px
+}
+
+.hero h1{
+font-size:35px
+}
+
+.hero p{
+font-size:16px
+}
+
+.hero-main,
+.hero-second{
+width:100%
+}
+
+.container{
+padding:15px
+}
+
+.user-box{
+padding:0 15px
+}
+
 .user-inner{
 flex-direction:column;
 align-items:stretch;
 gap:10px
 }
-.logout{width:100%}
-.products{grid-template-columns:1fr}
+
+.logout{
+width:100%
+}
+
+.products{
+grid-template-columns:1fr
+}
+
 }
 </style>
 </head>
@@ -496,7 +620,8 @@ gap:10px
 <input
 class="search-input"
 id="search"
-placeholder="ابحث عن منتج، قسم، أو مكان...">
+placeholder="ابحث عن منتج، قسم، أو مكان..."
+autocomplete="off">
 
 </div>
 
@@ -589,7 +714,9 @@ placeholder="ابحث عن منتج، قسم، أو مكان...">
 
 <h2>👤 حساب سوقي</h2>
 
-<button class="close" id="authClose">×</button>
+<button class="close" id="authClose">
+×
+</button>
 
 </div>
 
@@ -611,14 +738,16 @@ placeholder="ابحث عن منتج، قسم، أو مكان...">
 class="input"
 id="email"
 type="email"
-placeholder="البريد الإلكتروني">
+placeholder="البريد الإلكتروني"
+autocomplete="email">
 
 
 <input
 class="input"
 id="password"
 type="password"
-placeholder="كلمة المرور">
+placeholder="كلمة المرور"
+autocomplete="current-password">
 
 
 <input
@@ -626,6 +755,7 @@ class="input"
 id="password2"
 type="password"
 placeholder="تأكيد كلمة المرور"
+autocomplete="new-password"
 style="display:none">
 
 
@@ -659,7 +789,9 @@ style="display:none">
 
 <h2>🛍️ أضف منتجًا</h2>
 
-<button class="close" id="productClose">×</button>
+<button class="close" id="productClose">
+×
+</button>
 
 </div>
 
@@ -674,7 +806,8 @@ placeholder="اسم المنتج">
 class="input"
 id="productPrice"
 type="number"
-placeholder="السعر بالجنيه">
+placeholder="السعر بالجنيه"
+min="0">
 
 
 <input
@@ -685,17 +818,29 @@ placeholder="المكان">
 
 <select class="input" id="productCategory">
 
-<option value="">اختر القسم</option>
+<option value="">
+اختر القسم
+</option>
 
-<option value="إلكترونيات">إلكترونيات</option>
+<option value="إلكترونيات">
+إلكترونيات
+</option>
 
-<option value="ملابس">ملابس</option>
+<option value="ملابس">
+ملابس
+</option>
 
-<option value="أثاث">أثاث</option>
+<option value="أثاث">
+أثاث
+</option>
 
-<option value="سيارات">سيارات</option>
+<option value="سيارات">
+سيارات
+</option>
 
-<option value="أخرى">أخرى</option>
+<option value="أخرى">
+أخرى
+</option>
 
 </select>
 
@@ -709,7 +854,8 @@ placeholder="رمز المنتج مثل 📱 أو 🪑">
 <input
 class="input"
 id="productPhone"
-placeholder="رقم واتساب">
+placeholder="رقم واتساب"
+inputmode="tel">
 
 
 <div class="modal-buttons">
@@ -752,41 +898,44 @@ SUPABASE_KEY
 VARIABLES
 ========================= */
 
-let products=[];
-let currentUser=null;
-let selectedCategory="الكل";
-let authMode="login";
+let products = [];
+
+let currentUser = null;
+
+let selectedCategory = "الكل";
+
+let authMode = "login";
 
 
 /* =========================
 ELEMENTS
 ========================= */
 
-const productsBox=
+const productsBox =
 document.getElementById("products");
 
-const searchInput=
+const searchInput =
 document.getElementById("search");
 
-const authModal=
+const authModal =
 document.getElementById("authModal");
 
-const productModal=
+const productModal =
 document.getElementById("productModal");
 
-const userBox=
+const userBox =
 document.getElementById("userBox");
 
-const userEmail=
+const userEmail =
 document.getElementById("userEmail");
 
-const loginButton=
+const loginButton =
 document.getElementById("loginButton");
 
-const productsCount=
+const productsCount =
 document.getElementById("productsCount");
 
-const messageBox=
+const messageBox =
 document.getElementById("message");
 
 
@@ -796,10 +945,10 @@ MESSAGES
 
 function showMessage(text,type){
 
-messageBox.textContent=text;
+messageBox.textContent = text;
 
-messageBox.className=
-"message "+type;
+messageBox.className =
+"message " + type;
 
 }
 
@@ -810,21 +959,23 @@ AUTH MODAL
 
 function openAuth(){
 
-authModal.style.display="flex";
+authModal.style.display = "flex";
 
 setLoginMode();
 
 }
 
+
 function closeAuth(){
 
-authModal.style.display="none";
+authModal.style.display = "none";
 
 }
+
 
 function setLoginMode(){
 
-authMode="login";
+authMode = "login";
 
 document.getElementById("loginTab")
 .classList.add("active");
@@ -833,18 +984,19 @@ document.getElementById("signupTab")
 .classList.remove("active");
 
 document.getElementById("password2")
-.style.display="none";
+.style.display = "none";
 
 document.getElementById("authAction")
-.textContent="دخول";
+.textContent = "دخول";
 
 clearAuthMessage();
 
 }
+
 
 function setSignupMode(){
 
-authMode="signup";
+authMode = "signup";
 
 document.getElementById("loginTab")
 .classList.remove("active");
@@ -853,35 +1005,37 @@ document.getElementById("signupTab")
 .classList.add("active");
 
 document.getElementById("password2")
-.style.display="block";
+.style.display = "block";
 
 document.getElementById("authAction")
-.textContent="إنشاء حساب";
+.textContent = "إنشاء حساب";
 
 clearAuthMessage();
 
 }
 
+
 function showAuthMessage(text,type){
 
-const box=
+const box =
 document.getElementById("authMessage");
 
-box.textContent=text;
+box.textContent = text;
 
-box.className=
-"auth-message "+type;
+box.className =
+"auth-message " + type;
 
 }
 
+
 function clearAuthMessage(){
 
-const box=
+const box =
 document.getElementById("authMessage");
 
-box.textContent="";
+box.textContent = "";
 
-box.className="auth-message";
+box.className = "auth-message";
 
 }
 
@@ -892,15 +1046,16 @@ AUTH
 
 async function handleAuth(){
 
-const email=
+const email =
 document.getElementById("email")
-.value.trim();
+.value
+.trim();
 
-const password=
+const password =
 document.getElementById("password")
 .value;
 
-const password2=
+const password2 =
 document.getElementById("password2")
 .value;
 
@@ -917,9 +1072,9 @@ return;
 }
 
 
-if(authMode==="signup"){
+if(authMode === "signup"){
 
-if(password!==password2){
+if(password !== password2){
 
 showAuthMessage(
 "كلمتا المرور غير متطابقتين.",
@@ -930,7 +1085,8 @@ return;
 
 }
 
-if(password.length<6){
+
+if(password.length < 6){
 
 showAuthMessage(
 "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
@@ -942,17 +1098,19 @@ return;
 }
 
 
-const {data,error}=
+try{
+
+const result =
 await supabaseClient.auth.signUp({
-email:email,
-password:password
+email: email,
+password: password
 });
 
 
-if(error){
+if(result.error){
 
 showAuthMessage(
-error.message,
+result.error.message,
 "error"
 );
 
@@ -961,14 +1119,18 @@ return;
 }
 
 
-if(data.session){
+if(result.data.session){
 
 showAuthMessage(
 "تم إنشاء الحساب بنجاح ✅",
 "success"
 );
 
-setTimeout(closeAuth,800);
+setTimeout(function(){
+
+closeAuth();
+
+},800);
 
 }else{
 
@@ -979,19 +1141,32 @@ showAuthMessage(
 
 }
 
+}catch(error){
+
+console.error(error);
+
+showAuthMessage(
+"حدث خطأ أثناء إنشاء الحساب.",
+"error"
+);
+
+}
+
 return;
 
 }
 
 
-const {data,error}=
+try{
+
+const result =
 await supabaseClient.auth.signInWithPassword({
-email:email,
-password:password
+email: email,
+password: password
 });
 
 
-if(error){
+if(result.error){
 
 showAuthMessage(
 "بيانات الدخول غير صحيحة أو الحساب غير مؤكد.",
@@ -1003,11 +1178,25 @@ return;
 }
 
 
-currentUser=data.user;
+currentUser =
+result.data.user;
 
 updateUserUI();
 
 closeAuth();
+
+renderProducts();
+
+}catch(error){
+
+console.error(error);
+
+showAuthMessage(
+"حدث خطأ أثناء تسجيل الدخول.",
+"error"
+);
+
+}
 
 }
 
@@ -1018,13 +1207,25 @@ USER
 
 async function loadUser(){
 
-const {data}=
+try{
+
+const result =
 await supabaseClient.auth.getSession();
 
-currentUser=
-data.session?.user || null;
+currentUser =
+result.data.session?.user || null;
 
 updateUserUI();
+
+}catch(error){
+
+console.error(error);
+
+currentUser = null;
+
+updateUserUI();
+
+}
 
 }
 
@@ -1033,18 +1234,20 @@ function updateUserUI(){
 
 if(currentUser){
 
-userBox.style.display="block";
+userBox.style.display = "block";
 
-userEmail.textContent=
+userEmail.textContent =
 currentUser.email || "";
 
-loginButton.textContent="👤 حسابي";
+loginButton.textContent =
+"👤 حسابي";
 
 }else{
 
-userBox.style.display="none";
+userBox.style.display = "none";
 
-loginButton.textContent="👤 دخول";
+loginButton.textContent =
+"👤 دخول";
 
 }
 
@@ -1057,7 +1260,7 @@ LOAD PRODUCTS
 
 async function loadProducts(){
 
-productsBox.innerHTML=`
+productsBox.innerHTML = `
 <div class="empty">
 <div class="empty-icon">⏳</div>
 جاري تحميل المنتجات...
@@ -1065,7 +1268,9 @@ productsBox.innerHTML=`
 `;
 
 
-const result=
+try{
+
+const result =
 await supabaseClient
 .from("products")
 .select("*")
@@ -1076,7 +1281,7 @@ if(result.error){
 
 console.error(result.error);
 
-productsBox.innerHTML=`
+productsBox.innerHTML = `
 <div class="empty">
 <div class="empty-icon">⚠️</div>
 <h3>تعذر تحميل المنتجات</h3>
@@ -1089,62 +1294,80 @@ return;
 }
 
 
-products=result.data || [];
+products =
+result.data || [];
 
 renderProducts();
+
+}catch(error){
+
+console.error(error);
+
+productsBox.innerHTML = `
+<div class="empty">
+<div class="empty-icon">⚠️</div>
+<h3>تعذر تحميل المنتجات</h3>
+<p>تأكد من اتصال الإنترنت وحاول مرة أخرى.</p>
+</div>
+`;
+
+}
 
 }
 
 
 /* =========================
-RENDER
+RENDER PRODUCTS
 ========================= */
 
 function renderProducts(){
 
-const search=
+const search =
 searchInput.value
 .trim()
 .toLowerCase();
 
 
-const filtered=
-products.filter(product=>{
+const filtered =
+products.filter(function(product){
 
-const name=
-String(product.name||"")
+const name =
+String(product.name || "")
 .toLowerCase();
 
-const location=
-String(product.location||"")
+const location =
+String(product.location || "")
 .toLowerCase();
 
-const category=
-String(product.category||"")
+const category =
+String(product.category || "")
 .toLowerCase();
 
-const searchMatch=
+
+const searchMatch =
 !search ||
 name.includes(search) ||
 location.includes(search) ||
 category.includes(search);
 
-const categoryMatch=
-selectedCategory==="الكل" ||
-product.category===selectedCategory;
+
+const categoryMatch =
+selectedCategory === "الكل" ||
+product.category === selectedCategory;
+
 
 return searchMatch && categoryMatch;
 
 });
 
 
-productsCount.textContent=
-filtered.length+" منتج";
+productsCount.textContent =
+filtered.length + " منتج";
 
 
-if(filtered.length===0){
+if(filtered.length === 0){
 
-productsBox.innerHTML=`
+productsBox.innerHTML = `
 <div class="empty">
 <div class="empty-icon">📦</div>
 <h3>لا توجد منتجات</h3>
@@ -1157,22 +1380,38 @@ return;
 }
 
 
-productsBox.innerHTML=
-filtered.map(product=>{
+productsBox.innerHTML =
+filtered.map(function(product){
 
-const owner=
+const owner =
 currentUser &&
-product.user_id===currentUser.id;
+product.user_id === currentUser.id;
 
 
-let phone=
-String(product.phone||"")
+let phone =
+String(product.phone || "")
 .replace(/\D/g,"");
 
 
 if(phone.startsWith("01")){
-phone="20"+phone.substring(1);
+
+phone =
+"20" + phone.substring(1);
+
 }
+
+
+const safeName =
+escapeHTML(product.name);
+
+const safeLocation =
+escapeHTML(product.location);
+
+const safeCategory =
+escapeHTML(product.category);
+
+const safeIcon =
+escapeHTML(product.icon || "📦");
 
 
 return `
@@ -1182,11 +1421,11 @@ return `
 <div class="card-top">
 
 <div class="card-icon">
-${product.icon || "📦"}
+${safeIcon}
 </div>
 
 <div class="category-label">
-${product.category || "أخرى"}
+${safeCategory || "أخرى"}
 </div>
 
 </div>
@@ -1195,20 +1434,20 @@ ${product.category || "أخرى"}
 <div class="card-body">
 
 <h3>
-${escapeHTML(product.name)}
+${safeName}
 </h3>
 
 <div class="price">
-${Number(product.price||0).toLocaleString("ar-EG")}
+${Number(product.price || 0).toLocaleString("ar-EG")}
 <small>جنيه</small>
 </div>
 
 <div class="info">
-📍 ${escapeHTML(product.location)}
+📍 ${safeLocation}
 </div>
 
 <div class="info">
-🏷️ ${escapeHTML(product.category)}
+🏷️ ${safeCategory}
 </div>
 
 
@@ -1219,7 +1458,8 @@ phone
 <a
 class="whatsapp"
 href="https://wa.me/${phone}"
-target="_blank">
+target="_blank"
+rel="noopener">
 💬 تواصل عبر واتساب
 </a>
 `
@@ -1233,7 +1473,7 @@ owner
 `
 <button
 class="delete"
-onclick="deleteProduct('${product.id}')">
+data-delete-id="${escapeHTML(product.id)}">
 🗑️ حذف المنتج
 </button>
 `
@@ -1248,12 +1488,31 @@ onclick="deleteProduct('${product.id}')">
 
 }).join("");
 
+
+/* ربط أزرار الحذف */
+
+document
+.querySelectorAll(".delete")
+.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+deleteProduct(button.dataset.deleteId);
+
+});
+
+});
+
 }
 
 
+/* =========================
+ESCAPE HTML
+========================= */
+
 function escapeHTML(value){
 
-return String(value||"")
+return String(value || "")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
 .replace(/>/g,"&gt;")
@@ -1281,102 +1540,128 @@ return;
 
 }
 
-productModal.style.display="flex";
+
+productModal.style.display = "flex";
 
 }
 
 
 function closeProduct(){
 
-productModal.style.display="none";
+productModal.style.display = "none";
 
 }
 
+
+/* =========================
+PUBLISH PRODUCT
+========================= */
 
 async function publishProduct(){
 
 if(!currentUser){
 
-alert("لازم تسجل الدخول أولاً.");
+alert(
+"لازم تسجل الدخول أولاً."
+);
 
 return;
 
 }
 
 
-const name=
+const name =
 document.getElementById("productName")
-.value.trim();
+.value
+.trim();
 
-const price=
+const price =
 document.getElementById("productPrice")
 .value;
 
-const location=
+const location =
 document.getElementById("productLocation")
-.value.trim();
+.value
+.trim();
 
-const category=
+const category =
 document.getElementById("productCategory")
 .value;
 
-const icon=
+const icon =
 document.getElementById("productIcon")
-.value.trim() || "📦";
+.value
+.trim() || "📦";
 
-const phone=
+const phone =
 document.getElementById("productPhone")
-.value.trim();
+.value
+.trim();
 
 
-if(!name ||
+if(
+!name ||
 !price ||
 !location ||
 !category ||
-!phone){
+!phone
+){
 
-alert("من فضلك املأ كل البيانات.");
+alert(
+"من فضلك املأ كل البيانات."
+);
 
 return;
 
 }
 
 
-const button=
+const button =
 document.getElementById("publishButton");
 
-button.disabled=true;
+button.disabled = true;
 
-button.textContent="⏳ جاري النشر...";
+button.textContent =
+"⏳ جاري النشر...";
 
 
-const {error}=
+try{
+
+const result =
 await supabaseClient
 .from("products")
 .insert({
 
-name:name,
-price:Number(price),
-location:location,
-category:category,
-icon:icon,
-phone:phone,
-user_id:currentUser.id
+name: name,
+
+price: Number(price),
+
+location: location,
+
+category: category,
+
+icon: icon,
+
+phone: phone,
+
+user_id: currentUser.id
 
 });
 
 
-button.disabled=false;
+button.disabled = false;
 
-button.textContent="🚀 نشر المنتج";
+button.textContent =
+"🚀 نشر المنتج";
 
 
-if(error){
+if(result.error){
 
-console.error(error);
+console.error(result.error);
 
 alert(
-"حدث خطأ أثناء نشر المنتج."
+"حدث خطأ أثناء نشر المنتج: " +
+result.error.message
 );
 
 return;
@@ -1384,141 +1669,14 @@ return;
 }
 
 
-document.getElementById("productName").value="";
-document.getElementById("productPrice").value="";
-document.getElementById("productLocation").value="";
-document.getElementById("productCategory").value="";
-document.getElementById("productIcon").value="";
-document.getElementById("productPhone").value="";
+document.getElementById("productName").value = "";
 
+document.getElementById("productPrice").value = "";
 
-closeProduct();
+document.getElementById("productLocation").value = "";
 
-showMessage(
-"تم نشر المنتج بنجاح ✅",
-"success"
-);
+document.getElementById("productCategory").value = "";
 
-loadProducts();
+document.getElementById("productIcon").value = "";
 
-}
-
-
-/* =========================
-DELETE
-========================= */
-
-async function deleteProduct(id){
-
-if(!currentUser){
-
-alert("لازم تسجل الدخول.");
-
-return;
-
-}
-
-
-if(!confirm("هل أنت متأكد من حذف المنتج؟")){
-
-return;
-
-}
-
-
-const {error}=
-await supabaseClient
-.from("products")
-.delete()
-.eq("id",id);
-
-
-if(error){
-
-console.error(error);
-
-showMessage(
-"حدث خطأ أثناء الحذف.",
-"error"
-);
-
-return;
-
-}
-
-
-showMessage(
-"تم حذف المنتج بنجاح ✅",
-"success"
-);
-
-loadProducts();
-
-}
-
-
-/* =========================
-LOGOUT
-========================= */
-
-async function logout(){
-
-await supabaseClient.auth.signOut();
-
-currentUser=null;
-
-updateUserUI();
-
-renderProducts();
-
-}
-
-
-/* =========================
-EVENTS
-========================= */
-
-document.getElementById("loginButton")
-.onclick=openAuth;
-
-document.getElementById("addButton")
-.onclick=openProduct;
-
-document.getElementById("heroAddButton")
-.onclick=openProduct;
-
-document.getElementById("heroBrowseButton")
-.onclick=()=>{
-
-document.getElementById("productsSection")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-};
-
-document.getElementById("logoutButton")
-.onclick=logout;
-
-document.getElementById("authClose")
-.onclick=closeAuth;
-
-document.getElementById("authCancel")
-.onclick=closeAuth;
-
-document.getElementById("productClose")
-.onclick=closeProduct;
-
-document.getElementById("productCancel")
-.onclick=closeProduct;
-
-document.getElementById("loginTab")
-.onclick=setLoginMode;
-
-document.getElementById("signupTab")
-.onclick=setSignupMode;
-
-document.getElementById("authAction")
-.onclick=handleAuth;
-
-document.getElementById("publish
+document.
