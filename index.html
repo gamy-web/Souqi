@@ -976,4 +976,180 @@
 
           box.textContent =
             "أهلاً " +
-  
+  data.name;
+
+          box.style.display = "block";
+
+        } catch (error) {
+
+          box.style.display = "none";
+
+        }
+
+      } else {
+
+        box.style.display = "none";
+
+      }
+
+    }
+
+
+    /* ============================
+       تسجيل الدخول
+    ============================ */
+
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name =
+          document.getElementById("loginName").value.trim();
+
+        const phone =
+          document.getElementById("loginPhone").value.trim();
+
+        if (!name || !phone) {
+          alert("من فضلك اكتب الاسم ورقم الموبايل.");
+          return;
+        }
+
+        localStorage.setItem(
+          "souqiUser",
+          JSON.stringify({
+            name: name,
+            phone: phone
+          })
+        );
+
+        alert("تم تسجيل الدخول بنجاح ✅");
+
+        document
+          .getElementById("loginModal")
+          .classList.remove("show");
+
+      });
+
+
+    /* ============================
+       إضافة منتج إلى قاعدة البيانات
+    ============================ */
+
+    document
+      .getElementById("addProductForm")
+      .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        const name =
+          document.getElementById("productName").value.trim();
+
+        const price =
+          document.getElementById("productPrice").value;
+
+        const location =
+          document.getElementById("productLocation").value.trim();
+
+        const category =
+          document.getElementById("productCategory").value;
+
+        const icon =
+          document.getElementById("productIcon").value;
+
+        const phone =
+          document.getElementById("productPhone").value.trim();
+
+        if (!name || !price || !location || !category || !phone) {
+          alert("من فضلك املأ كل البيانات المطلوبة.");
+          return;
+        }
+
+        const submitButton =
+          document.getElementById("addSubmitBtn");
+
+        submitButton.disabled = true;
+        submitButton.textContent = "جاري النشر...";
+
+        try {
+
+          const response = await fetch(
+            SUPABASE_URL + "/rest/v1/products",
+            {
+              method: "POST",
+
+              headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + SUPABASE_KEY,
+                "Content-Type": "application/json",
+                "Prefer": "return=representation"
+              },
+
+              body: JSON.stringify({
+                name: name,
+                price: Number(price),
+                location: location,
+                category: category,
+                icon: icon,
+                phone: phone
+              })
+            }
+          );
+
+          if (!response.ok) {
+
+            const errorText = await response.text();
+
+            console.error(errorText);
+
+            throw new Error("فشل نشر المنتج");
+
+          }
+
+          alert(
+            "تم نشر المنتج بنجاح 🎉"
+          );
+
+          document
+            .getElementById("addProductForm")
+            .reset();
+
+          document
+            .getElementById("productPhone")
+            .value = "01201966196";
+
+          document
+            .getElementById("addModal")
+            .classList.remove("show");
+
+          await loadProducts();
+
+        } catch (error) {
+
+          console.error(error);
+
+          alert(
+            "حصلت مشكلة أثناء نشر المنتج. حاول مرة أخرى."
+          );
+
+        } finally {
+
+          submitButton.disabled = false;
+          submitButton.textContent = "نشر المنتج 🚀";
+
+        }
+
+      });
+
+    /* ============================
+       تشغيل الموقع
+    ============================ */
+
+    loadProducts();
+
+  </script>
+
+</body>
+</html>
+    
