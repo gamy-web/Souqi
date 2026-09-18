@@ -6,7 +6,9 @@
 <title>سوقي</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
@@ -282,20 +284,34 @@ button{
 <div class="container">
 
   <div class="top-buttons">
-    <button class="login-btn" id="loginButton" onclick="openAuthModal()">
+
+    <button
+      class="login-btn"
+      id="loginButton"
+      onclick="openAuthModal()">
       تسجيل الدخول
     </button>
 
-    <button class="add-btn" onclick="openModal()">
+    <button
+      class="add-btn"
+      onclick="openModal()">
       ➕ أضف منتج
     </button>
+
   </div>
 
-  <div class="user-box" id="userBox">
+  <div
+    class="user-box"
+    id="userBox">
+
     <span id="userText"></span>
-    <button class="logout-btn" onclick="logout()">
+
+    <button
+      class="logout-btn"
+      onclick="logout()">
       تسجيل الخروج
     </button>
+
   </div>
 
   <input
@@ -303,44 +319,65 @@ button{
     class="search-box"
     type="text"
     placeholder="🔍 ابحث عن منتج..."
-    oninput="filterProducts()"
-  >
+    oninput="filterProducts()">
 
   <div class="categories">
-    <button class="category-btn active" onclick="selectCategory('الكل',this)">
+
+    <button
+      class="category-btn active"
+      onclick="selectCategory('الكل',this)">
       الكل
     </button>
 
-    <button class="category-btn" onclick="selectCategory('إلكترونيات',this)">
+    <button
+      class="category-btn"
+      onclick="selectCategory('إلكترونيات',this)">
       إلكترونيات
     </button>
 
-    <button class="category-btn" onclick="selectCategory('ملابس',this)">
+    <button
+      class="category-btn"
+      onclick="selectCategory('ملابس',this)">
       ملابس
     </button>
 
-    <button class="category-btn" onclick="selectCategory('أثاث',this)">
+    <button
+      class="category-btn"
+      onclick="selectCategory('أثاث',this)">
       أثاث
     </button>
 
-    <button class="category-btn" onclick="selectCategory('سيارات',this)">
+    <button
+      class="category-btn"
+      onclick="selectCategory('سيارات',this)">
       سيارات
     </button>
 
-    <button class="category-btn" onclick="selectCategory('أخرى',this)">
+    <button
+      class="category-btn"
+      onclick="selectCategory('أخرى',this)">
       أخرى
     </button>
+
   </div>
 
-  <div id="status" class="msg"></div>
+  <div
+    id="status"
+    class="msg">
+  </div>
 
-  <div id="products" class="products"></div>
+  <div
+    id="products"
+    class="products">
+  </div>
 
 </div>
 
 
-<!-- نافذة تسجيل الدخول والحساب -->
-<div id="authModal" class="modal">
+<!-- تسجيل الدخول -->
+<div
+  id="authModal"
+  class="modal">
 
   <div class="modal-box">
 
@@ -367,24 +404,28 @@ button{
     <input
       id="authEmail"
       type="email"
-      placeholder="البريد الإلكتروني"
-    >
+      placeholder="البريد الإلكتروني">
 
     <input
       id="authPassword"
       type="password"
-      placeholder="كلمة المرور"
-    >
+      placeholder="كلمة المرور">
 
-    <div id="signupPasswordAgain" style="display:none">
+    <div
+      id="signupPasswordAgain"
+      style="display:none">
+
       <input
         id="authPasswordAgain"
         type="password"
-        placeholder="تأكيد كلمة المرور"
-      >
+        placeholder="تأكيد كلمة المرور">
+
     </div>
 
-    <div id="authMessage" class="auth-message"></div>
+    <div
+      id="authMessage"
+      class="auth-message">
+    </div>
 
     <div class="modal-buttons">
 
@@ -404,12 +445,13 @@ button{
     </div>
 
   </div>
-
 </div>
 
 
-<!-- نافذة إضافة المنتج -->
-<div id="modal" class="modal">
+<!-- إضافة منتج -->
+<div
+  id="modal"
+  class="modal">
 
   <div class="modal-box">
 
@@ -418,41 +460,55 @@ button{
     <input
       id="name"
       type="text"
-      placeholder="اسم المنتج"
-    >
+      placeholder="اسم المنتج">
 
     <input
       id="price"
       type="number"
-      placeholder="السعر"
-    >
+      placeholder="السعر">
 
     <input
       id="location"
       type="text"
-      placeholder="المكان"
-    >
+      placeholder="المكان">
 
     <select id="category">
-      <option value="">اختر القسم</option>
-      <option value="إلكترونيات">إلكترونيات</option>
-      <option value="ملابس">ملابس</option>
-      <option value="أثاث">أثاث</option>
-      <option value="سيارات">سيارات</option>
-      <option value="أخرى">أخرى</option>
+
+      <option value="">
+        اختر القسم
+      </option>
+
+      <option value="إلكترونيات">
+        إلكترونيات
+      </option>
+
+      <option value="ملابس">
+        ملابس
+      </option>
+
+      <option value="أثاث">
+        أثاث
+      </option>
+
+      <option value="سيارات">
+        سيارات
+      </option>
+
+      <option value="أخرى">
+        أخرى
+      </option>
+
     </select>
 
     <input
       id="icon"
       type="text"
-      placeholder="إيموجي المنتج مثل 📱"
-    >
+      placeholder="إيموجي المنتج مثل 📱">
 
     <input
       id="phone"
       type="text"
-      placeholder="رقم واتساب"
-    >
+      placeholder="رقم واتساب">
 
     <div class="modal-buttons">
 
@@ -471,7 +527,6 @@ button{
     </div>
 
   </div>
-
 </div>
 
 
@@ -491,6 +546,7 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
+
 let allProducts = [];
 
 let selectedCategory = "الكل";
@@ -499,7 +555,7 @@ let authMode = "login";
 
 
 /* =========================
-   المنتجات
+   تحميل المنتجات
 ========================= */
 
 async function loadProducts(){
@@ -512,34 +568,19 @@ async function loadProducts(){
 
   try{
 
-    const response = await fetch(
-      SUPABASE_URL +
-      "/rest/v1/products?select=*&order=created_at.desc",
-      {
-        method:"GET",
+    const { data, error } =
+      await supabaseClient
+        .from("products")
+        .select("*")
+        .order("created_at", {
+          ascending:false
+        });
 
-        headers:{
-          "apikey":SUPABASE_KEY
-        }
-      }
-    );
-
-    if(!response.ok){
-
-      const errorText =
-        await response.text();
-
-      throw new Error(
-        "HTTP " +
-        response.status +
-        " - " +
-        errorText
-      );
-
+    if(error){
+      throw error;
     }
 
-    allProducts =
-      await response.json();
+    allProducts = data || [];
 
     filterProducts();
 
@@ -559,6 +600,10 @@ async function loadProducts(){
 
 }
 
+
+/* =========================
+   عرض المنتجات
+========================= */
 
 function displayProducts(products){
 
@@ -629,6 +674,10 @@ function displayProducts(products){
 }
 
 
+/* =========================
+   البحث
+========================= */
+
 function filterProducts(){
 
   const search =
@@ -642,15 +691,16 @@ function filterProducts(){
 
       const matchesSearch =
         !search ||
-        String(product.name)
+
+        String(product.name || "")
         .toLowerCase()
         .includes(search) ||
 
-        String(product.location)
+        String(product.location || "")
         .toLowerCase()
         .includes(search) ||
 
-        String(product.category)
+        String(product.category || "")
         .toLowerCase()
         .includes(search);
 
@@ -667,6 +717,10 @@ function filterProducts(){
 
 }
 
+
+/* =========================
+   الأقسام
+========================= */
 
 function selectCategory(category,button){
 
@@ -692,7 +746,8 @@ function selectCategory(category,button){
 
 function openModal(){
 
-  document.getElementById("modal")
+  document
+    .getElementById("modal")
     .style.display = "flex";
 
 }
@@ -700,13 +755,36 @@ function openModal(){
 
 function closeModal(){
 
-  document.getElementById("modal")
+  document
+    .getElementById("modal")
     .style.display = "none";
 
 }
 
 
 async function addProduct(){
+
+  /* التأكد أن المستخدم مسجل */
+
+  const {
+    data: userData,
+    error: userError
+  } = await supabaseClient.auth.getUser();
+
+  if(userError || !userData.user){
+
+    alert(
+      "لازم تسجل الدخول أولاً قبل إضافة منتج."
+    );
+
+    openAuthModal();
+
+    return;
+  }
+
+  const user =
+    userData.user;
+
 
   const name =
     document.getElementById("name")
@@ -732,6 +810,7 @@ async function addProduct(){
     document.getElementById("phone")
     .value.trim();
 
+
   if(
     !name ||
     !price ||
@@ -747,69 +826,61 @@ async function addProduct(){
     return;
   }
 
+
   try{
 
-    const response =
-      await fetch(
-        SUPABASE_URL +
-        "/rest/v1/products",
-        {
-          method:"POST",
+    /* إضافة المنتج مع صاحب المنتج */
 
-          headers:{
-            "apikey":SUPABASE_KEY,
-            "Content-Type":"application/json",
-            "Prefer":"return=representation"
-          },
+    const { error } =
+      await supabaseClient
+        .from("products")
+        .insert({
 
-          body:JSON.stringify({
+          name:name,
 
-            name:name,
+          price:Number(price),
 
-            price:Number(price),
+          location:location,
 
-            location:location,
+          category:category,
 
-            category:category,
+          icon:icon,
 
-            icon:icon,
+          phone:phone,
 
-            phone:phone
+          user_id:user.id
 
-          })
+        });
 
-        }
-      );
 
-    if(!response.ok){
-
-      const errorText =
-        await response.text();
-
-      throw new Error(
-        "HTTP " +
-        response.status +
-        " - " +
-        errorText
-      );
-
+    if(error){
+      throw error;
     }
+
 
     showStatus(
       "تم نشر المنتج بنجاح ✅",
       "success"
     );
 
+
     document.getElementById("name").value = "";
+
     document.getElementById("price").value = "";
+
     document.getElementById("location").value = "";
+
     document.getElementById("category").value = "";
+
     document.getElementById("icon").value = "";
+
     document.getElementById("phone").value = "";
+
 
     closeModal();
 
     await loadProducts();
+
 
   }catch(error){
 
@@ -832,7 +903,8 @@ async function addProduct(){
 
 function openAuthModal(){
 
-  document.getElementById("authModal")
+  document
+    .getElementById("authModal")
     .style.display = "flex";
 
   showLogin();
@@ -842,7 +914,8 @@ function openAuthModal(){
 
 function closeAuthModal(){
 
-  document.getElementById("authModal")
+  document
+    .getElementById("authModal")
     .style.display = "none";
 
   clearAuthMessage();
@@ -854,19 +927,24 @@ function showLogin(){
 
   authMode = "login";
 
-  document.getElementById("loginTab")
+  document
+    .getElementById("loginTab")
     .classList.add("active");
 
-  document.getElementById("signupTab")
+  document
+    .getElementById("signupTab")
     .classList.remove("active");
 
-  document.getElementById("signupPasswordAgain")
+  document
+    .getElementById("signupPasswordAgain")
     .style.display = "none";
 
-  document.getElementById("authActionButton")
+  document
+    .getElementById("authActionButton")
     .textContent = "دخول";
 
-  document.getElementById("authActionButton")
+  document
+    .getElementById("authActionButton")
     .onclick = loginUser;
 
   clearAuthMessage();
@@ -878,19 +956,24 @@ function showSignup(){
 
   authMode = "signup";
 
-  document.getElementById("signupTab")
+  document
+    .getElementById("signupTab")
     .classList.add("active");
 
-  document.getElementById("loginTab")
+  document
+    .getElementById("loginTab")
     .classList.remove("active");
 
-  document.getElementById("signupPasswordAgain")
+  document
+    .getElementById("signupPasswordAgain")
     .style.display = "block";
 
-  document.getElementById("authActionButton")
+  document
+    .getElementById("authActionButton")
     .textContent = "إنشاء الحساب";
 
-  document.getElementById("authActionButton")
+  document
+    .getElementById("authActionButton")
     .onclick = signupUser;
 
   clearAuthMessage();
@@ -927,21 +1010,33 @@ function showAuthMessage(message,type){
 }
 
 
+/* =========================
+   إنشاء حساب
+========================= */
+
 async function signupUser(){
 
   const email =
-    document.getElementById("authEmail")
-    .value.trim();
+    document
+      .getElementById("authEmail")
+      .value.trim();
 
   const password =
-    document.getElementById("authPassword")
-    .value;
+    document
+      .getElementById("authPassword")
+      .value;
 
   const passwordAgain =
-    document.getElementById("authPasswordAgain")
-    .value;
+    document
+      .getElementById("authPasswordAgain")
+      .value;
 
-  if(!email || !password || !passwordAgain){
+
+  if(
+    !email ||
+    !password ||
+    !passwordAgain
+  ){
 
     showAuthMessage(
       "اكتب البريد الإلكتروني وكلمة المرور وتأكيد كلمة المرور",
@@ -950,6 +1045,7 @@ async function signupUser(){
 
     return;
   }
+
 
   if(password.length < 6){
 
@@ -961,6 +1057,7 @@ async function signupUser(){
     return;
   }
 
+
   if(password !== passwordAgain){
 
     showAuthMessage(
@@ -971,83 +1068,37 @@ async function signupUser(){
     return;
   }
 
+
   try{
 
-    const {data,error} =
+    const {
+      data,
+      error
+    } =
       await supabaseClient.auth.signUp({
+
         email:email,
-        password:password
+
+        password:password,
+
+        options:{
+          emailRedirectTo:
+            "https://gamy-web.github.io/Souqi/"
+        }
+
       });
 
+
     if(error){
-
       throw error;
-
     }
 
+
     showAuthMessage(
-      "تم إنشاء الحساب ✅ افتح بريدك الإلكتروني واضغط رابط التأكيد، ثم ارجع للموقع وسجّل الدخول.",
+      "تم إنشاء الحساب ✅ افتح بريدك الإلكتروني واضغط رابط التأكيد.",
       "success"
     );
 
-  }catch(error){
-
-    showAuthMessage(
-      "خطأ: " + error.message,
-      "error"
-    );
-
-  }
-
-}
-
-
-async function loginUser(){
-
-  const email =
-    document.getElementById("authEmail")
-    .value.trim();
-
-  const password =
-    document.getElementById("authPassword")
-    .value;
-
-  if(!email || !password){
-
-    showAuthMessage(
-      "اكتب البريد الإلكتروني وكلمة المرور",
-      "error"
-    );
-
-    return;
-  }
-
-  try{
-
-    const {data,error} =
-      await supabaseClient.auth.signInWithPassword({
-        email:email,
-        password:password
-      });
-
-    if(error){
-
-      throw error;
-
-    }
-
-    showAuthMessage(
-      "تم تسجيل الدخول بنجاح ✅",
-      "success"
-    );
-
-    setTimeout(() => {
-
-      closeAuthModal();
-
-      updateUserBox();
-
-    },800);
 
   }catch(error){
 
@@ -1062,7 +1113,83 @@ async function loginUser(){
 
 
 /* =========================
-   المستخدم
+   تسجيل الدخول
+========================= */
+
+async function loginUser(){
+
+  const email =
+    document
+      .getElementById("authEmail")
+      .value.trim();
+
+  const password =
+    document
+      .getElementById("authPassword")
+      .value;
+
+
+  if(!email || !password){
+
+    showAuthMessage(
+      "اكتب البريد الإلكتروني وكلمة المرور",
+      "error"
+    );
+
+    return;
+  }
+
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .signInWithPassword({
+
+          email:email,
+
+          password:password
+
+        });
+
+
+    if(error){
+      throw error;
+    }
+
+
+    showAuthMessage(
+      "تم تسجيل الدخول بنجاح ✅",
+      "success"
+    );
+
+
+    setTimeout(() => {
+
+      closeAuthModal();
+
+      updateUserBox();
+
+    },800);
+
+
+  }catch(error){
+
+    showAuthMessage(
+      "خطأ: " + error.message,
+      "error"
+    );
+
+  }
+
+}
+
+
+/* =========================
+   المستخدم الحالي
 ========================= */
 
 async function updateUserBox(){
@@ -1083,6 +1210,7 @@ async function updateUserBox(){
 
   const userText =
     document.getElementById("userText");
+
 
   if(user){
 
@@ -1108,10 +1236,17 @@ async function updateUserBox(){
 }
 
 
+/* =========================
+   تسجيل الخروج
+========================= */
+
 async function logout(){
 
-  const {error} =
+  const {
+    error
+  } =
     await supabaseClient.auth.signOut();
+
 
   if(error){
 
@@ -1123,6 +1258,7 @@ async function logout(){
     return;
   }
 
+
   updateUserBox();
 
   alert(
@@ -1133,7 +1269,7 @@ async function logout(){
 
 
 /* =========================
-   أدوات
+   الرسائل
 ========================= */
 
 function showStatus(message,type){
@@ -1147,7 +1283,6 @@ function showStatus(message,type){
       "none";
 
     return;
-
   }
 
   status.className =
@@ -1159,17 +1294,30 @@ function showStatus(message,type){
 }
 
 
+/* =========================
+   حماية النص
+========================= */
+
 function escapeHtml(value){
 
   return String(value)
+
     .replace(/&/g,"&amp;")
+
     .replace(/</g,"&lt;")
+
     .replace(/>/g,"&gt;")
+
     .replace(/"/g,"&quot;")
+
     .replace(/'/g,"&#039;");
 
 }
 
+
+/* =========================
+   إغلاق النوافذ
+========================= */
 
 window.addEventListener(
   "click",
@@ -1181,11 +1329,13 @@ window.addEventListener(
     const authModal =
       document.getElementById("authModal");
 
+
     if(event.target === modal){
 
       closeModal();
 
     }
+
 
     if(event.target === authModal){
 
@@ -1197,7 +1347,9 @@ window.addEventListener(
 );
 
 
-/* مراقبة حالة تسجيل الدخول */
+/* =========================
+   مراقبة تسجيل الدخول
+========================= */
 
 supabaseClient.auth.onAuthStateChange(
   function(){
@@ -1208,7 +1360,9 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-/* تشغيل الموقع */
+/* =========================
+   تشغيل الموقع
+========================= */
 
 loadProducts();
 
@@ -1217,4 +1371,4 @@ updateUserBox();
 </script>
 
 </body>
-  </html>
+      </html>
