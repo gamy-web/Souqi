@@ -3,233 +3,210 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سوقي 🛒</title>
+<title>سوقي</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
-margin:0;
-font-family:Arial,Tahoma,sans-serif;
-background:#f4f6fb;
-color:#222
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f5f5f5;
+  color:#222;
 }
 
 header{
-background:linear-gradient(135deg,#1769e0,#2854d9);
-color:white;
-padding:25px 15px 30px;
-text-align:center
+  background:#0d6efd;
+  color:white;
+  padding:15px;
+  text-align:center;
 }
 
-.logo{
-font-size:42px;
-font-weight:bold;
-color:#ffd92f;
-margin-bottom:20px
+header h1{
+  margin:0 0 8px;
 }
 
-.top{
-display:flex;
-gap:15px;
-justify-content:center;
-flex-wrap:wrap
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:15px;
+}
+
+.top-buttons{
+  display:flex;
+  gap:10px;
+  margin-bottom:15px;
 }
 
 button{
-border:0;
-border-radius:18px;
-padding:16px 30px;
-font-size:20px;
-cursor:pointer
+  border:0;
+  border-radius:8px;
+  padding:11px 16px;
+  cursor:pointer;
+  font-size:15px;
 }
 
-.add{
-background:#20c866;
-color:white
+.login-btn{
+  background:white;
+  color:#0d6efd;
 }
 
-.login{
-background:white;
-color:#2454c7
+.add-btn{
+  background:#198754;
+  color:white;
+  flex:1;
 }
 
-.search{
-max-width:700px;
-margin:20px auto;
-display:flex;
-gap:10px;
-padding:0 15px
-}
-
-.search input{
-flex:1;
-padding:15px;
-border:1px solid #ccc;
-border-radius:15px;
-font-size:18px
-}
-
-.search button{
-background:#2464df;
-color:white;
-padding:12px 20px
+.search-box{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  margin-bottom:12px;
+  font-size:16px;
 }
 
 .categories{
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-padding:15px
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  margin-bottom:15px;
 }
 
-.cat{
-background:white;
-border:2px solid #ddd;
-padding:14px 25px;
-border-radius:18px;
-font-size:19px
+.category-btn{
+  background:white;
+  border:1px solid #ddd;
+  white-space:nowrap;
 }
 
-.cat.active{
-background:#2865df;
-color:white;
-border-color:#2865df
-}
-
-main{
-max-width:1100px;
-margin:auto;
-padding:10px 15px 50px
-}
-
-h2{
-text-align:right;
-font-size:34px;
-margin:30px 10px
-}
-
-#products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:18px
-}
-
-.card{
-background:white;
-border-radius:22px;
-padding:20px;
-box-shadow:0 3px 12px #ddd
-}
-
-.icon{
-font-size:55px;
-text-align:center
-}
-
-.card h3{
-font-size:23px;
-margin:12px 0
-}
-
-.price{
-font-size:22px;
-color:#1769e0;
-font-weight:bold
-}
-
-.info{
-color:#555;
-margin:8px 0
-}
-
-.whatsapp{
-display:block;
-background:#19b957;
-color:white;
-text-align:center;
-text-decoration:none;
-padding:13px;
-border-radius:14px;
-margin-top:15px;
-font-size:18px
+.category-btn.active{
+  background:#0d6efd;
+  color:white;
 }
 
 .msg{
-text-align:center;
-background:white;
-border-radius:22px;
-padding:30px;
-font-size:20px;
-margin:20px 0
+  padding:12px;
+  border-radius:8px;
+  margin-bottom:15px;
+  display:none;
 }
 
-.error{
-color:#c33
+.msg.error{
+  display:block;
+  background:#f8d7da;
+  color:#842029;
+}
+
+.msg.success{
+  display:block;
+  background:#d1e7dd;
+  color:#0f5132;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:white;
+  border-radius:12px;
+  padding:15px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card-icon{
+  font-size:45px;
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.card h3{
+  margin:5px 0;
+}
+
+.price{
+  color:#198754;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.location,
+.category{
+  color:#666;
+  margin:7px 0;
+}
+
+.whatsapp{
+  display:block;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  text-align:center;
+  padding:10px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.empty{
+  text-align:center;
+  background:white;
+  padding:30px;
+  border-radius:10px;
+  color:#777;
 }
 
 .modal{
-display:none;
-position:fixed;
-inset:0;
-background:#0008;
-z-index:10;
-padding:20px;
-overflow:auto
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  align-items:center;
+  justify-content:center;
+  padding:15px;
 }
 
-.box{
-background:white;
-max-width:600px;
-margin:20px auto;
-padding:25px;
-border-radius:25px
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:500px;
+  border-radius:12px;
+  padding:20px;
 }
 
-.close{
-float:left;
-background:none;
-padding:0;
-font-size:30px
+.modal-box h2{
+  margin-top:0;
 }
 
-label{
-display:block;
-font-weight:bold;
-font-size:19px;
-margin:15px 0 7px
+.modal-box input,
+.modal-box select{
+  width:100%;
+  padding:12px;
+  margin:7px 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
 }
 
-input,select{
-width:100%;
-padding:15px;
-border:2px solid #ddd;
-border-radius:15px;
-font-size:17px
+.modal-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
 }
 
-.submit{
-width:100%;
-background:#2865df;
-color:white;
-margin-top:20px
+.save-btn{
+  background:#198754;
+  color:white;
+  flex:1;
 }
 
-@media(max-width:600px){
-
-.logo{
-font-size:36px
-}
-
-.top button{
-width:90%
-}
-
-h2{
-font-size:30px
-}
-
+.cancel-btn{
+  background:#6c757d;
+  color:white;
+  flex:1;
 }
 </style>
 </head>
@@ -237,568 +214,396 @@ font-size:30px
 <body>
 
 <header>
-
-<div class="logo">سوقي 🛒</div>
-
-<div class="top">
-
-<button class="add" onclick="openAdd()">
-➕ أضف منتج
-</button>
-
-<button class="login" onclick="login()">
-تسجيل الدخول
-</button>
-
-</div>
-
+  <h1>🛒 سوقي</h1>
+  <div>سوقك الإلكتروني البسيط</div>
 </header>
 
+<div class="container">
 
-<div class="search">
+  <div class="top-buttons">
+    <button class="login-btn" onclick="login()">تسجيل الدخول</button>
+    <button class="add-btn" onclick="openModal()">➕ أضف منتج</button>
+  </div>
 
-<input
-id="search"
-placeholder="ابحث عن منتج..."
-onkeydown="if(event.key==='Enter')searchProducts()"
->
+  <input
+    id="search"
+    class="search-box"
+    type="text"
+    placeholder="🔍 ابحث عن منتج..."
+    oninput="filterProducts()"
+  >
 
-<button onclick="searchProducts()">
-🔍 بحث
-</button>
+  <div class="categories">
+    <button class="category-btn active" onclick="selectCategory('الكل',this)">الكل</button>
+    <button class="category-btn" onclick="selectCategory('إلكترونيات',this)">إلكترونيات</button>
+    <button class="category-btn" onclick="selectCategory('ملابس',this)">ملابس</button>
+    <button class="category-btn" onclick="selectCategory('أثاث',this)">أثاث</button>
+    <button class="category-btn" onclick="selectCategory('سيارات',this)">سيارات</button>
+    <button class="category-btn" onclick="selectCategory('أخرى',this)">أخرى</button>
+  </div>
 
-</div>
+  <div id="status" class="msg"></div>
 
-
-<div class="categories">
-
-<button class="cat active" onclick="filterCat('الكل',this)">
-الكل
-</button>
-
-<button class="cat" onclick="filterCat('إلكترونيات',this)">
-📱 إلكترونيات
-</button>
-
-<button class="cat" onclick="filterCat('سيارات',this)">
-🚗 سيارات
-</button>
-
-<button class="cat" onclick="filterCat('ملابس',this)">
-👕 ملابس
-</button>
-
-<button class="cat" onclick="filterCat('منزل',this)">
-🏠 منزل
-</button>
-
-<button class="cat" onclick="filterCat('أخرى',this)">
-📦 أخرى
-</button>
+  <div id="products" class="products"></div>
 
 </div>
-
-
-<main>
-
-<h2>🛍️ المنتجات</h2>
-
-<div id="status" class="msg">
-جاري تحميل المنتجات...
-</div>
-
-<div id="products"></div>
-
-</main>
-
 
 <div id="modal" class="modal">
+  <div class="modal-box">
 
-<div class="box">
+    <h2>➕ إضافة منتج</h2>
 
-<button class="close" onclick="closeAdd()">
-✕
-</button>
+    <input id="name" type="text" placeholder="اسم المنتج">
 
-<h2>➕ إضافة منتج جديد</h2>
+    <input id="price" type="number" placeholder="السعر">
 
+    <input id="location" type="text" placeholder="المكان">
 
-<label>اسم المنتج</label>
+    <select id="category">
+      <option value="">اختر القسم</option>
+      <option value="إلكترونيات">إلكترونيات</option>
+      <option value="ملابس">ملابس</option>
+      <option value="أثاث">أثاث</option>
+      <option value="سيارات">سيارات</option>
+      <option value="أخرى">أخرى</option>
+    </select>
 
-<input
-id="name"
-placeholder="مثال: هاتف سامسونج"
->
+    <input id="icon" type="text" placeholder="إيموجي المنتج مثل 📱">
 
+    <input id="phone" type="text" placeholder="رقم واتساب">
 
-<label>السعر بالجنيه</label>
+    <div class="modal-buttons">
+      <button class="save-btn" onclick="addProduct()">نشر المنتج</button>
+      <button class="cancel-btn" onclick="closeModal()">إلغاء</button>
+    </div>
 
-<input
-id="price"
-type="number"
-placeholder="مثال: 5000"
->
-
-
-<label>المحافظة / المكان</label>
-
-<input
-id="location"
-placeholder="مثال: الشرقية"
->
-
-
-<label>القسم</label>
-
-<select id="category">
-
-<option value="">
-اختر القسم
-</option>
-
-<option>
-إلكترونيات
-</option>
-
-<option>
-سيارات
-</option>
-
-<option>
-ملابس
-</option>
-
-<option>
-منزل
-</option>
-
-<option>
-أخرى
-</option>
-
-</select>
-
-
-<label>رمز المنتج</label>
-
-<select id="icon">
-
-<option value="📦">
-📦 منتج
-</option>
-
-<option value="📱">
-📱 هاتف
-</option>
-
-<option value="💻">
-💻 لابتوب
-</option>
-
-<option value="🚗">
-🚗 سيارة
-</option>
-
-<option value="👕">
-👕 ملابس
-</option>
-
-<option value="🏠">
-🏠 منزل
-</option>
-
-<option value="🎧">
-🎧 سماعات
-</option>
-
-</select>
-
-
-<label>رقم واتساب للتواصل</label>
-
-<input
-id="phone"
-value="01201966196"
-placeholder="01xxxxxxxxx"
->
-
-
-<button class="submit" onclick="addProduct()">
-نشر المنتج
-</button>
-
-<div
-id="addStatus"
-class="msg"
-style="display:none"
-></div>
-
+  </div>
 </div>
-
-</div>
-
 
 <script>
 
-const SUPABASE_URL="https://dbufhbeygczlfitdpinf.supabase.co";
+const SUPABASE_URL =
+  "https://dbufhbeygczlfttdpinf.supabase.co";
 
-const SUPABASE_KEY="sb_publishable_ffb08aL-n96nfgZZwjj3fw_KolUjymN";
+const SUPABASE_KEY =
+  "sb_publishable_ffb08aL-n96nfgZZwjj3fw_KolUjymN";
+
+let allProducts = [];
+let selectedCategory = "الكل";
 
 
-let allProducts=[];
+function showStatus(message,type){
 
-let currentCat="الكل";
+  const status = document.getElementById("status");
+
+  status.className = "msg " + type;
+  status.textContent = message;
+
+}
 
 
 async function loadProducts(){
 
-const status=document.getElementById("status");
+  const productsBox = document.getElementById("products");
 
-try{
+  productsBox.innerHTML =
+    '<div class="empty">جاري تحميل المنتجات...</div>';
 
-const res=await fetch(
-SUPABASE_URL+"/rest/v1/products?select=*&order=created_at.desc",
-{
-headers:{
-"apikey":SUPABASE_KEY
-}
-}
-);
+  try{
 
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/products?select=*&order=created_at.desc",
+      {
+        method:"GET",
+        headers:{
+          "apikey":SUPABASE_KEY
+        }
+      }
+    );
 
-if(!res.ok){
+    if(!response.ok){
 
-throw new Error(await res.text());
+      const errorText = await response.text();
 
-}
+      throw new Error(
+        "HTTP " +
+        response.status +
+        " - " +
+        errorText
+      );
 
+    }
 
-allProducts=await res.json();
+    allProducts = await response.json();
 
-status.style.display="none";
+    showStatus("", "");
 
-showProducts();
+    filterProducts();
 
+  }catch(error){
 
-}catch(e){
+    productsBox.innerHTML =
+      '<div class="empty">لا توجد منتجات حالياً</div>';
 
-status.className="msg error";
+    showStatus(
+      "خطأ: " + error.message,
+      "error"
+    );
 
-status.textContent="خطأ: "+e.message;
+    console.error(error);
 
-console.error(e);
-
-}
-
-}
-
-
-function showProducts(){
-
-const box=document.getElementById("products");
-
-const word=document
-.getElementById("search")
-.value
-.trim()
-.toLowerCase();
-
-
-let list=allProducts.filter(p=>{
-
-let cat=
-currentCat==="الكل" ||
-p.category===currentCat;
-
-
-let search=
-!word ||
-String(p.name)
-.toLowerCase()
-.includes(word) ||
-
-String(p.location)
-.toLowerCase()
-.includes(word);
-
-
-return cat&&search;
-
-});
-
-
-box.innerHTML="";
-
-
-if(!list.length){
-
-box.innerHTML=
-'<div class="msg">لا توجد منتجات حالياً.<br>كن أول شخص يضيف منتجاً 🚀</div>';
-
-return;
+  }
 
 }
 
 
-list.forEach(p=>{
+function displayProducts(products){
 
-const card=document.createElement("div");
+  const box = document.getElementById("products");
 
-card.className="card";
+  if(!products.length){
 
+    box.innerHTML =
+      '<div class="empty">لا توجد منتجات مطابقة للبحث</div>';
 
-const icon=document.createElement("div");
+    return;
+  }
 
-icon.className="icon";
+  box.innerHTML = products.map(product => {
 
-icon.textContent=p.icon||"📦";
+    const icon = product.icon || "📦";
 
+    const phone = String(product.phone || "")
+      .replace(/\s+/g,"")
+      .replace(/^0+/,"");
 
-const title=document.createElement("h3");
+    const whatsappNumber =
+      phone.startsWith("20") ? phone : "20" + phone;
 
-title.textContent=p.name;
+    return `
 
+      <div class="card">
 
-const price=document.createElement("div");
+        <div class="card-icon">${escapeHtml(icon)}</div>
 
-price.className="price";
+        <h3>${escapeHtml(product.name)}</h3>
 
-price.textContent=
-Number(p.price).toLocaleString("ar-EG")+" جنيه";
+        <div class="price">
+          ${escapeHtml(product.price)} جنيه
+        </div>
 
+        <div class="location">
+          📍 ${escapeHtml(product.location)}
+        </div>
 
-const loc=document.createElement("div");
+        <div class="category">
+          🏷️ ${escapeHtml(product.category)}
+        </div>
 
-loc.className="info";
+        <a
+          class="whatsapp"
+          href="https://wa.me/${whatsappNumber}"
+          target="_blank"
+        >
+          💬 تواصل عبر واتساب
+        </a>
 
-loc.textContent="📍 "+p.location;
+      </div>
 
+    `;
 
-const cat=document.createElement("div");
-
-cat.className="info";
-
-cat.textContent="📂 "+p.category;
-
-
-const wa=document.createElement("a");
-
-wa.className="whatsapp";
-
-wa.textContent="💬 تواصل واتساب";
-
-
-let phone=
-String(p.phone||"")
-.replace(/\D/g,"");
-
-
-if(phone.startsWith("0"))
-
-phone="20"+phone.substring(1);
-
-
-wa.href="https://wa.me/"+phone;
-
-wa.target="_blank";
-
-
-card.append(
-icon,
-title,
-price,
-loc,
-cat,
-wa
-);
-
-
-box.appendChild(card);
-
-});
+  }).join("");
 
 }
 
 
-function filterCat(cat,btn){
+function filterProducts(){
 
-currentCat=cat;
+  const search =
+    document.getElementById("search")
+      .value
+      .trim()
+      .toLowerCase();
 
-document
-.querySelectorAll(".cat")
-.forEach(x=>x.classList.remove("active"));
+  const filtered = allProducts.filter(product => {
 
-btn.classList.add("active");
+    const matchesSearch =
+      !search ||
+      String(product.name).toLowerCase().includes(search) ||
+      String(product.location).toLowerCase().includes(search) ||
+      String(product.category).toLowerCase().includes(search);
 
-showProducts();
+    const matchesCategory =
+      selectedCategory === "الكل" ||
+      product.category === selectedCategory;
 
-}
+    return matchesSearch && matchesCategory;
 
+  });
 
-function searchProducts(){
-
-showProducts();
-
-}
-
-
-function openAdd(){
-
-document.getElementById("modal").style.display="block";
-
-}
-
-
-function closeAdd(){
-
-document.getElementById("modal").style.display="none";
+  displayProducts(filtered);
 
 }
 
 
-function login(){
+function selectCategory(category,button){
 
-alert(
-"تسجيل الدخول سيتم تفعيله في الخطوة القادمة إن شاء الله."
-);
+  selectedCategory = category;
+
+  document
+    .querySelectorAll(".category-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  button.classList.add("active");
+
+  filterProducts();
+
+}
+
+
+function openModal(){
+
+  document.getElementById("modal").style.display = "flex";
+
+}
+
+
+function closeModal(){
+
+  document.getElementById("modal").style.display = "none";
 
 }
 
 
 async function addProduct(){
 
-const name=
-document.getElementById("name")
-.value
-.trim();
+  const name =
+    document.getElementById("name").value.trim();
+
+  const price =
+    document.getElementById("price").value.trim();
+
+  const location =
+    document.getElementById("location").value.trim();
+
+  const category =
+    document.getElementById("category").value;
+
+  const icon =
+    document.getElementById("icon").value.trim() || "📦";
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  if(!name || !price || !location || !category || !phone){
+
+    alert("من فضلك املأ كل البيانات المطلوبة");
+
+    return;
+  }
+
+  try{
+
+    const response = await fetch(
+      SUPABASE_URL + "/rest/v1/products",
+      {
+        method:"POST",
+
+        headers:{
+          "apikey":SUPABASE_KEY,
+          "Content-Type":"application/json",
+          "Prefer":"return=representation"
+        },
+
+        body:JSON.stringify({
+          name:name,
+          price:Number(price),
+          location:location,
+          category:category,
+          icon:icon,
+          phone:phone
+        })
+
+      }
+    );
+
+    if(!response.ok){
+
+      const errorText = await response.text();
+
+      throw new Error(
+        "HTTP " +
+        response.status +
+        " - " +
+        errorText
+      );
+
+    }
+
+    showStatus(
+      "تم نشر المنتج بنجاح ✅",
+      "success"
+    );
+
+    document.getElementById("name").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("category").value = "";
+    document.getElementById("icon").value = "";
+    document.getElementById("phone").value = "";
+
+    closeModal();
+
+    await loadProducts();
+
+  }catch(error){
+
+    showStatus(
+      "خطأ أثناء نشر المنتج: " + error.message,
+      "error"
+    );
+
+    console.error(error);
+
+  }
+
+}
 
 
-const price=
-document.getElementById("price")
-.value;
+function login(){
 
-
-const location=
-document.getElementById("location")
-.value
-.trim();
-
-
-const category=
-document.getElementById("category")
-.value;
-
-
-const icon=
-document.getElementById("icon")
-.value;
-
-
-const phone=
-document.getElementById("phone")
-.value
-.trim();
-
-
-const st=
-document.getElementById("addStatus");
-
-
-if(
-!name||
-!price||
-!location||
-!category||
-!phone
-){
-
-alert("من فضلك املأ كل البيانات.");
-
-return;
+  alert(
+    "تسجيل الدخول سيتم تفعيله في الخطوة القادمة إن شاء الله."
+  );
 
 }
 
 
-st.style.display="block";
+function escapeHtml(value){
 
-st.textContent="جاري نشر المنتج...";
-
-
-try{
-
-const res=await fetch(
-SUPABASE_URL+"/rest/v1/products",
-{
-method:"POST",
-
-headers:{
-"apikey":SUPABASE_KEY,
-"Content-Type":"application/json",
-"Prefer":"return=representation"
-},
-
-body:JSON.stringify({
-
-name:name,
-
-price:Number(price),
-
-location:location,
-
-category:category,
-
-icon:icon,
-
-phone:phone
-
-})
-
-}
-);
-
-
-if(!res.ok)
-
-throw new Error(await res.text());
-
-
-st.textContent="✅ تم نشر المنتج بنجاح";
-
-
-document.getElementById("name").value="";
-
-document.getElementById("price").value="";
-
-document.getElementById("location").value="";
-
-document.getElementById("category").value="";
-
-document.getElementById("phone").value="01201966196";
-
-
-await loadProducts();
-
-
-setTimeout(()=>{
-
-closeAdd();
-
-st.style.display="none";
-
-},1000);
-
-
-}catch(e){
-
-st.className="msg error";
-
-st.textContent="❌ خطأ: "+e.message;
-
-console.error(e);
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
-}
+
+window.addEventListener("click",function(event){
+
+  const modal =
+    document.getElementById("modal");
+
+  if(event.target === modal){
+
+    closeModal();
+
+  }
+
+});
 
 
 loadProducts();
@@ -806,4 +611,4 @@ loadProducts();
 </script>
 
 </body>
-  </html>
+</html>
