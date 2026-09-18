@@ -1,1155 +1,270 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سوقي - سوق البيع والشراء</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Tahoma, sans-serif;
-    }
-
-    body {
-      background: #f5f7fa;
-      color: #222;
-      min-height: 100vh;
-    }
-
-    header {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
-      padding: 18px 15px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-    }
-
-    .header-content {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: #facc15;
-    }
-
-    .header-buttons {
-      display: flex;
-      gap: 8px;
-    }
-
-    button {
-      border: none;
-      cursor: pointer;
-      font-size: 15px;
-      border-radius: 10px;
-      padding: 10px 15px;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
-      opacity: 0.92;
-    }
-
-    .login-btn {
-      background: white;
-      color: #1d4ed8;
-    }
-
-    .add-btn {
-      background: #22c55e;
-      color: white;
-      font-weight: bold;
-    }
-
-    .hero {
-      background: white;
-      padding: 30px 15px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .hero h1 {
-      color: #1d4ed8;
-      margin-bottom: 10px;
-      font-size: 30px;
-    }
-
-    .hero p {
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    .search-box {
-      max-width: 700px;
-      margin: auto;
-      display: flex;
-      gap: 8px;
-    }
-
-    .search-box input {
-      flex: 1;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      font-size: 16px;
-      outline: none;
-    }
-
-    .search-box input:focus {
-      border-color: #2563eb;
-    }
-
-    .search-btn {
-      background: #2563eb;
-      color: white;
-      min-width: 90px;
-    }
-
-    .categories {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 15px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .category-btn {
-      background: white;
-      border: 1px solid #ddd;
-      color: #333;
-    }
-
-    .category-btn.active {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 10px 15px 40px;
-    }
-
-    .section-title {
-      font-size: 23px;
-      margin: 15px 0;
-      color: #222;
-    }
-
-    .loading,
-    .empty,
-    .error {
-      background: white;
-      padding: 30px;
-      text-align: center;
-      border-radius: 15px;
-      margin: 20px 0;
-    }
-
-    .loading {
-      color: #2563eb;
-    }
-
-    .error {
-      color: #dc2626;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      border: 1px solid #eee;
-      transition: 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 7px 18px rgba(0,0,0,0.12);
-    }
-
-    .product-icon {
-      height: 130px;
-      background: #eef4ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 65px;
-    }
-
-    .product-info {
-      padding: 15px;
-    }
-
-    .product-name {
-      font-size: 19px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .product-price {
-      color: #16a34a;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .product-details {
-      color: #666;
-      font-size: 14px;
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    .whatsapp-btn {
-      width: 100%;
-      background: #25d366;
-      color: white;
-      font-weight: bold;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      width: 100%;
-      max-width: 500px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 18px;
-      padding: 22px;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      left: 15px;
-      top: 10px;
-      font-size: 28px;
-      color: #666;
-      cursor: pointer;
-    }
-
-    .modal-title {
-      font-size: 23px;
-      color: #1d4ed8;
-      margin-bottom: 20px;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: #2563eb;
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: #2563eb;
-      color: white;
-      font-weight: bold;
-      padding: 13px;
-      margin-top: 5px;
-    }
-
-    .cancel-btn {
-      width: 100%;
-      background: #eee;
-      color: #333;
-      margin-top: 8px;
-    }
-
-    .user-info {
-      background: #eef4ff;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: none;
-    }
-
-    footer {
-      background: #172033;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 30px;
-    }
-
-    footer p {
-      margin: 5px 0;
-      color: #ddd;
-    }
-
-    @media (max-width: 600px) {
-      .header-content {
-        flex-direction: column;
-      }
-
-      .logo {
-        font-size: 25px;
-      }
-
-      .header-buttons {
-        width: 100%;
-      }
-
-      .header-buttons button {
-        flex: 1;
-      }
-
-      .hero h1 {
-        font-size: 25px;
-      }
-
-      .search-box {
-        flex-direction: column;
-      }
-
-      .search-btn {
-        width: 100%;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سوقي 🛒</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f4f6fb;color:#222}
+header{background:linear-gradient(135deg,#1769e0,#2854d9);color:white;padding:25px 15px 30px;text-align:center}
+.logo{font-size:42px;font-weight:bold;color:#ffd92f;margin-bottom:20px}
+.top{display:flex;gap:15px;justify-content:center;flex-wrap:wrap}
+button{border:0;border-radius:18px;padding:16px 30px;font-size:20px;cursor:pointer}
+.add{background:#20c866;color:white}
+.login{background:white;color:#2454c7}
+.search{max-width:700px;margin:20px auto;display:flex;gap:10px;padding:0 15px}
+.search input{flex:1;padding:15px;border:1px solid #ccc;border-radius:15px;font-size:18px}
+.search button{background:#2464df;color:white;padding:12px 20px}
+.categories{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:15px}
+.cat{background:white;border:2px solid #ddd;padding:14px 25px;border-radius:18px;font-size:19px}
+.cat.active{background:#2865df;color:white;border-color:#2865df}
+main{max-width:1100px;margin:auto;padding:10px 15px 50px}
+h2{text-align:right;font-size:34px;margin:30px 10px}
+#products{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:white;border-radius:22px;padding:20px;box-shadow:0 3px 12px #ddd}
+.icon{font-size:55px;text-align:center}
+.card h3{font-size:23px;margin:12px 0}
+.price{font-size:22px;color:#1769e0;font-weight:bold}
+.info{color:#555;margin:8px 0}
+.whatsapp{display:block;background:#19b957;color:white;text-align:center;text-decoration:none;padding:13px;border-radius:14px;margin-top:15px;font-size:18px}
+.msg{text-align:center;background:white;border-radius:22px;padding:30px;font-size:20px;margin:20px 0}
+.error{color:#c33}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:10;padding:20px;overflow:auto}
+.box{background:white;max-width:600px;margin:20px auto;padding:25px;border-radius:25px}
+.close{float:left;background:none;padding:0;font-size:30px}
+label{display:block;font-weight:bold;font-size:19px;margin:15px 0 7px}
+input,select{width:100%;padding:15px;border:2px solid #ddd;border-radius:15px;font-size:17px}
+.submit{width:100%;background:#2865df;color:white;margin-top:20px}
+@media(max-width:600px){
+.logo{font-size:36px}
+.top button{width:90%}
+h2{font-size:30px}
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="header-content">
-      <div class="logo">🛒 <span>سوقي</span></div>
-
-      <div class="header-buttons">
-        <button class="login-btn" id="loginOpenBtn">تسجيل الدخول</button>
-        <button class="add-btn" id="addOpenBtn">➕ أضف منتج</button>
-      </div>
-    </div>
-  </header>
-
-  <section class="hero">
-    <h1>أهلاً بيك في سوقي 🛒</h1>
-    <p>بيع واشتري بسهولة من أي مكان</p>
-
-    <div class="search-box">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="ابحث عن منتج..."
-      >
-      <button class="search-btn" id="searchBtn">بحث 🔍</button>
-    </div>
-  </section>
-
-  <div class="categories">
-    <button class="category-btn active" data-category="الكل">الكل</button>
-    <button class="category-btn" data-category="إلكترونيات">📱 إلكترونيات</button>
-    <button class="category-btn" data-category="سيارات">🚗 سيارات</button>
-    <button class="category-btn" data-category="ملابس">👕 ملابس</button>
-    <button class="category-btn" data-category="منزل">🏠 منزل</button>
-    <button class="category-btn" data-category="أخرى">📦 أخرى</button>
-  </div>
-
-  <main>
-    <h2 class="section-title">🛍️ المنتجات</h2>
-
-    <div id="loading" class="loading">
-      جاري تحميل المنتجات...
-    </div>
-
-    <div id="errorBox" class="error" style="display:none;"></div>
-
-    <div id="emptyBox" class="empty" style="display:none;">
-      لا توجد منتجات حالياً.
-      <br><br>
-      كن أول شخص يضيف منتجًا! 🚀
-    </div>
-
-    <div id="productsContainer" class="products"></div>
-  </main>
-
-  <footer>
-    <p>🛒 سوقي - سوق البيع والشراء</p>
-    <p>© 2026 جميع الحقوق محفوظة</p>
-  </footer>
-
-
-  <!-- تسجيل الدخول -->
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-
-      <div class="close" data-close="loginModal">×</div>
-
-      <h2 class="modal-title">👤 تسجيل الدخول</h2>
-
-      <div id="currentUserBox" class="user-info"></div>
-
-      <form id="loginForm">
-
-        <div class="form-group">
-          <label>الاسم</label>
-          <input
-            type="text"
-            id="loginName"
-            placeholder="اكتب اسمك"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>رقم الموبايل</label>
-          <input
-            type="tel"
-            id="loginPhone"
-            placeholder="مثال: 01201966196"
-            required
-          >
-        </div>
-
-        <button type="submit" class="submit-btn">
-          دخول
-        </button>
-
-      </form>
-
-      <button class="cancel-btn" data-close="loginModal">
-        إلغاء
-      </button>
-
-    </div>
-  </div>
-
-
-  <!-- إضافة منتج -->
-  <div class="modal" id="addModal">
-    <div class="modal-content">
-
-      <div class="close" data-close="addModal">×</div>
-
-      <h2 class="modal-title">➕ إضافة منتج جديد</h2>
-
-      <form id="addProductForm">
-
-        <div class="form-group">
-          <label>اسم المنتج</label>
-          <input
-            type="text"
-            id="productName"
-            placeholder="مثال: هاتف سامسونج"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>السعر بالجنيه</label>
-          <input
-            type="number"
-            id="productPrice"
-            placeholder="مثال: 5000"
-            min="0"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>المحافظة / المكان</label>
-          <input
-            type="text"
-            id="productLocation"
-            placeholder="مثال: الشرقية"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label>القسم</label>
-          <select id="productCategory" required>
-            <option value="">اختر القسم</option>
-            <option value="إلكترونيات">📱 إلكترونيات</option>
-            <option value="سيارات">🚗 سيارات</option>
-            <option value="ملابس">👕 ملابس</option>
-            <option value="منزل">🏠 منزل</option>
-            <option value="أخرى">📦 أخرى</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>رمز المنتج</label>
-          <select id="productIcon">
-            <option value="📦">📦 منتج</option>
-            <option value="📱">📱 هاتف</option>
-            <option value="💻">💻 لابتوب</option>
-            <option value="🚗">🚗 سيارة</option>
-            <option value="👕">👕 ملابس</option>
-            <option value="🪑">🪑 أثاث</option>
-            <option value="🎧">🎧 سماعات</option>
-            <option value="⌚">⌚ ساعة</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>رقم واتساب للتواصل</label>
-          <input
-            type="tel"
-            id="productPhone"
-            value="01201966196"
-            placeholder="مثال: 01201966196"
-            required
-          >
-        </div>
-
-        <button type="submit" class="submit-btn" id="addSubmitBtn">
-          نشر المنتج 🚀
-        </button>
-
-      </form>
-
-      <button class="cancel-btn" data-close="addModal">
-        إلغاء
-      </button>
-
-    </div>
-  </div>
-
-
-  <script>
-    /* ============================
-       إعدادات Supabase
-    ============================ */
-
-    const SUPABASE_URL =
-      "https://dbufhbeygczlfitdpinf.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_ffb08aL-n96nfgZZwjj3fw_KolUjymN";
-
-
-    /* ============================
-       عناصر الصفحة
-    ============================ */
-
-    const productsContainer =
-      document.getElementById("productsContainer");
-
-    const loading =
-      document.getElementById("loading");
-
-    const emptyBox =
-      document.getElementById("emptyBox");
-
-    const errorBox =
-      document.getElementById("errorBox");
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-    let allProducts = [];
-    let selectedCategory = "الكل";
-
-
-    /* ============================
-       تنظيف النصوص
-    ============================ */
-
-    function cleanPhone(phone) {
-      let value = String(phone || "").replace(/\D/g, "");
-
-      if (value.startsWith("00")) {
-        value = value.substring(2);
-      }
-
-      if (value.startsWith("0")) {
-        value = "20" + value.substring(1);
-      }
-
-      if (!value.startsWith("20") && value.length === 10) {
-        value = "20" + value;
-      }
-
-      return value;
-    }
-
-
-    function formatPrice(price) {
-      const number = Number(price);
-
-      if (isNaN(number)) {
-        return price + " جنيه";
-      }
-
-      return number.toLocaleString("ar-EG") + " جنيه";
-    }
-
-
-    /* ============================
-       تحميل المنتجات من Supabase
-    ============================ */
-
-    async function loadProducts() {
-
-      loading.style.display = "block";
-      emptyBox.style.display = "none";
-      errorBox.style.display = "none";
-      productsContainer.innerHTML = "";
-
-      try {
-
-        const response = await fetch(
-          SUPABASE_URL +
-          "/rest/v1/products?select=*&order=created_at.desc",
-          {
-            method: "GET",
-            headers: {
-              "apikey": SUPABASE_KEY,
-              "Authorization": "Bearer " + SUPABASE_KEY
-            }
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            "حدث خطأ أثناء تحميل المنتجات"
-          );
-        }
-
-        allProducts = await response.json();
-
-        loading.style.display = "none";
-
-        renderProducts();
-
-      } catch (error) {
-
-        loading.style.display = "none";
-
-        errorBox.textContent =
-          "حصلت مشكلة في تحميل المنتجات. تأكد من اتصال الإنترنت ثم جرّب مرة أخرى.";
-
-        errorBox.style.display = "block";
-
-        console.error(error);
-      }
-    }
-
-
-    /* ============================
-       عرض المنتجات
-    ============================ */
-
-    function renderProducts() {
-
-      productsContainer.innerHTML = "";
-
-      const searchText =
-        searchInput.value.trim().toLowerCase();
-
-      const filteredProducts =
-        allProducts.filter(product => {
-
-          const name =
-            String(product.name || "").toLowerCase();
-
-          const location =
-            String(product.location || "").toLowerCase();
-
-          const category =
-            String(product.category || "");
-
-          const matchesSearch =
-            !searchText ||
-            name.includes(searchText) ||
-            location.includes(searchText) ||
-            category.toLowerCase().includes(searchText);
-
-          const matchesCategory =
-            selectedCategory === "الكل" ||
-            category === selectedCategory;
-
-          return matchesSearch && matchesCategory;
-        });
-
-
-      if (filteredProducts.length === 0) {
-
-        emptyBox.textContent =
-          allProducts.length === 0
-            ? "لا توجد منتجات حالياً. كن أول شخص يضيف منتجًا! 🚀"
-            : "لا توجد منتجات تطابق البحث.";
-
-        emptyBox.style.display = "block";
-
-        return;
-      }
-
-      emptyBox.style.display = "none";
-
-
-      filteredProducts.forEach(product => {
-
-        const card =
-          document.createElement("div");
-
-        card.className = "product-card";
-
-
-        const icon =
-          document.createElement("div");
-
-        icon.className = "product-icon";
-        icon.textContent = product.icon || "📦";
-
-
-        const info =
-          document.createElement("div");
-
-        info.className = "product-info";
-
-
-        const name =
-          document.createElement("div");
-
-        name.className = "product-name";
-        name.textContent =
-          product.name || "منتج";
-
-
-        const price =
-          document.createElement("div");
-
-        price.className = "product-price";
-        price.textContent =
-          formatPrice(product.price);
-
-
-        const details =
-          document.createElement("div");
-
-        details.className = "product-details";
-
-        details.textContent =
-          "📍 " +
-          (product.location || "غير محدد") +
-          "\n" +
-          "📂 " +
-          (product.category || "أخرى");
-
-
-        const whatsapp =
-          document.createElement("button");
-
-        whatsapp.className = "whatsapp-btn";
-        whatsapp.textContent =
-          "💬 تواصل مع البائع";
-
-        whatsapp.addEventListener("click", function() {
-
-          const phone =
-            cleanPhone(product.phone);
-
-          if (!phone) {
-            alert("رقم واتساب البائع غير موجود.");
-            return;
-          }
-
-          const message =
-            "مرحباً، أنا مهتم بالمنتج: " +
-            (product.name || "منتج") +
-            "\nالسعر: " +
-            formatPrice(product.price);
-
-          const url =
-            "https://wa.me/" +
-            phone +
-            "?text=" +
-            encodeURIComponent(message);
-
-          window.open(url, "_blank");
-        });
-
-
-        info.appendChild(name);
-        info.appendChild(price);
-        info.appendChild(details);
-        info.appendChild(whatsapp);
-
-        card.appendChild(icon);
-        card.appendChild(info);
-
-        productsContainer.appendChild(card);
-      });
-    }
-
-
-    /* ============================
-       البحث
-    ============================ */
-
-    document
-      .getElementById("searchBtn")
-      .addEventListener("click", function() {
-        renderProducts();
-      });
-
-
-    searchInput.addEventListener(
-      "input",
-      function() {
-        renderProducts();
-      }
-    );
-
-
-    searchInput.addEventListener(
-      "keydown",
-      function(event) {
-
-        if (event.key === "Enter") {
-          event.preventDefault();
-          renderProducts();
-        }
-
-      }
-    );
-
-
-    /* ============================
-       الأقسام
-    ============================ */
-
-    document
-      .querySelectorAll(".category-btn")
-      .forEach(button => {
-
-        button.addEventListener("click", function() {
-
-          document
-            .querySelectorAll(".category-btn")
-            .forEach(btn =>
-              btn.classList.remove("active")
-            );
-
-          this.classList.add("active");
-
-          selectedCategory =
-            this.dataset.category;
-
-          renderProducts();
-        });
-
-      });
-
-
-    /* ============================
-       فتح وإغلاق النوافذ
-    ============================ */
-
-    document
-      .getElementById("loginOpenBtn")
-      .addEventListener("click", function() {
-
-        updateUserBox();
-
-        document
-          .getElementById("loginModal")
-          .classList.add("show");
-      });
-
-
-    document
-      .getElementById("addOpenBtn")
-      .addEventListener("click", function() {
-
-        document
-          .getElementById("addModal")
-          .classList.add("show");
-      });
-
-
-    document
-      .querySelectorAll("[data-close]")
-      .forEach(button => {
-
-        button.addEventListener("click", function() {
-
-          const modalId =
-            this.dataset.close;
-
-          document
-            .getElementById(modalId)
-            .classList.remove("show");
-        });
-
-      });
-
-
-    document
-      .querySelectorAll(".modal")
-      .forEach(modal => {
-
-        modal.addEventListener("click", function(event) {
-
-          if (event.target === modal) {
-            modal.classList.remove("show");
-          }
-
-        });
-
-      });
-
-
-    /* ============================
-       تسجيل الدخول المحلي
-    ============================ */
-
-    function updateUserBox() {
-
-      const user =
-        localStorage.getItem("souqiUser");
-
-      const box =
-        document.getElementById("currentUserBox");
-
-      if (user) {
-
-        try {
-
-          const data = JSON.parse(user);
-
-          box.textContent =
-            "أهلاً " +
-  data.name;
-
-          box.style.display = "block";
-
-        } catch (error) {
-
-          box.style.display = "none";
-
-        }
-
-      } else {
-
-        box.style.display = "none";
-
-      }
-
-    }
-
-
-    /* ============================
-       تسجيل الدخول
-    ============================ */
-
-    document
-      .getElementById("loginForm")
-      .addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const name =
-          document.getElementById("loginName").value.trim();
-
-        const phone =
-          document.getElementById("loginPhone").value.trim();
-
-        if (!name || !phone) {
-          alert("من فضلك اكتب الاسم ورقم الموبايل.");
-          return;
-        }
-
-        localStorage.setItem(
-          "souqiUser",
-          JSON.stringify({
-            name: name,
-            phone: phone
-          })
-        );
-
-        alert("تم تسجيل الدخول بنجاح ✅");
-
-        document
-          .getElementById("loginModal")
-          .classList.remove("show");
-
-      });
-
-
-    /* ============================
-       إضافة منتج إلى قاعدة البيانات
-    ============================ */
-
-    document
-      .getElementById("addProductForm")
-      .addEventListener("submit", async function(event) {
-
-        event.preventDefault();
-
-        const name =
-          document.getElementById("productName").value.trim();
-
-        const price =
-          document.getElementById("productPrice").value;
-
-        const location =
-          document.getElementById("productLocation").value.trim();
-
-        const category =
-          document.getElementById("productCategory").value;
-
-        const icon =
-          document.getElementById("productIcon").value;
-
-        const phone =
-          document.getElementById("productPhone").value.trim();
-
-        if (!name || !price || !location || !category || !phone) {
-          alert("من فضلك املأ كل البيانات المطلوبة.");
-          return;
-        }
-
-        const submitButton =
-          document.getElementById("addSubmitBtn");
-
-        submitButton.disabled = true;
-        submitButton.textContent = "جاري النشر...";
-
-        try {
-
-          const response = await fetch(
-            SUPABASE_URL + "/rest/v1/products",
-            {
-              method: "POST",
-
-              headers: {
-                "apikey": SUPABASE_KEY,
-                "Authorization": "Bearer " + SUPABASE_KEY,
-                "Content-Type": "application/json",
-                "Prefer": "return=representation"
-              },
-
-              body: JSON.stringify({
-                name: name,
-                price: Number(price),
-                location: location,
-                category: category,
-                icon: icon,
-                phone: phone
-              })
-            }
-          );
-
-          if (!response.ok) {
-
-            const errorText = await response.text();
-
-            console.error(errorText);
-
-            throw new Error("فشل نشر المنتج");
-
-          }
-
-          alert(
-            "تم نشر المنتج بنجاح 🎉"
-          );
-
-          document
-            .getElementById("addProductForm")
-            .reset();
-
-          document
-            .getElementById("productPhone")
-            .value = "01201966196";
-
-          document
-            .getElementById("addModal")
-            .classList.remove("show");
-
-          await loadProducts();
-
-        } catch (error) {
-
-          console.error(error);
-
-          alert(
-            "حصلت مشكلة أثناء نشر المنتج. حاول مرة أخرى."
-          );
-
-        } finally {
-
-          submitButton.disabled = false;
-          submitButton.textContent = "نشر المنتج 🚀";
-
-        }
-
-      });
-
-    /* ============================
-       تشغيل الموقع
-    ============================ */
-
-    loadProducts();
-
-  </script>
+<header>
+<div class="logo">سوقي 🛒</div>
+<div class="top">
+<button class="add" onclick="openAdd()">➕ أضف منتج</button>
+<button class="login" onclick="login()">تسجيل الدخول</button>
+</div>
+</header>
+
+<div class="search">
+<input id="search" placeholder="ابحث عن منتج..." onkeydown="if(event.key==='Enter')searchProducts()">
+<button onclick="searchProducts()">🔍 بحث</button>
+</div>
+
+<div class="categories">
+<button class="cat active" onclick="filterCat('الكل',this)">الكل</button>
+<button class="cat" onclick="filterCat('إلكترونيات',this)">📱 إلكترونيات</button>
+<button class="cat" onclick="filterCat('سيارات',this)">🚗 سيارات</button>
+<button class="cat" onclick="filterCat('ملابس',this)">👕 ملابس</button>
+<button class="cat" onclick="filterCat('منزل',this)">🏠 منزل</button>
+<button class="cat" onclick="filterCat('أخرى',this)">📦 أخرى</button>
+</div>
+
+<main>
+<h2>🛍️ المنتجات</h2>
+<div id="status" class="msg">جاري تحميل المنتجات...</div>
+<div id="products"></div>
+</main>
+
+<div id="modal" class="modal">
+<div class="box">
+<button class="close" onclick="closeAdd()">✕</button>
+<h2>➕ إضافة منتج جديد</h2>
+
+<label>اسم المنتج</label>
+<input id="name" placeholder="مثال: هاتف سامسونج">
+
+<label>السعر بالجنيه</label>
+<input id="price" type="number" placeholder="مثال: 5000">
+
+<label>المحافظة / المكان</label>
+<input id="location" placeholder="مثال: الشرقية">
+
+<label>القسم</label>
+<select id="category">
+<option value="">اختر القسم</option>
+<option>إلكترونيات</option>
+<option>سيارات</option>
+<option>ملابس</option>
+<option>منزل</option>
+<option>أخرى</option>
+</select>
+
+<label>رمز المنتج</label>
+<select id="icon">
+<option value="📦">📦 منتج</option>
+<option value="📱">📱 هاتف</option>
+<option value="💻">💻 لابتوب</option>
+<option value="🚗">🚗 سيارة</option>
+<option value="👕">👕 ملابس</option>
+<option value="🏠">🏠 منزل</option>
+<option value="🎧">🎧 سماعات</option>
+</select>
+
+<label>رقم واتساب للتواصل</label>
+<input id="phone" value="01201966196" placeholder="01xxxxxxxxx">
+
+<button class="submit" onclick="addProduct()">نشر المنتج</button>
+<div id="addStatus" class="msg" style="display:none"></div>
+</div>
+</div>
+
+<script>
+const SUPABASE_URL="https://dbufhbeygczlfitdpinf.supabase.co";
+const SUPABASE_KEY="sb_publishable_ffb08aL-n96nfgZZwjj3fw_KolUjymN";
+
+let allProducts=[];
+let currentCat="الكل";
+
+async function loadProducts(){
+const status=document.getElementById("status");
+try{
+const res=await fetch(SUPABASE_URL+"/rest/v1/products?select=*&order=created_at.desc",{
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY
+}});
+if(!res.ok)throw new Error(await res.text());
+allProducts=await res.json();
+status.style.display="none";
+showProducts();
+}catch(e){
+status.className="msg error";
+status.textContent="حصلت مشكلة في تحميل المنتجات. تأكد من اتصال الإنترنت ثم جرّب مرة أخرى.";
+console.error(e);
+}
+}
+
+function showProducts(){
+const box=document.getElementById("products");
+const word=document.getElementById("search").value.trim().toLowerCase();
+let list=allProducts.filter(p=>{
+let cat=currentCat==="الكل"||p.category===currentCat;
+let search=!word||String(p.name).toLowerCase().includes(word)||String(p.location).toLowerCase().includes(word);
+return cat&&search;
+});
+box.innerHTML="";
+if(!list.length){
+box.innerHTML='<div class="msg">لا توجد منتجات حالياً.<br>كن أول شخص يضيف منتجاً 🚀</div>';
+return;
+}
+list.forEach(p=>{
+const card=document.createElement("div");
+card.className="card";
+const icon=document.createElement("div");
+icon.className="icon";
+icon.textContent=p.icon||"📦";
+const title=document.createElement("h3");
+title.textContent=p.name;
+const price=document.createElement("div");
+price.className="price";
+price.textContent=Number(p.price).toLocaleString("ar-EG")+" جنيه";
+const loc=document.createElement("div");
+loc.className="info";
+loc.textContent="📍 "+p.location;
+const cat=document.createElement("div");
+cat.className="info";
+cat.textContent="📂 "+p.category;
+const wa=document.createElement("a");
+wa.className="whatsapp";
+wa.textContent="💬 تواصل واتساب";
+let phone=String(p.phone||"").replace(/\D/g,"");
+if(phone.startsWith("0"))phone="20"+phone.substring(1);
+wa.href="https://wa.me/"+phone;
+wa.target="_blank";
+card.append(icon,title,price,loc,cat,wa);
+box.appendChild(card);
+});
+}
+
+function filterCat(cat,btn){
+currentCat=cat;
+document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+showProducts();
+}
+
+function searchProducts(){showProducts()}
+
+function openAdd(){
+document.getElementById("modal").style.display="block";
+}
+function closeAdd(){
+document.getElementById("modal").style.display="none";
+}
+
+function login(){
+alert("تسجيل الدخول سيتم تفعيله في الخطوة القادمة إن شاء الله.");
+}
+
+async function addProduct(){
+const name=document.getElementById("name").value.trim();
+const price=document.getElementById("price").value;
+const location=document.getElementById("location").value.trim();
+const category=document.getElementById("category").value;
+const icon=document.getElementById("icon").value;
+const phone=document.getElementById("phone").value.trim();
+const st=document.getElementById("addStatus");
+
+if(!name||!price||!location||!category||!phone){
+alert("من فضلك املأ كل البيانات.");
+return;
+}
+
+st.style.display="block";
+st.textContent="جاري نشر المنتج...";
+
+try{
+const res=await fetch(SUPABASE_URL+"/rest/v1/products",{
+method:"POST",
+headers:{
+"apikey":SUPABASE_KEY,
+"Authorization":"Bearer "+SUPABASE_KEY,
+"Content-Type":"application/json",
+"Prefer":"return=representation"
+},
+body:JSON.stringify({
+name:name,
+price:Number(price),
+location:location,
+category:category,
+icon:icon,
+phone:phone
+})
+});
+if(!res.ok)throw new Error(await res.text());
+
+st.textContent="✅ تم نشر المنتج بنجاح";
+document.getElementById("name").value="";
+document.getElementById("price").value="";
+document.getElementById("location").value="";
+document.getElementById("category").value="";
+document.getElementById("phone").value="01201966196";
+
+await loadProducts();
+
+setTimeout(()=>{
+closeAdd();
+st.style.display="none";
+},1000);
+
+}catch(e){
+st.className="msg error";
+st.textContent="❌ لم يتم نشر المنتج. جرّب مرة أخرى.";
+console.error(e);
+}
+}
+
+loadProducts();
+</script>
 
 </body>
 </html>
-    
