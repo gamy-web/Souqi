@@ -2,748 +2,647 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سوقي | سوقك الإلكتروني</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سوقي | بيع واشتري بسهولة</title>
+<meta name="description" content="سوقي - منصة سهلة للبيع والشراء">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f5f7f9;color:#17202a}
-button,input,select{font-family:inherit}
-button{cursor:pointer}
-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb}
-.header{max-width:1200px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:10px}
-.logo{margin-left:auto;font-size:24px;font-weight:900;color:#087f5b;text-decoration:none}
-.actions{display:flex;gap:8px}
-.btn{border:0;padding:11px 16px;border-radius:12px;font-weight:800;transition:.2s}
-.btn:hover{transform:translateY(-1px)}
-.primary{background:#087f5b;color:#fff}
-.light{background:#eef5f2;color:#087f5b}
-.danger{background:#fee2e2;color:#b91c1c}
-.container{max-width:1200px;margin:auto;padding:0 18px}
-.hero{margin-top:25px;border-radius:25px;padding:45px 30px;background:linear-gradient(135deg,#087f5b,#075c45);color:#fff}
-.hero h1{margin:0 0 12px;font-size:42px}
-.hero p{margin:0 0 22px;line-height:1.9;font-size:17px}
-.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}
-.hero .primary{background:#fff;color:#087f5b}
-.hero .light{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25)}
-.user{display:none;margin-top:18px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;align-items:center;gap:10px}
-.user.show{display:flex}
-.usericon{font-size:25px}
-.userinfo{flex:1}
-.search{margin-top:22px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:7px 14px;display:flex;gap:8px;align-items:center}
-.search input{width:100%;border:0;outline:0;padding:12px;font-size:16px}
-.section{margin-top:32px}
-.title{margin-bottom:14px}
-.title h2{margin:0}
-.categories{display:flex;gap:9px;flex-wrap:wrap}
-.category{border:1px solid #dfe5e3;background:#fff;padding:11px 15px;border-radius:13px;font-weight:700}
-.category.active{background:#087f5b;color:#fff;border-color:#087f5b}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;overflow:hidden}
-.pic{height:170px;background:#eef3f1;display:flex;align-items:center;justify-content:center;font-size:65px}
-.body{padding:14px}
-.tag{display:inline-block;background:#eef7f3;color:#087f5b;padding:5px 8px;border-radius:8px;font-size:12px;font-weight:700;margin-bottom:9px}
-.name{margin:0 0 7px;font-size:17px}
-.price{color:#087f5b;font-size:18px;font-weight:900;margin-bottom:6px}
-.loc{color:#6b7280;font-size:13px;margin-bottom:12px}
-.cardactions{display:flex;gap:7px}
-.cardactions .btn{flex:1;padding:9px 8px}
-.loading,.empty{background:#fff;border:1px dashed #d1d5db;border-radius:16px;padding:40px;text-align:center;color:#6b7280;grid-column:1/-1}
-.modal{display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.55);padding:18px;align-items:center;justify-content:center}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f6f8f7;color:#17231d}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0}
+.header{background:#0b8f55;color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 3px 15px #0002}
+.nav{max-width:1150px;margin:auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:28px;font-weight:900}
+.logo span{font-size:13px;display:block;opacity:.85}
+.navBtns{display:flex;gap:8px;align-items:center}
+.btn{padding:11px 16px;border-radius:12px;font-weight:700}
+.btnWhite{background:#fff;color:#087c4a}
+.btnGreen{background:#0b8f55;color:#fff}
+.btnLight{background:#e9f7f0;color:#087c4a}
+.hero{max-width:1150px;margin:22px auto;padding:42px 25px;border-radius:24px;background:linear-gradient(135deg,#087d4b,#16ad6b);color:white;box-shadow:0 10px 30px #087d4b30}
+.hero h1{font-size:38px;margin:0 0 12px}
+.hero p{font-size:18px;opacity:.95}
+.searchBox{display:flex;gap:10px;margin-top:25px;max-width:750px}
+.searchBox input{flex:1;padding:15px;border:0;border-radius:14px;outline:0}
+.container{max-width:1150px;margin:auto;padding:0 18px 40px}
+.sectionTitle{display:flex;align-items:center;justify-content:space-between;margin:28px 0 15px}
+.sectionTitle h2{margin:0;font-size:23px}
+.categories{display:flex;gap:10px;overflow:auto;padding-bottom:5px}
+.cat{background:#fff;border:1px solid #e1ebe6;padding:11px 17px;border-radius:30px;white-space:nowrap;color:#176b48;font-weight:700}
+.cat.active,.cat:hover{background:#0b8f55;color:#fff}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #0000000d;position:relative;border:1px solid #edf1ef;transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 25px #00000015}
+.cardImg{height:190px;background:#edf3ef;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cardImg img{width:100%;height:100%;object-fit:cover}
+.noImg{font-size:45px;color:#9db0a6}
+.cardBody{padding:14px}
+.cardTitle{font-weight:800;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.price{color:#0b8f55;font-size:19px;font-weight:900;margin-top:8px}
+.meta{font-size:12px;color:#78857f;margin-top:7px}
+.cardActions{display:flex;gap:7px;margin-top:12px}
+.cardActions button{flex:1;padding:9px;border-radius:10px}
+.detailsBtn{background:#edf8f2;color:#087c4a}
+.heart{position:absolute;top:10px;left:10px;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 3px 10px #0002;font-size:21px;color:#78857f;z-index:2}
+.heart.active{color:#e63962}
+.empty{text-align:center;background:#fff;padding:35px;border-radius:18px;color:#78857f}
+.loader{text-align:center;padding:35px;color:#0b8f55}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:100;align-items:center;justify-content:center;padding:15px}
 .modal.show{display:flex}
-.box{width:100%;max-width:500px;max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:23px;position:relative}
-.close{position:absolute;left:15px;top:12px;border:0;background:#f3f4f6;width:38px;height:38px;border-radius:50%;font-size:22px}
-.box h2{margin:0 0 18px}
-.tabs{display:flex;background:#f3f5f4;padding:5px;border-radius:11px;margin-bottom:18px}
-.tab{flex:1;border:0;padding:10px;border-radius:8px;background:transparent;font-weight:800}
-.tab.active{background:#fff;color:#087f5b}
-.field{margin-bottom:13px}
-.field label{display:block;margin-bottom:6px;font-weight:700;font-size:14px}
-.field input,.field select{width:100%;border:1px solid #d9dfdd;border-radius:11px;padding:12px;outline:0;font-size:15px;background:#fff}
-.modalactions{display:flex;gap:9px;margin-top:18px}
-.modalactions .btn{flex:1}
-.error,.success{display:none;padding:10px;border-radius:9px;margin-bottom:13px;font-size:14px}
-.error{background:#fee2e2;color:#991b1b}
-.success{background:#dcfce7;color:#166534}
-footer{margin-top:55px;background:#10251f;color:#fff;padding:30px 18px}
-.footer{max-width:1200px;margin:auto}
-.footlogo{font-size:23px;font-weight:900;color:#6ee7b7}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:34px}}
-@media(max-width:500px){.container{padding:0 12px}.grid{grid-template-columns:1fr}.hero{padding:32px 20px}.hero h1{font-size:30px}.actions .primary{display:none}.cardactions{flex-direction:column}}
+.modalBox{background:#fff;width:min(600px,100%);max-height:90vh;overflow:auto;border-radius:22px;padding:22px;position:relative}
+.close{position:absolute;left:15px;top:12px;width:35px;height:35px;border-radius:50%;background:#f0f3f1;font-size:20px}
+.modal h2{margin-top:0;color:#087c4a}
+.formGroup{margin-bottom:13px}
+.formGroup label{display:block;font-weight:700;margin-bottom:6px}
+.formGroup input,.formGroup textarea,.formGroup select{width:100%;padding:12px;border:1px solid #dce5e0;border-radius:11px;outline:0}
+.formGroup textarea{min-height:100px;resize:vertical}
+.submit{width:100%;padding:13px;background:#0b8f55;color:#fff;border-radius:12px;font-weight:800}
+.detailImg{height:270px;border-radius:15px;background:#edf3ef;overflow:hidden;margin-bottom:15px}
+.detailImg img{width:100%;height:100%;object-fit:cover}
+.detailPrice{font-size:26px;color:#0b8f55;font-weight:900}
+.detailDesc{line-height:1.8;color:#52615a;margin:12px 0}
+.detailActions{display:flex;gap:10px}
+.detailActions button{flex:1;padding:13px;border-radius:12px;font-weight:800}
+.whatsapp{background:#25d366;color:#fff}
+.favoriteFilter{background:#fff;color:#087c4a;border:1px solid #dce9e2;padding:10px 15px;border-radius:12px;font-weight:700}
+.toast{position:fixed;bottom:20px;right:20px;background:#17231d;color:#fff;padding:13px 18px;border-radius:12px;z-index:200;display:none}
+.toast.show{display:block}
+footer{background:#10251b;color:#fff;text-align:center;padding:25px;margin-top:30px}
+@media(max-width:600px){
+.hero{margin:12px;padding:28px 18px}
+.hero h1{font-size:28px}
+.searchBox{flex-direction:column}
+.nav{padding:11px}
+.logo{font-size:23px}
+.btn{padding:9px 11px}
+.products{grid-template-columns:repeat(2,1fr);gap:10px}
+.cardImg{height:145px}
+.cardBody{padding:10px}
+.cardTitle{font-size:14px}
+.price{font-size:16px}
+.cardActions button{font-size:12px;padding:8px}
+}
 </style>
 </head>
+
 <body>
 
-<header>
-<div class="header">
-<a class="logo" href="#">🛒 سوقي</a>
-<div class="actions">
-<button id="addButton" class="btn primary">＋ أضف منتج</button>
-<button id="loginButton" class="btn light">👤 دخول</button>
-<button id="logoutButton" class="btn danger" style="display:none">تسجيل الخروج</button>
+<header class="header">
+<div class="nav">
+<div class="logo">سوقي<span>بيع • اشتري • بسهولة</span></div>
+<div class="navBtns">
+<button class="btn btnWhite" id="loginBtn">دخول</button>
+<button class="btn btnWhite" id="addBtn">+ بيع منتج</button>
 </div>
 </div>
 </header>
 
+<section class="hero">
+<h1>بيع واشتري بسهولة 🚀</h1>
+<p>كل اللي محتاجه قريب منك في مكان واحد.</p>
+<div class="searchBox">
+<input id="searchInput" type="search" placeholder="ابحث عن منتج...">
+<button class="btn btnWhite" id="searchBtn">بحث 🔍</button>
+</div>
+</section>
+
 <main class="container">
 
-<section class="hero">
-<h1>بيع واشتري بسهولة</h1>
-<p>اكتشف المنتجات المعروضة حولك، وانشر منتجاتك ليشوفها الجميع ويتواصلوا معك مباشرة.</p>
-<div class="hero-buttons">
-<button id="heroAdd" class="btn primary">🛍️ أضف منتجك الآن</button>
-<button id="heroBrowse" class="btn light">🔎 تصفح المنتجات</button>
-</div>
-</section>
-
-<div id="userBar" class="user">
-<div class="usericon">👤</div>
-<div class="userinfo">
-<strong id="userName">مرحبًا بك</strong>
-<small id="userEmail"></small>
-</div>
+<div class="sectionTitle">
+<h2>التصنيفات</h2>
 </div>
 
-<section class="search">
-<span>🔍</span>
-<input id="searchInput" type="text" placeholder="ابحث عن منتج، قسم، أو مكان...">
-</section>
-
-<section class="section">
-<div class="title"><h2>تصفح الأقسام</h2></div>
-<div class="categories">
-<button class="category active" data-cat="الكل">الكل</button>
-<button class="category" data-cat="إلكترونيات">📱 إلكترونيات</button>
-<button class="category" data-cat="ملابس">👕 ملابس</button>
-<button class="category" data-cat="أثاث">🪑 أثاث</button>
-<button class="category" data-cat="سيارات">🚗 سيارات</button>
-<button class="category" data-cat="أخرى">📦 أخرى</button>
+<div class="categories" id="categories">
+<button class="cat active" data-cat="all">الكل</button>
+<button class="cat" data-cat="سيارات">🚗 سيارات</button>
+<button class="cat" data-cat="موبايلات">📱 موبايلات</button>
+<button class="cat" data-cat="عقارات">🏠 عقارات</button>
+<button class="cat" data-cat="أثاث">🛋️ أثاث</button>
+<button class="cat" data-cat="ملابس">👕 ملابس</button>
+<button class="cat" data-cat="أخرى">📦 أخرى</button>
 </div>
-</section>
 
-<section id="productsSection" class="section">
-<div class="title"><h2>أحدث المنتجات</h2></div>
-<div id="productsGrid" class="grid">
-<div class="loading">⏳<br><br>جاري تحميل المنتجات...</div>
+<div class="sectionTitle">
+<h2 id="productsTitle">أحدث المنتجات</h2>
+<button class="favoriteFilter" id="favoritesBtn">❤️ المفضلة</button>
 </div>
-</section>
+
+<div id="products" class="products">
+<div class="loader">جاري تحميل المنتجات...</div>
+</div>
 
 </main>
 
 <footer>
-<div class="footer">
-<div class="footlogo">🛒 سوقي</div>
-<div>سوقك الإلكتروني البسيط</div>
-</div>
+<div>سوقي © 2026</div>
+<div style="margin-top:7px;opacity:.7">منصة بسيطة للبيع والشراء</div>
 </footer>
 
-<div id="authModal" class="modal">
-<div class="box">
+<!-- Login -->
+<div class="modal" id="loginModal">
+<div class="modalBox">
+<button class="close" data-close="loginModal">×</button>
+<h2>تسجيل الدخول</h2>
 
-<button class="close" id="authClose">×</button>
-<h2>👤 حساب سوقي</h2>
-
-<div class="tabs">
-<button id="loginTab" class="tab active">تسجيل الدخول</button>
-<button id="signupTab" class="tab">إنشاء حساب</button>
-</div>
-
-<div id="authError" class="error"></div>
-<div id="authSuccess" class="success"></div>
-
-<div class="field">
+<div class="formGroup">
 <label>البريد الإلكتروني</label>
-<input id="emailInput" type="email" placeholder="example@email.com">
+<input id="loginEmail" type="email" placeholder="example@email.com">
 </div>
 
-<div class="field">
+<div class="formGroup">
 <label>كلمة المرور</label>
-<input id="passwordInput" type="password" placeholder="كلمة المرور">
+<input id="loginPassword" type="password" placeholder="كلمة المرور">
 </div>
 
-<div id="confirmField" class="field" style="display:none">
-<label>تأكيد كلمة المرور</label>
-<input id="confirmInput" type="password" placeholder="أعد كتابة كلمة المرور">
+<button class="submit" id="doLogin">دخول</button>
+
+<p style="text-align:center">
+ليس لديك حساب؟
+<button id="showSignup" style="background:none;color:#087c4a;font-weight:800">إنشاء حساب</button>
+</p>
+
+<div id="signupArea" style="display:none">
+<hr>
+<h2>إنشاء حساب</h2>
+<div class="formGroup">
+<label>البريد الإلكتروني</label>
+<input id="signupEmail" type="email">
+</div>
+<div class="formGroup">
+<label>كلمة المرور</label>
+<input id="signupPassword" type="password">
+</div>
+<button class="submit" id="doSignup">إنشاء الحساب</button>
+</div>
+</div>
 </div>
 
-<div class="modalactions">
-<button id="authAction" class="btn primary">دخول</button>
-<button id="authCancel" class="btn light">إلغاء</button>
-</div>
+<!-- Add Product -->
+<div class="modal" id="addModal">
+<div class="modalBox">
+<button class="close" data-close="addModal">×</button>
+<h2>إضافة منتج</h2>
 
-</div>
-</div>
-
-<div id="productModal" class="modal">
-<div class="box">
-
-<button class="close" id="productClose">×</button>
-<h2>🛍️ أضف منتجًا</h2>
-
-<div id="productError" class="error"></div>
-<div id="productSuccess" class="success"></div>
-
-<div class="field">
+<div class="formGroup">
 <label>اسم المنتج</label>
-<input id="productName" placeholder="مثال: هاتف سامسونج">
+<input id="productName" placeholder="مثال: iPhone 15">
 </div>
 
-<div class="field">
-<label>السعر بالجنيه</label>
-<input id="productPrice" type="number" min="0" placeholder="مثال: 8500">
+<div class="formGroup">
+<label>السعر</label>
+<input id="productPrice" type="number" placeholder="السعر بالجنيه">
 </div>
 
-<div class="field">
-<label>المكان</label>
-<input id="productLocation" placeholder="مثال: الزقازيق">
-</div>
-
-<div class="field">
-<label>القسم</label>
+<div class="formGroup">
+<label>التصنيف</label>
 <select id="productCategory">
-<option>إلكترونيات</option>
-<option>ملابس</option>
-<option>أثاث</option>
-<option>سيارات</option>
-<option>أخرى</option>
+<option value="سيارات">سيارات</option>
+<option value="موبايلات">موبايلات</option>
+<option value="عقارات">عقارات</option>
+<option value="أثاث">أثاث</option>
+<option value="ملابس">ملابس</option>
+<option value="أخرى">أخرى</option>
 </select>
 </div>
 
-<div class="field">
-<label>رمز المنتج</label>
-<input id="productEmoji" maxlength="4" placeholder="📱">
+<div class="formGroup">
+<label>رابط صورة المنتج</label>
+<input id="productImage" placeholder="https://...">
 </div>
 
-<div class="field">
+<div class="formGroup">
+<label>الوصف</label>
+<textarea id="productDescription" placeholder="اكتب تفاصيل المنتج"></textarea>
+</div>
+
+<div class="formGroup">
 <label>رقم واتساب</label>
-<input id="productWhatsapp" type="tel" placeholder="2010xxxxxxxx">
+<input id="productWhatsapp" placeholder="مثال: 201xxxxxxxxx">
 </div>
 
-<div class="modalactions">
-<button id="publishButton" class="btn primary">🚀 نشر المنتج</button>
-<button id="productCancel" class="btn light">إلغاء</button>
+<button class="submit" id="publishButton">نشر المنتج</button>
+</div>
 </div>
 
+<!-- Details -->
+<div class="modal" id="detailsModal">
+<div class="modalBox">
+<button class="close" data-close="detailsModal">×</button>
+<div id="detailsContent"></div>
 </div>
 </div>
+
+<div class="toast" id="toast"></div>
 
 <script>
 const SUPABASE_URL="https://dbufhbeygczlfttdpinf.supabase.co";
 const SUPABASE_KEY="sb_publishable_ffb08aL-n96nfgZZwjj3fw_KolUjymN";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-let db=null,currentUser=null,isSignup=false,products=[],cat="الكل";
+let allProducts=[];
+let currentCategory="all";
+let favorites=JSON.parse(localStorage.getItem("souqi_favorites")||"[]");
+let showFavorites=false;
 
-try{
-if(window.supabase?.createClient){
-db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-}
-}catch(e){
-console.error(e);
-}
+const productsEl=document.getElementById("products");
+const searchInput=document.getElementById("searchInput");
+const toast=document.getElementById("toast");
 
-const $=id=>document.getElementById(id);
-const authModal=$("authModal");
-const productModal=$("productModal");
-
-function show(el){
-el.classList.add("show");
+function showToast(msg){
+toast.textContent=msg;
+toast.classList.add("show");
+setTimeout(()=>toast.classList.remove("show"),2500);
 }
 
-function hide(el){
-el.classList.remove("show");
+function openModal(id){
+document.getElementById(id).classList.add("show");
 }
 
-function msg(el,text,type="error"){
-el.textContent=text;
-el.style.display="block";
-el.className=type;
+function closeModal(id){
+document.getElementById(id).classList.remove("show");
 }
 
-function clearMsg(el){
-el.textContent="";
-el.style.display="none";
-}
-
-function price(v){
-return Number(v||0).toLocaleString("ar-EG")+" جنيه";
-}
-
-function safe(v){
-return String(v??"").replace(/[&<>"']/g,m=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[m]));
-}
-
-function demo(){
-return[
-{id:"d1",name:"هاتف سامسونج",price:8500,location:"الزقازيق",category:"إلكترونيات",emoji:"📱"},
-{id:"d2",name:"كرسي مكتب",price:1800,location:"الزقازيق",category:"أثاث",emoji:"🪑"},
-{id:"d3",name:"جاكيت رجالي",price:950,location:"الشرقية",category:"ملابس",emoji:"👕"},
-{id:"d4",name:"سيارة مستعملة",price:350000,location:"الزقازيق",category:"سيارات",emoji:"🚗"}
-];
-}
-
-function render(){
-
-let q=$("searchInput").value.trim().toLowerCase();
-
-let list=products.filter(p=>{
-
-let name=p.name||p.title||"";
-let c=p.category||p.product_category||"أخرى";
-let l=p.location||p.city||"";
-
-return(
-(cat==="الكل"||c===cat)&&
-(!q||(name+" "+c+" "+l).toLowerCase().includes(q))
-);
-
+document.querySelectorAll("[data-close]").forEach(btn=>{
+btn.onclick=()=>closeModal(btn.dataset.close);
 });
 
-if(!list.length){
+document.querySelectorAll(".modal").forEach(modal=>{
+modal.addEventListener("click",e=>{
+if(e.target===modal) modal.classList.remove("show");
+});
+});
 
-$("productsGrid").innerHTML=
-'<div class="empty">لا توجد منتجات مطابقة.</div>';
+document.getElementById("loginBtn").onclick=()=>openModal("loginModal");
+document.getElementById("addBtn").onclick=async()=>{
+const {data}=await supabaseClient.auth.getUser();
+if(!data.user){
+openModal("loginModal");
+showToast("سجل الدخول أولاً");
+return;
+}
+openModal("addModal");
+};
 
+document.getElementById("showSignup").onclick=()=>{
+document.getElementById("signupArea").style.display="block";
+};
+
+document.getElementById("doLogin").onclick=async()=>{
+const email=document.getElementById("loginEmail").value.trim();
+const password=document.getElementById("loginPassword").value;
+
+if(!email||!password){
+showToast("اكتب البريد وكلمة المرور");
 return;
 }
 
-$("productsGrid").innerHTML=list.map(p=>{
+const {error}=await supabaseClient.auth.signInWithPassword({email,password});
 
-let name=safe(p.name||p.title||"منتج");
-let c=safe(p.category||"أخرى");
-let loc=safe(p.location||"غير محدد");
-let em=safe(p.emoji||"📦");
-let wa=p.whatsapp||p.phone||"";
+if(error){
+showToast("بيانات الدخول غير صحيحة");
+return;
+}
 
-let contact=wa?
-`<button class="btn primary" onclick="whatsapp('${String(wa).replace(/\D/g,"")}')">واتساب</button>`:
-`<button class="btn light" onclick="alert('رقم التواصل غير متوفر لهذا المنتج')">تواصل</button>`;
+closeModal("loginModal");
+showToast("تم تسجيل الدخول بنجاح");
+updateAuthButton();
+};
 
-return`
+document.getElementById("doSignup").onclick=async()=>{
+const email=document.getElementById("signupEmail").value.trim();
+const password=document.getElementById("signupPassword").value;
+
+if(!email||!password){
+showToast("أكمل البيانات");
+return;
+}
+
+if(password.length<6){
+showToast("كلمة المرور 6 أحرف على الأقل");
+return;
+}
+
+const {error}=await supabaseClient.auth.signUp({email,password});
+
+if(error){
+showToast(error.message);
+return;
+}
+
+showToast("تم إنشاء الحساب، تحقق من البريد إذا طُلب منك");
+};
+
+async function updateAuthButton(){
+const {data}=await supabaseClient.auth.getUser();
+const btn=document.getElementById("loginBtn");
+
+if(data.user){
+btn.textContent="حسابي";
+btn.onclick=async()=>{
+await supabaseClient.auth.signOut();
+showToast("تم تسجيل الخروج");
+updateAuthButton();
+};
+}else{
+btn.textContent="دخول";
+btn.onclick=()=>openModal("loginModal");
+}
+}
+
+function saveFavorites(){
+localStorage.setItem("souqi_favorites",JSON.stringify(favorites));
+}
+
+function isFavorite(id){
+return favorites.includes(String(id));
+}
+
+function toggleFavorite(id){
+id=String(id);
+
+if(isFavorite(id)){
+favorites=favorites.filter(x=>x!==id);
+showToast("تمت الإزالة من المفضلة");
+}else{
+favorites.push(id);
+showToast("تمت الإضافة للمفضلة ❤️");
+}
+
+saveFavorites();
+renderProducts();
+}
+
+function productImage(p){
+return p.image_url||p.image||p.photo||"";
+}
+
+function productName(p){
+return p.name||p.title||"منتج بدون اسم";
+}
+
+function productPrice(p){
+const price=p.price;
+if(price===null||price===undefined||price==="") return "السعر عند التواصل";
+return Number(price).toLocaleString("ar-EG")+" جنيه";
+}
+
+function productCategory(p){
+return p.category||"أخرى";
+}
+
+function renderProducts(){
+let list=[...allProducts];
+
+const q=searchInput.value.trim().toLowerCase();
+
+if(currentCategory!=="all"){
+list=list.filter(p=>productCategory(p)===currentCategory);
+}
+
+if(q){
+list=list.filter(p=>
+productName(p).toLowerCase().includes(q)||
+productCategory(p).toLowerCase().includes(q)||
+String(p.description||"").toLowerCase().includes(q)
+);
+}
+
+if(showFavorites){
+list=list.filter(p=>isFavorite(p.id));
+}
+
+if(!list.length){
+productsEl.innerHTML='<div class="empty" style="grid-column:1/-1">لا توجد منتجات مطابقة 🔎</div>';
+return;
+}
+
+productsEl.innerHTML=list.map(p=>{
+const id=String(p.id);
+const img=productImage(p);
+
+return `
 <div class="card">
-<div class="pic">${em}</div>
-<div class="body">
-<span class="tag">${c}</span>
-<h3 class="name">${name}</h3>
-<div class="price">${price(p.price)}</div>
-<div class="loc">📍 ${loc}</div>
-<div class="cardactions">${contact}</div>
+<button class="heart ${isFavorite(id)?"active":""}" onclick="toggleFavorite('${id}')">
+${isFavorite(id)?"♥":"♡"}
+</button>
+
+<div class="cardImg">
+${img
+?`<img src="${escapeHtml(img)}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=noImg>📦</div>'">`
+:`<div class="noImg">📦</div>`}
+</div>
+
+<div class="cardBody">
+<div class="cardTitle">${escapeHtml(productName(p))}</div>
+<div class="price">${productPrice(p)}</div>
+<div class="meta">${escapeHtml(productCategory(p))}</div>
+
+<div class="cardActions">
+<button class="detailsBtn" onclick="showDetails('${id}')">التفاصيل</button>
+<button class="btnGreen" onclick="contactWhatsApp('${id}')">واتساب</button>
+</div>
 </div>
 </div>
 `;
-
 }).join("");
-
 }
 
-window.whatsapp=n=>{
-if(n){
-window.open("https://wa.me/"+n,"_blank");
+function escapeHtml(value){
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 }
-};
+
+function findProduct(id){
+return allProducts.find(p=>String(p.id)===String(id));
+}
+
+function showDetails(id){
+const p=findProduct(id);
+if(!p)return;
+
+const img=productImage(p);
+const whatsapp=p.whatsapp||p.phone||p.contact||"";
+
+document.getElementById("detailsContent").innerHTML=`
+<div class="detailImg">
+${img
+?`<img src="${escapeHtml(img)}" onerror="this.style.display='none'">`
+:`<div class="noImg" style="height:100%;display:flex;align-items:center;justify-content:center">📦</div>`}
+</div>
+
+<h2>${escapeHtml(productName(p))}</h2>
+<div class="detailPrice">${productPrice(p)}</div>
+
+<div class="meta">التصنيف: ${escapeHtml(productCategory(p))}</div>
+
+<div class="detailDesc">
+${escapeHtml(p.description||"لا يوجد وصف للمنتج")}
+</div>
+
+<div class="detailActions">
+<button class="detailsBtn" onclick="toggleFavorite('${String(p.id)}')">
+${isFavorite(String(p.id))?"♥ إزالة من المفضلة":"♡ إضافة للمفضلة"}
+</button>
+<button class="whatsapp" onclick="contactWhatsApp('${String(p.id)}')">
+تواصل واتساب
+</button>
+</div>
+`;
+
+openModal("detailsModal");
+}
+
+function contactWhatsApp(id){
+const p=findProduct(id);
+if(!p)return;
+
+let phone=p.whatsapp||p.phone||p.contact||"";
+phone=String(phone).replace(/[^\d]/g,"");
+
+if(!phone){
+showToast("رقم واتساب غير متوفر");
+return;
+}
+
+if(phone.startsWith("01")) phone="20"+phone.substring(1);
+
+const text=encodeURIComponent(
+`مرحباً، أنا مهتم بالمنتج: ${productName(p)}`
+);
+
+window.open(`https://wa.me/${phone}?text=${text}`,"_blank");
+}
 
 async function loadProducts(){
-
-$("productsGrid").innerHTML=
-'<div class="loading">⏳<br><br>جاري تحميل المنتجات...</div>';
-
-if(db){
+productsEl.innerHTML='<div class="loader">جاري تحميل المنتجات...</div>';
 
 try{
-
-let result=await Promise.race([
-
-db.from("products")
-.select("*")
-.order("created_at",{ascending:false}),
-
-new Promise(r=>setTimeout(()=>r({error:true}),5000))
-
+const result=await Promise.race([
+supabaseClient.from("products").select("*").order("created_at",{ascending:false}),
+new Promise(resolve=>setTimeout(()=>resolve({data:null,error:{message:"timeout"}}),8000))
 ]);
 
-if(!result.error&&Array.isArray(result.data)){
-products=result.data;
-}else{
-products=demo();
+if(result.error||!result.data){
+allProducts=[];
+productsEl.innerHTML='<div class="empty" style="grid-column:1/-1">لم نتمكن من تحميل المنتجات حالياً.<br>يمكنك المحاولة مرة أخرى.</div>';
+return;
 }
+
+allProducts=result.data||[];
+renderProducts();
 
 }catch(e){
-products=demo();
-}
-
-}else{
-products=demo();
-}
-
-render();
-}
-
-function updateUser(){
-
-$("userBar").classList.toggle("show",!!currentUser);
-
-$("loginButton").style.display=currentUser?"none":"";
-
-$("logoutButton").style.display=currentUser?"":"none";
-
-if(currentUser){
-
-$("userName").textContent=
-currentUser.email||"مستخدم سوقي";
-
-$("userEmail").textContent=
-currentUser.email||"";
-
+console.error(e);
+productsEl.innerHTML='<div class="empty" style="grid-column:1/-1">حدث خطأ أثناء تحميل المنتجات.</div>';
 }
 }
 
-function openAuth(){
-
-clearMsg($("authError"));
-clearMsg($("authSuccess"));
-show(authModal);
-
-}
-
-function openProduct(){
-
-if(!currentUser){
-
-openAuth();
-
-msg(
-$("authError"),
-"سجل الدخول أولًا لإضافة منتج."
-);
-
-return;
-}
-
-clearMsg($("productError"));
-clearMsg($("productSuccess"));
-show(productModal);
-
-}
-
-$("loginButton").onclick=openAuth;
-$("addButton").onclick=openProduct;
-$("heroAdd").onclick=openProduct;
-
-$("heroBrowse").onclick=()=>
-$("productsSection").scrollIntoView({
-behavior:"smooth"
+document.querySelectorAll(".cat").forEach(btn=>{
+btn.onclick=()=>{
+document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+currentCategory=btn.dataset.cat;
+showFavorites=false;
+document.getElementById("productsTitle").textContent="أحدث المنتجات";
+renderProducts();
+};
 });
 
-$("authClose").onclick=()=>
-hide(authModal);
+document.getElementById("searchBtn").onclick=renderProducts;
 
-$("authCancel").onclick=()=>
-hide(authModal);
+searchInput.addEventListener("input",renderProducts);
 
-$("productClose").onclick=()=>
-hide(productModal);
+document.getElementById("favoritesBtn").onclick=()=>{
+showFavorites=!showFavorites;
+document.getElementById("favoritesBtn").textContent=
+showFavorites?"↩ كل المنتجات":"❤️ المفضلة";
 
-$("productCancel").onclick=()=>
-hide(productModal);
+document.getElementById("productsTitle").textContent=
+showFavorites?"المنتجات المفضلة":"أحدث المنتجات";
 
-$("searchInput").oninput=render;
-
-document.querySelectorAll(".category").forEach(b=>{
-
-b.onclick=()=>{
-
-document.querySelectorAll(".category")
-.forEach(x=>x.classList.remove("active"));
-
-b.classList.add("active");
-
-cat=b.dataset.cat;
-
-render();
-
+renderProducts();
 };
 
-});
+document.getElementById("publishButton").onclick=async()=>{
+const {data}=await supabaseClient.auth.getUser();
 
-$("loginTab").onclick=()=>{
-
-isSignup=false;
-
-$("loginTab").classList.add("active");
-$("signupTab").classList.remove("active");
-
-$("confirmField").style.display="none";
-
-$("authAction").textContent="دخول";
-
-clearMsg($("authError"));
-clearMsg($("authSuccess"));
-
-};
-
-$("signupTab").onclick=()=>{
-
-isSignup=true;
-
-$("signupTab").classList.add("active");
-$("loginTab").classList.remove("active");
-
-$("confirmField").style.display="block";
-
-$("authAction").textContent="إنشاء حساب";
-
-clearMsg($("authError"));
-clearMsg($("authSuccess"));
-
-};
-
-$("authAction").onclick=async()=>{
-
-clearMsg($("authError"));
-clearMsg($("authSuccess"));
-
-let email=$("emailInput").value.trim();
-let pass=$("passwordInput").value;
-
-if(!email||!pass){
-
-msg(
-$("authError"),
-"اكتب البريد الإلكتروني وكلمة المرور."
-);
-
+if(!data.user){
+showToast("سجل الدخول أولاً");
+closeModal("addModal");
+openModal("loginModal");
 return;
 }
 
-if(!db){
+const name=document.getElementById("productName").value.trim();
+const price=document.getElementById("productPrice").value;
+const category=document.getElementById("productCategory").value;
+const image=document.getElementById("productImage").value.trim();
+const description=document.getElementById("productDescription").value.trim();
+const whatsapp=document.getElementById("productWhatsapp").value.trim();
 
-msg(
-$("authError"),
-"خدمة الحسابات غير متاحة حاليًا."
-);
-
+if(!name){
+showToast("اكتب اسم المنتج");
 return;
 }
+
+const button=document.getElementById("publishButton");
+button.disabled=true;
+button.textContent="جاري النشر...";
 
 try{
+const {error}=await supabaseClient.from("products").insert([{
+name,
+price:price?Number(price):null,
+category,
+image_url:image||null,
+description:description||null,
+whatsapp:whatsapp||null,
+user_id:data.user.id
+}]);
 
-$("authAction").disabled=true;
-
-if(isSignup){
-
-if(pass!==$("confirmInput").value){
-
-msg(
-$("authError"),
-"كلمتا المرور غير متطابقتين."
-);
-
+if(error){
+console.error(error);
+showToast("تعذر نشر المنتج");
+button.disabled=false;
+button.textContent="نشر المنتج";
 return;
 }
 
-let r=await db.auth.signUp({
-email:email,
-password:pass
-});
+showToast("تم نشر المنتج بنجاح 🎉");
 
-if(r.error)throw r.error;
+[
+"productName",
+"productPrice",
+"productImage",
+"productDescription",
+"productWhatsapp"
+].forEach(id=>document.getElementById(id).value="");
 
-msg(
-$("authSuccess"),
-"تم إنشاء الحساب. افحص بريدك إذا طُلب التأكيد.",
-"success"
-);
-
-}else{
-
-let r=await db.auth.signInWithPassword({
-email:email,
-password:pass
-});
-
-if(r.error)throw r.error;
-
-currentUser=r.data.user;
-
-updateUser();
-
-hide(authModal);
-
-}
-
-}catch(e){
-
-msg(
-$("authError"),
-e.message||"حدث خطأ أثناء تسجيل الدخول."
-);
-
-}finally{
-
-$("authAction").disabled=false;
-
-}
-
-};
-
-$("logoutButton").onclick=async()=>{
-
-try{
-
-if(db)
-await db.auth.signOut();
-
-}catch(e){}
-
-currentUser=null;
-
-updateUser();
-
-};
-
-$("publishButton").onclick=async()=>{
-
-clearMsg($("productError"));
-clearMsg($("productSuccess"));
-
-if(!currentUser){
-
-hide(productModal);
-openAuth();
-
-return;
-}
-
-if(!db){
-
-msg(
-$("productError"),
-"قاعدة البيانات غير متاحة حاليًا."
-);
-
-return;
-}
-
-let data={
-
-name:$("productName").value.trim(),
-
-price:Number(
-$("productPrice").value
-),
-
-location:$("productLocation").value.trim(),
-
-category:$("productCategory").value,
-
-emoji:$("productEmoji").value.trim()||"📦",
-
-whatsapp:$("productWhatsapp").value.trim(),
-
-user_id:currentUser.id
-
-};
-
-if(!data.name||!data.price||!data.location){
-
-msg(
-$("productError"),
-"أكمل اسم المنتج والسعر والمكان."
-);
-
-return;
-}
-
-try{
-
-$("publishButton").disabled=true;
-
-let r=await db
-.from("products")
-.insert(data);
-
-if(r.error)throw r.error;
-
-msg(
-$("productSuccess"),
-"تم نشر المنتج بنجاح.",
-"success"
-);
-
+closeModal("addModal");
 await loadProducts();
 
-setTimeout(
-()=>hide(productModal),
-900
-);
-
 }catch(e){
-
-msg(
-$("productError"),
-e.message||"حدث خطأ أثناء النشر."
-);
-
-}finally{
-
-$("publishButton").disabled=false;
-
+console.error(e);
+showToast("حدث خطأ أثناء النشر");
 }
 
+button.disabled=false;
+button.textContent="نشر المنتج";
 };
 
-[authModal,productModal].forEach(m=>{
-
-m.onclick=e=>{
-
-if(e.target===m)
-hide(m);
-
-};
-
+supabaseClient.auth.onAuthStateChange(()=>{
+updateAuthButton();
 });
 
-async function start(){
-
-updateUser();
-
-if(db){
-
-try{
-
-let r=await db.auth.getSession();
-
-currentUser=
-r.data?.session?.user||null;
-
-updateUser();
-
-db.auth.onAuthStateChange(
-(_e,s)=>{
-
-currentUser=s?.user||null;
-
-updateUser();
-
-}
-);
-
-}catch(e){}
-
-}
-
-await loadProducts();
-
-}
-
-start();
+updateAuthButton();
+loadProducts();
 </script>
 
 </body>
-   </html>
+</html>
