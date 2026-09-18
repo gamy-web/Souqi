@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,31 +20,32 @@
     }
 
     .bar {
-      background: #fff;
+      background: white;
       padding: 15px 6%;
       display: flex;
-      gap: 10px;
       align-items: center;
+      gap: 10px;
       border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 10;
     }
 
     .logo {
+      margin-left: auto;
       color: #087f5b;
       font-size: 28px;
-      font-weight: 900;
-      margin-left: auto;
+      font-weight: bold;
     }
 
     button {
-      padding: 11px 16px;
       border: 0;
       border-radius: 10px;
+      padding: 11px 16px;
+      font-size: 14px;
       font-weight: bold;
       cursor: pointer;
-      font-size: 14px;
+    }
+
+    button:active {
+      transform: scale(0.97);
     }
 
     .primary {
@@ -52,7 +54,7 @@
     }
 
     .secondary {
-      background: #eee;
+      background: #eeeeee;
       color: #222;
     }
 
@@ -66,9 +68,8 @@
       background: linear-gradient(135deg, #087f5b, #0ca678);
       color: white;
       border-radius: 18px;
-      padding: 35px 25px;
+      padding: 35px 20px;
       text-align: center;
-      margin-bottom: 25px;
     }
 
     .hero h1 {
@@ -78,40 +79,60 @@
 
     .hero p {
       margin: 0 0 20px;
-      font-size: 16px;
     }
 
     .search-box {
-      display: flex;
-      gap: 10px;
       max-width: 700px;
       margin: auto;
+      display: flex;
+      gap: 10px;
     }
 
     .search-box input {
       flex: 1;
-      padding: 14px;
       border: 0;
-      border-radius: 10px;
-      font-size: 15px;
       outline: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 16px;
     }
 
-    .search-box button {
+    .search-button {
       background: white;
       color: #087f5b;
+      min-width: 90px;
     }
 
-    .section-title {
+    .title {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 25px 0 15px;
     }
 
-    .section-title h2 {
+    .title h2 {
       margin: 0;
-      font-size: 22px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 5px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      padding: 11px 18px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .category:hover {
+      background: #087f5b;
+      color: white;
     }
 
     .products {
@@ -123,18 +144,12 @@
     .product {
       background: white;
       border-radius: 15px;
-      overflow: hidden;
       border: 1px solid #e2e5e7;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .product:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
 
     .product-img {
-      height: 170px;
+      height: 160px;
       background: #e9ecef;
       display: flex;
       align-items: center;
@@ -148,7 +163,6 @@
 
     .product-info h3 {
       margin: 0 0 8px;
-      font-size: 18px;
     }
 
     .price {
@@ -168,34 +182,14 @@
       width: 100%;
     }
 
-    .categories {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 5px;
-    }
-
-    .category {
-      background: white;
-      border: 1px solid #ddd;
-      padding: 12px 18px;
-      border-radius: 25px;
-      white-space: nowrap;
-      cursor: pointer;
-    }
-
-    .category:hover {
-      background: #087f5b;
-      color: white;
-    }
-
     .empty {
-      text-align: center;
-      padding: 35px;
-      color: #777;
       display: none;
       background: white;
+      padding: 35px;
       border-radius: 15px;
+      text-align: center;
+      color: #777;
+      margin-top: 20px;
     }
 
     footer {
@@ -206,49 +200,8 @@
       color: white;
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.55);
-      z-index: 100;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-box {
-      background: white;
-      width: 100%;
-      max-width: 450px;
-      border-radius: 18px;
-      padding: 25px;
-    }
-
-    .modal-box h2 {
-      margin-top: 0;
-    }
-
-    .modal-box input,
-    .modal-box select {
-      width: 100%;
-      padding: 13px;
-      margin-bottom: 12px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-    }
-
-    .modal-actions button {
-      flex: 1;
-    }
-
     @media (max-width: 600px) {
+
       .bar {
         padding: 12px;
       }
@@ -257,16 +210,12 @@
         font-size: 23px;
       }
 
-      .hero {
-        padding: 28px 15px;
-      }
-
-      .hero h1 {
-        font-size: 26px;
-      }
-
       .search-box {
         flex-direction: column;
+      }
+
+      .search-button {
+        width: 100%;
       }
 
       .products {
@@ -275,15 +224,11 @@
       }
 
       .product-img {
-        height: 130px;
+        height: 120px;
       }
 
       .product-info {
         padding: 10px;
-      }
-
-      .product-info h3 {
-        font-size: 15px;
       }
 
       .price {
@@ -293,86 +238,119 @@
   </style>
 </head>
 
+
 <body>
 
   <header class="bar">
-    <div class="logo">سوقي</div>
 
-    <button class="secondary" onclick="showLogin()">
+    <div class="logo">
+      سوقي
+    </div>
+
+    <button class="secondary" onclick="login()">
       دخول
     </button>
 
-    <button class="primary" onclick="showAddProduct()">
+    <button class="primary" onclick="addProduct()">
       + بيع منتج
     </button>
+
   </header>
+
 
   <main class="wrap">
 
     <section class="hero">
-      <h1>أهلاً بك في سوقي 🛒</h1>
+
+      <h1>
+        أهلاً بك في سوقي 🛒
+      </h1>
 
       <p>
         مكان بسيط وسهل لبيع وشراء المنتجات
       </p>
 
       <div class="search-box">
+
         <input
           type="text"
           id="searchInput"
-          placeholder="ابحث عن منتج..."
-          oninput="searchProducts()"
+          placeholder="اكتب اسم المنتج هنا..."
         >
 
-        <button onclick="searchProducts()">
+        <button
+          class="search-button"
+          id="searchButton"
+          type="button"
+        >
           بحث 🔍
         </button>
+
       </div>
+
     </section>
 
-    <div class="section-title">
+
+    <div class="title">
       <h2>التصنيفات</h2>
     </div>
 
+
     <div class="categories">
-      <div class="category" onclick="filterCategory('all')">
+
+      <div class="category" data-category="all">
         الكل
       </div>
 
-      <div class="category" onclick="filterCategory('هواتف')">
+      <div class="category" data-category="هواتف">
         📱 هواتف
       </div>
 
-      <div class="category" onclick="filterCategory('إلكترونيات')">
+      <div class="category" data-category="إلكترونيات">
         💻 إلكترونيات
       </div>
 
-      <div class="category" onclick="filterCategory('سيارات')">
+      <div class="category" data-category="سيارات">
         🚗 سيارات
       </div>
 
-      <div class="category" onclick="filterCategory('ملابس')">
+      <div class="category" data-category="ملابس">
         👕 ملابس
       </div>
 
-      <div class="category" onclick="filterCategory('منزل')">
+      <div class="category" data-category="منزل">
         🏠 منزل
       </div>
+
     </div>
 
-    <div class="section-title">
-      <h2>أحدث المنتجات</h2>
+
+    <div class="title">
+
+      <h2>
+        المنتجات
+      </h2>
 
       <span id="productCount"></span>
+
     </div>
+
 
     <div class="products" id="products">
 
-      <div class="product" data-category="هواتف" data-name="هاتف سامسونج">
-        <div class="product-img">📱</div>
+      <div class="product"
+           data-category="هواتف"
+           data-name="هاتف سامسونج">
+
+        <div class="product-img">
+          📱
+        </div>
 
         <div class="product-info">
-          <h3>هاتف سامسونج</h3>
+
+          <h3>
+            هاتف سامسونج
+          </h3>
 
           <div class="price">
             8,500 جنيه
@@ -382,17 +360,30 @@
             📍 القاهرة
           </div>
 
-          <button class="primary" onclick="contactSeller('هاتف سامسونج')">
+          <button
+            class="primary contact"
+            data-name="هاتف سامسونج">
             تواصل مع البائع
           </button>
+
         </div>
+
       </div>
 
-      <div class="product" data-category="إلكترونيات" data-name="لابتوب">
-        <div class="product-img">💻</div>
+
+      <div class="product"
+           data-category="إلكترونيات"
+           data-name="لابتوب">
+
+        <div class="product-img">
+          💻
+        </div>
 
         <div class="product-info">
-          <h3>لابتوب</h3>
+
+          <h3>
+            لابتوب
+          </h3>
 
           <div class="price">
             18,000 جنيه
@@ -402,17 +393,30 @@
             📍 الشرقية
           </div>
 
-          <button class="primary" onclick="contactSeller('لابتوب')">
+          <button
+            class="primary contact"
+            data-name="لابتوب">
             تواصل مع البائع
           </button>
+
         </div>
+
       </div>
 
-      <div class="product" data-category="سيارات" data-name="سيارة مستعملة">
-        <div class="product-img">🚗</div>
+
+      <div class="product"
+           data-category="سيارات"
+           data-name="سيارة مستعملة">
+
+        <div class="product-img">
+          🚗
+        </div>
 
         <div class="product-info">
-          <h3>سيارة مستعملة</h3>
+
+          <h3>
+            سيارة مستعملة
+          </h3>
 
           <div class="price">
             350,000 جنيه
@@ -422,17 +426,30 @@
             📍 الجيزة
           </div>
 
-          <button class="primary" onclick="contactSeller('سيارة مستعملة')">
+          <button
+            class="primary contact"
+            data-name="سيارة مستعملة">
             تواصل مع البائع
           </button>
+
         </div>
+
       </div>
 
-      <div class="product" data-category="ملابس" data-name="جاكيت رجالي">
-        <div class="product-img">👕</div>
+
+      <div class="product"
+           data-category="ملابس"
+           data-name="جاكيت رجالي">
+
+        <div class="product-img">
+          👕
+        </div>
 
         <div class="product-info">
-          <h3>جاكيت رجالي</h3>
+
+          <h3>
+            جاكيت رجالي
+          </h3>
 
           <div class="price">
             750 جنيه
@@ -442,17 +459,30 @@
             📍 الإسكندرية
           </div>
 
-          <button class="primary" onclick="contactSeller('جاكيت رجالي')">
+          <button
+            class="primary contact"
+            data-name="جاكيت رجالي">
             تواصل مع البائع
           </button>
+
         </div>
+
       </div>
 
-      <div class="product" data-category="منزل" data-name="طقم كراسي">
-        <div class="product-img">🪑</div>
+
+      <div class="product"
+           data-category="منزل"
+           data-name="طقم كراسي">
+
+        <div class="product-img">
+          🪑
+        </div>
 
         <div class="product-info">
-          <h3>طقم كراسي</h3>
+
+          <h3>
+            طقم كراسي
+          </h3>
 
           <div class="price">
             2,500 جنيه
@@ -462,17 +492,30 @@
             📍 الشرقية
           </div>
 
-          <button class="primary" onclick="contactSeller('طقم كراسي')">
+          <button
+            class="primary contact"
+            data-name="طقم كراسي">
             تواصل مع البائع
           </button>
+
         </div>
+
       </div>
 
-      <div class="product" data-category="إلكترونيات" data-name="سماعات بلوتوث">
-        <div class="product-img">🎧</div>
+
+      <div class="product"
+           data-category="إلكترونيات"
+           data-name="سماعات بلوتوث">
+
+        <div class="product-img">
+          🎧
+        </div>
 
         <div class="product-info">
-          <h3>سماعات بلوتوث</h3>
+
+          <h3>
+            سماعات بلوتوث
+          </h3>
 
           <div class="price">
             600 جنيه
@@ -482,13 +525,18 @@
             📍 القاهرة
           </div>
 
-          <button class="primary" onclick="contactSeller('سماعات بلوتوث')">
+          <button
+            class="primary contact"
+            data-name="سماعات بلوتوث">
             تواصل مع البائع
           </button>
+
         </div>
+
       </div>
 
     </div>
+
 
     <div class="empty" id="empty">
       لا توجد منتجات مطابقة للبحث 🔎
@@ -496,142 +544,235 @@
 
   </main>
 
+
   <footer>
-    <strong>سوقي</strong>
+
+    <strong>
+      سوقي
+    </strong>
 
     <br>
 
     <small>
       منصة بسيطة للبيع والشراء
     </small>
+
   </footer>
 
 
-  <!-- تسجيل الدخول -->
+  <script>
 
-  <div class="modal" id="loginModal">
+    // =========================
+    // البحث
+    // =========================
 
-    <div class="modal-box">
+    function searchProducts() {
 
-      <h2>تسجيل الدخول</h2>
+      const input =
+        document.getElementById("searchInput");
 
-      <input
-        type="text"
-        id="loginName"
-        placeholder="اسم المستخدم"
-      >
+      const text =
+        input.value.trim().toLowerCase();
 
-      <input
-        type="password"
-        id="loginPassword"
-        placeholder="كلمة المرور"
-      >
+      const products =
+        document.querySelectorAll(".product");
 
-      <div class="modal-actions">
+      const empty =
+        document.getElementById("empty");
 
-        <button
-          class="primary"
-          onclick="login()"
-        >
-          دخول
-        </button>
+      let count = 0;
 
-        <button
-          class="secondary"
-          onclick="closeModal('loginModal')"
-        >
-          إلغاء
-        </button>
+      products.forEach(function(product) {
 
-      </div>
+        const name =
+          product.dataset.name.toLowerCase();
 
-    </div>
+        const category =
+          product.dataset.category.toLowerCase();
 
-  </div>
+        if (
+          text === "" ||
+          name.includes(text) ||
+          category.includes(text)
+        ) {
 
+          product.style.display = "";
 
-  <!-- إضافة منتج -->
+          count++;
 
-  <div class="modal" id="addProductModal">
+        } else {
 
-    <div class="modal-box">
+          product.style.display = "none";
 
-      <h2>بيع منتج جديد</h2>
+        }
 
-      <input
-        type="text"
-        id="newName"
-        placeholder="اسم المنتج"
-      >
+      });
 
-      <input
-        type="number"
-        id="newPrice"
-        placeholder="السعر بالجنيه"
-      >
+      empty.style.display =
+        count === 0 ? "block" : "none";
 
-      <input
-        type="text"
-        id="newLocation"
-        placeholder="المحافظة / المكان"
-      >
-
-      <select id="newCategory">
-
-        <option value="هواتف">
-          📱 هواتف
-        </option>
-
-        <option value="إلكترونيات">
-          💻 إلكترونيات
-        </option>
-
-        <option value="سيارات">
-          🚗 سيارات
-        </option>
-
-        <option value="ملابس">
-          👕 ملابس
-        </option>
-
-        <option value="منزل">
-          🏠 منزل
-        </option>
-
-      </select>
-
-      <div class="modal-actions">
-
-        <button
-          class="primary"
-          onclick="addProduct()"
-        >
-          نشر المنتج
-        </button>
-
-        <button
-          class="secondary"
-          onclick="closeModal('addProductModal')"
-        >
-          إلغاء
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-
-    function showLogin() {
-      document.getElementById("loginModal").style.display = "flex";
+      updateCount(count);
     }
 
-    function showAddProduct() {
-      document.getElementById("addProductModal").style.display = "flex";
+
+    // زر البحث
+    document
+      .getElementById("searchButton")
+      .addEventListener("click", function() {
+
+        searchProducts();
+
+      });
+
+
+    // البحث أثناء الكتابة
+    document
+      .getElementById("searchInput")
+      .addEventListener("input", function() {
+
+        searchProducts();
+
+      });
+
+
+    // البحث بزر Enter
+    document
+      .getElementById("searchInput")
+      .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+          event.preventDefault();
+
+          searchProducts();
+
+        }
+
+      });
+
+
+    // =========================
+    // التصنيفات
+    // =========================
+
+    document
+      .querySelectorAll(".category")
+      .forEach(function(categoryButton) {
+
+        categoryButton.addEventListener("click", function() {
+
+          const category =
+            this.dataset.category;
+
+          const products =
+            document.querySelectorAll(".product");
+
+          const empty =
+            document.getElementById("empty");
+
+          let count = 0;
+
+          products.forEach(function(product) {
+
+            if (
+              category === "all" ||
+              product.dataset.category === category
+            ) {
+
+              product.style.display = "";
+
+              count++;
+
+            } else {
+
+              product.style.display = "none";
+
+            }
+
+          });
+
+          document.getElementById("searchInput").value = "";
+
+          empty.style.display =
+            count === 0 ? "block" : "none";
+
+          updateCount(count);
+
+        });
+
+      });
+
+
+    // =========================
+    // عدد المنتجات
+    // =========================
+
+    function updateCount(count) {
+
+      document.getElementById("productCount").textContent =
+        "عدد المنتجات: " + count;
+
     }
 
-    function closeModal(id) {
-      document.getElementById
+
+    // =========================
+    // تسجيل الدخول
+    // =========================
+
+    function login() {
+
+      alert(
+        "صفحة تسجيل الدخول سيتم تطويرها في الخطوة القادمة."
+      );
+
+    }
+
+
+    // =========================
+    // بيع منتج
+    // =========================
+
+    function addProduct() {
+
+      alert(
+        "نموذج إضافة المنتج سيتم تطويره في الخطوة القادمة."
+      );
+
+    }
+
+
+    // =========================
+    // التواصل مع البائع
+    // =========================
+
+    document
+      .querySelectorAll(".contact")
+      .forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+          const name =
+            this.dataset.name;
+
+          alert(
+            "التواصل مع بائع منتج: " + name
+          );
+
+        });
+
+      });
+
+
+    // =========================
+    // تشغيل أولي
+    // =========================
+
+    updateCount(
+      document.querySelectorAll(".product").length
+    );
+
+  </script>
+
+</body>
+
+            </html>
